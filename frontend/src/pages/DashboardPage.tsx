@@ -2,8 +2,9 @@
 import { useTranslation } from "react-i18next";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Activity, CheckCircle, Code, Shield, Zap , User} from "lucide-react";
-import {useAuth} from "@/context/AuthContext.tsx";
+import { Trophy, Users, CheckCircle, Zap, Plus, Calendar, BarChart3 } from "lucide-react";
+import { useAuth } from "@/context/AuthContext.tsx";
+import { RoleBadge, type TftRole } from "@/components/tft/RoleBadge";
 
 export default function DashboardPage() {
     const { t } = useTranslation('pages');
@@ -14,16 +15,17 @@ export default function DashboardPage() {
             {/* Header */}
             <div className="flex justify-between items-end">
                 <div>
-                    <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+                    <h1 className="text-3xl font-bold text-[#F0E6D2]">
                         {t('dashboard.title')}
                     </h1>
-                    <p className="text-gray-500 dark:text-gray-400 mt-2">
-                        {t('dashboard.welcomeMessage')}, <span className="font-semibold text-indigo-600 dark:text-indigo-400">{user?.firstName}</span>.
+                    <p className="text-[#A09B8C] mt-2">
+                        {t('dashboard.welcomeMessage')}, <span className="font-semibold text-[#C8AA6E]">{user?.firstName}</span>.
                     </p>
                 </div>
                 <div className="flex gap-3">
-                    <Button variant="outline">{t('dashboard.documentation')}</Button>
-                    <Button className="bg-indigo-600 hover:bg-indigo-700 text-white">
+                    <Button variant="tft-ghost">{t('dashboard.documentation')}</Button>
+                    <Button variant="tft-primary">
+                        <Plus className="w-4 h-4" />
                         {t('dashboard.newAction')}
                     </Button>
                 </div>
@@ -31,75 +33,106 @@ export default function DashboardPage() {
 
             {/* KPI Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <Card className="p-6 border border-gray-100 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900 rounded-2xl flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/20 flex items-center justify-center text-green-600">
-                        <Shield size={24}/>
+                <Card variant="tft-card" className="p-6 rounded-2xl flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#00C853] to-[#00A040] flex items-center justify-center shadow-[0_0_15px_rgba(0,200,83,0.3)]">
+                        <Trophy size={24} className="text-[#0A1428]"/>
                     </div>
                     <div>
-                        <p className="text-gray-500 dark:text-gray-400 text-sm font-medium">{t('dashboard.securityStatus')}</p>
+                        <p className="text-[#A09B8C] text-sm font-medium">{t('dashboard.totalTournaments')}</p>
                         <div className="flex items-center gap-2">
-                            <p className="text-xl font-bold text-gray-900 dark:text-white">{t('dashboard.secured')}</p>
-                            <CheckCircle size={16} className="text-green-500" />
+                            <p className="text-2xl font-bold text-[#F0E6D2]">12</p>
+                            <CheckCircle size={16} className="text-[#00C853]" />
                         </div>
                     </div>
                 </Card>
 
-                <Card className="p-6 border border-gray-100 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900 rounded-2xl flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-indigo-100 dark:bg-indigo-900/20 flex items-center justify-center text-indigo-600">
-                        <User size={24}/>
+                <Card variant="tft-card" className="p-6 rounded-2xl flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0AC8B9] to-[#099E92] flex items-center justify-center shadow-[0_0_15px_rgba(10,200,185,0.3)]">
+                        <Users size={24} className="text-[#0A1428]"/>
                     </div>
                     <div>
-                        <p className="text-gray-500 dark:text-gray-400 text-sm font-medium">{t('dashboard.userRole')}</p>
-                        <p className="text-xl font-bold text-gray-900 dark:text-white uppercase">{user?.role}</p>
+                        <p className="text-[#A09B8C] text-sm font-medium">{t('dashboard.userRole')}</p>
+                        <div className="mt-1">
+                            {user?.role && <RoleBadge role={user.role.toUpperCase() as TftRole} size="md" />}
+                        </div>
                     </div>
                 </Card>
 
-                <Card className="p-6 border border-gray-100 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900 rounded-2xl flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-900/20 flex items-center justify-center text-amber-600">
-                        <Activity size={24}/>
+                <Card variant="tft-card" className="p-6 rounded-2xl flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#C8AA6E] to-[#785A28] flex items-center justify-center shadow-[0_0_15px_rgba(200,170,110,0.3)]">
+                        <BarChart3 size={24} className="text-[#0A1428]"/>
                     </div>
                     <div>
-                        <p className="text-gray-500 dark:text-gray-400 text-sm font-medium">{t('dashboard.apiPerformance')}</p>
-                        <p className="text-xl font-bold text-gray-900 dark:text-white">{t('dashboard.optimal')}</p>
+                        <p className="text-[#A09B8C] text-sm font-medium">{t('dashboard.activeTournaments')}</p>
+                        <p className="text-2xl font-bold text-[#F0E6D2]">3</p>
                     </div>
                 </Card>
             </div>
 
-            {/* Starter Content */}
+            {/* Main Content */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <Card className="p-8 border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-3xl shadow-sm">
-                    <div className="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-xl flex items-center justify-center text-blue-600 mb-6">
-                        <Code size={24}/>
+                <Card variant="tft-card-elevated" className="p-8 rounded-3xl">
+                    <div className="w-12 h-12 bg-gradient-to-br from-[#0AC8B9] to-[#099E92] rounded-xl flex items-center justify-center mb-6 shadow-[0_0_15px_rgba(10,200,185,0.3)]">
+                        <Trophy size={24} className="text-[#0A1428]"/>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{t('dashboard.readyToCode')}</h3>
-                    <p className="text-gray-500 dark:text-gray-400 mb-6 leading-relaxed">
+                    <h3 className="text-xl font-bold text-[#F0E6D2] mb-2">{t('dashboard.readyToCode')}</h3>
+                    <p className="text-[#A09B8C] mb-6 leading-relaxed">
                         {t('dashboard.templateDescription')}
                     </p>
                     <div className="flex flex-col gap-3">
-                        <div className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
-                            <div className="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs">✓</div>
+                        <div className="flex items-center gap-3 text-sm text-[#A09B8C]">
+                            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#00C853] to-[#00A040] flex items-center justify-center text-[#0A1428] text-xs font-bold">✓</div>
                             {t('dashboard.backendFeature')}
                         </div>
-                        <div className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
-                            <div className="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs">✓</div>
+                        <div className="flex items-center gap-3 text-sm text-[#A09B8C]">
+                            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#00C853] to-[#00A040] flex items-center justify-center text-[#0A1428] text-xs font-bold">✓</div>
                             {t('dashboard.frontendFeature')}
                         </div>
-                        <div className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
-                            <div className="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs">✓</div>
+                        <div className="flex items-center gap-3 text-sm text-[#A09B8C]">
+                            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#00C853] to-[#00A040] flex items-center justify-center text-[#0A1428] text-xs font-bold">✓</div>
                             {t('dashboard.securityFeature')}
                         </div>
                     </div>
                 </Card>
 
-                <Card className="p-8 border border-dashed border-gray-300 dark:border-slate-700 bg-gray-50/50 dark:bg-slate-900/50 rounded-3xl flex flex-col items-center justify-center text-center">
-                    <div className="w-16 h-16 bg-gray-100 dark:bg-slate-800 rounded-full flex items-center justify-center mb-4">
-                        <Zap size={32} className="text-gray-400"/>
+                <Card variant="tft-card" className="p-8 rounded-3xl border-dashed flex flex-col items-center justify-center text-center">
+                    <div className="w-16 h-16 bg-[#1E2328] rounded-full flex items-center justify-center mb-4 border border-[rgba(200,170,110,0.2)]">
+                        <Calendar size={32} className="text-[#5B5A56]"/>
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300">{t('dashboard.yourContentHere')}</h3>
-                    <p className="text-gray-500 text-sm mt-2 max-w-xs">
+                    <h3 className="text-lg font-semibold text-[#A09B8C]">{t('dashboard.yourContentHere')}</h3>
+                    <p className="text-[#5B5A56] text-sm mt-2 max-w-xs">
                         {t('dashboard.startAdding')}
                     </p>
+                    <Button variant="tft-ghost" className="mt-4">
+                        <Plus className="w-4 h-4" />
+                        {t('dashboard.newAction')}
+                    </Button>
                 </Card>
+            </div>
+
+            {/* Quick Actions */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {[
+                    { icon: Trophy, labelKey: "quickActions.newTournament", color: "from-[#C8AA6E] to-[#785A28]" },
+                    { icon: Users, labelKey: "quickActions.managePlayers", color: "from-[#0AC8B9] to-[#099E92]" },
+                    { icon: BarChart3, labelKey: "quickActions.standings", color: "from-[#9D4DFF] to-[#7C3AED]" },
+                    { icon: Zap, labelKey: "quickActions.startMatch", color: "from-[#FFB800] to-[#CC9300]" },
+                ].map((action, index) => {
+                    const Icon = action.icon;
+                    return (
+                        <button
+                            key={index}
+                            className="p-4 rounded-xl bg-[#0A1929] border border-[rgba(200,170,110,0.1)] hover:border-[rgba(200,170,110,0.3)] transition-all group flex flex-col items-center gap-3"
+                        >
+                            <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${action.color} flex items-center justify-center group-hover:shadow-[0_0_15px_rgba(200,170,110,0.3)] transition-shadow`}>
+                                <Icon size={20} className="text-[#0A1428]" />
+                            </div>
+                            <span className="text-sm font-medium text-[#A09B8C] group-hover:text-[#F0E6D2] transition-colors">
+                                {t(`dashboard.${action.labelKey}`)}
+                            </span>
+                        </button>
+                    );
+                })}
             </div>
         </div>
     );

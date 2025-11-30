@@ -1,21 +1,97 @@
 {
+  "landing": {
+    "nav": {
+      "login": "Connexion",
+      "register": "S'inscrire"
+    },
+    "hero": {
+      "badge": "Plateforme de tournois TFT",
+      "titleLine1": "Organisez vos",
+      "titleLine2": "tournois TFT",
+      "subtitle": "La plateforme ultime pour organiser, gérer et suivre vos compétitions Teamfight Tactics.",
+      "cta": {
+        "create": "Créer un tournoi",
+        "browse": "Voir les tournois"
+      }
+    },
+    "stats": {
+      "tournaments": "Tournois",
+      "players": "Joueurs",
+      "casters": "Casters"
+    },
+    "features": {
+      "title": "Tout ce dont vous avez besoin",
+      "subtitle": "Des outils puissants pour organiser des tournois TFT professionnels.",
+      "formats": {
+        "title": "Formats flexibles",
+        "description": "Swiss, Bracket, Round Robin et plus encore."
+      },
+      "players": {
+        "title": "Gestion des joueurs",
+        "description": "Inscriptions, équipes et statistiques intégrées."
+      },
+      "standings": {
+        "title": "Standings automatiques",
+        "description": "Classements calculés en temps réel."
+      },
+      "twitch": {
+        "title": "Intégration Twitch",
+        "description": "Overlay et suivi de stream intégrés."
+      }
+    },
+    "howItWorks": {
+      "title": "Comment ça marche ?",
+      "subtitle": "Lancez votre tournoi en quelques minutes.",
+      "step1": "Créez votre tournoi",
+      "step2": "Invitez les joueurs",
+      "step3": "Lancez les matchs",
+      "step4": "Partagez les résultats"
+    },
+    "cta": {
+      "title": "Prêt à organiser votre premier tournoi ?",
+      "subtitle": "Rejoignez des milliers d'organisateurs qui font confiance à TFT Tournament.",
+      "button": "Commencer gratuitement"
+    },
+    "footer": {
+      "disclaimer": "TFT Tournament n'est pas affilié à Riot Games."
+    }
+  },
+  "roles": {
+    "admin": "Admin",
+    "organizer": "Organisateur",
+    "player": "Joueur",
+    "caster": "Caster"
+  },
   "dashboard": {
     "title": "Dashboard",
     "welcomeMessage": "Bienvenue sur TFT Tournament",
     "documentation": "Documentation",
-    "newAction": "Nouvelle Action",
+    "newAction": "Nouveau tournoi",
     "securityStatus": "Statut Sécurité",
     "secured": "Sécurisé",
     "userRole": "Rôle Utilisateur",
     "apiPerformance": "Performance API",
     "optimal": "Optimale",
-    "readyToCode": "Prêt à coder ?",
+    "readyToCode": "Prêt à organiser ?",
     "templateDescription": "TFT Tournament est une plateforme complète pour gérer les tournois Teamfight Tactics : Formats flexibles (Swiss, Bracket, Round Robin), calcul automatique des standings, et intégration Twitch.",
-    "backendFeature": "Backend Spring Boot 4.0 Clean Architecture",
-    "frontendFeature": "Frontend React 19 + Tailwind + Shadcn",
-    "securityFeature": "Sécurité avancée (Rate Limit, Argon2, HttpOnly)",
-    "yourContentHere": "Votre contenu ici",
-    "startAdding": "Commencez par ajouter vos entités dans le backend et créez vos pages ici."
+    "backendFeature": "Formats Swiss, Bracket, Round Robin",
+    "frontendFeature": "Standings en temps réel",
+    "securityFeature": "Intégration Twitch et overlay",
+    "yourContentHere": "Vos tournois récents",
+    "startAdding": "Créez votre premier tournoi pour le voir apparaître ici.",
+    "recentTournaments": "Tournois récents",
+    "upcomingMatches": "Prochains matchs",
+    "noTournaments": "Aucun tournoi pour le moment",
+    "noMatches": "Aucun match à venir",
+    "totalTournaments": "Total Tournois",
+    "totalPlayers": "Total Joueurs",
+    "activeTournaments": "Tournois Actifs",
+    "quickActions": {
+      "newTournament": "Nouveau tournoi",
+      "managePlayers": "Gérer joueurs",
+      "standings": "Standings",
+      "startMatch": "Lancer match"
+    }
   },
   "profile": {
     "title": "Mon Profil",

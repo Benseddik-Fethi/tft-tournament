@@ -49,78 +49,180 @@
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-ring: var(--sidebar-ring);
+
+    /* TFT Hextech Colors */
+    --color-tft-gold: #C8AA6E;
+    --color-tft-gold-light: #F0E6D2;
+    --color-tft-gold-dark: #785A28;
+    --color-tft-cyan: #0AC8B9;
+    --color-tft-cyan-light: #0DD9C8;
+    --color-tft-cyan-dark: #099E92;
+    --color-tft-purple: #9D4DFF;
+    --color-tft-purple-light: #C084FC;
+    --color-tft-purple-dark: #7C3AED;
+    --color-tft-1st: #FFD700;
+    --color-tft-2nd: #C0C0C0;
+    --color-tft-3rd: #CD7F32;
+    --color-tft-4th: #00C853;
 }
 
-/* Variables CSS (Shadcn Base) */
+/* TFT Hextech Theme - Light Mode */
 :root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.129 0.042 264.695);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.129 0.042 264.695);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.129 0.042 264.695);
-    --primary: oklch(0.208 0.042 265.755);
-    --primary-foreground: oklch(0.984 0.003 247.858);
-    --secondary: oklch(0.968 0.007 247.896);
-    --secondary-foreground: oklch(0.208 0.042 265.755);
-    --muted: oklch(0.968 0.007 247.896);
-    --muted-foreground: oklch(0.554 0.046 257.417);
-    --accent: oklch(0.968 0.007 247.896);
-    --accent-foreground: oklch(0.208 0.042 265.755);
-    --destructive: oklch(0.577 0.245 27.325);
-    --destructive-foreground: oklch(0.577 0.245 27.325);
-    --border: oklch(0.929 0.013 255.508);
-    --input: oklch(0.929 0.013 255.508);
-    --ring: oklch(0.704 0.04 256.788);
+    /* Primary - Or Hextech */
+    --tft-gold: #C8AA6E;
+    --tft-gold-light: #F0E6D2;
+    --tft-gold-dark: #785A28;
+    
+    /* Secondary - Bleu Arcane */
+    --tft-cyan: #0AC8B9;
+    --tft-cyan-light: #0DD9C8;
+    --tft-cyan-dark: #099E92;
+    
+    /* Accent - Violet Mystique */
+    --tft-purple: #9D4DFF;
+    --tft-purple-light: #C084FC;
+    --tft-purple-dark: #7C3AED;
+    
+    /* Background - Light Mode (lighter blue tones) */
+    --tft-bg-dark: #1E3A5F;
+    --tft-bg-darker: #0A1428;
+    --tft-bg-card: #F0F4F8;
+    --tft-bg-surface: #E8EEF4;
+    --tft-bg-elevated: #FFFFFF;
+    
+    /* Text - Light Mode */
+    --tft-text-primary: #0A1428;
+    --tft-text-secondary: #5B5A56;
+    --tft-text-muted: #A09B8C;
+    
+    /* Borders */
+    --tft-border: #C8D4E0;
+    --tft-border-gold: #C8AA6E;
+    
+    /* Status */
+    --tft-success: #00C853;
+    --tft-warning: #FFB800;
+    --tft-error: #FF4444;
+    
+    /* Placements TFT */
+    --tft-1st: #FFD700;
+    --tft-2nd: #C0C0C0;
+    --tft-3rd: #CD7F32;
+    --tft-4th: #00C853;
+
+    /* Shadcn variables mapped to TFT Light theme */
+    --background: #F0F4F8;
+    --foreground: #0A1428;
+    --card: #FFFFFF;
+    --card-foreground: #0A1428;
+    --popover: #FFFFFF;
+    --popover-foreground: #0A1428;
+    --primary: #C8AA6E;
+    --primary-foreground: #0A1428;
+    --secondary: #0AC8B9;
+    --secondary-foreground: #0A1428;
+    --muted: #E8EEF4;
+    --muted-foreground: #5B5A56;
+    --accent: #9D4DFF;
+    --accent-foreground: #FFFFFF;
+    --destructive: #FF4444;
+    --destructive-foreground: #FFFFFF;
+    --border: #C8D4E0;
+    --input: #E8EEF4;
+    --ring: #C8AA6E;
     --radius: 0.625rem;
-    --chart-1: oklch(0.646 0.222 41.116);
-    --chart-2: oklch(0.6 0.118 184.704);
-    --chart-3: oklch(0.398 0.07 227.392);
-    --chart-4: oklch(0.828 0.189 84.429);
-    --chart-5: oklch(0.769 0.188 70.08);
-    --sidebar: oklch(0.984 0.003 247.858);
-    --sidebar-foreground: oklch(0.129 0.042 264.695);
-    --sidebar-primary: oklch(0.208 0.042 265.755);
-    --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-    --sidebar-accent: oklch(0.968 0.007 247.896);
-    --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-    --sidebar-border: oklch(0.929 0.013 255.508);
-    --sidebar-ring: oklch(0.704 0.04 256.788);
+    --chart-1: #C8AA6E;
+    --chart-2: #0AC8B9;
+    --chart-3: #9D4DFF;
+    --chart-4: #FFD700;
+    --chart-5: #00C853;
+    --sidebar: #1E3A5F;
+    --sidebar-foreground: #F0E6D2;
+    --sidebar-primary: #C8AA6E;
+    --sidebar-primary-foreground: #0A1428;
+    --sidebar-accent: #0AC8B9;
+    --sidebar-accent-foreground: #0A1428;
+    --sidebar-border: #C8AA6E;
+    --sidebar-ring: #C8AA6E;
 }
 
+/* TFT Hextech Theme - Dark Mode (Default) */
 .dark {
-    --background: oklch(0.129 0.042 264.695);
-    --foreground: oklch(0.984 0.003 247.858);
-    --card: oklch(0.208 0.042 265.755);
-    --card-foreground: oklch(0.984 0.003 247.858);
-    --popover: oklch(0.208 0.042 265.755);
-    --popover-foreground: oklch(0.984 0.003 247.858);
-    --primary: oklch(0.929 0.013 255.508);
-    --primary-foreground: oklch(0.208 0.042 265.755);
-    --secondary: oklch(0.279 0.041 260.031);
-    --secondary-foreground: oklch(0.984 0.003 247.858);
-    --muted: oklch(0.279 0.041 260.031);
-    --muted-foreground: oklch(0.704 0.04 256.788);
-    --accent: oklch(0.279 0.041 260.031);
-    --accent-foreground: oklch(0.984 0.003 247.858);
-    --destructive: oklch(0.704 0.191 22.216);
-    --destructive-foreground: oklch(0.984 0.003 247.858);
-    --border: oklch(0.279 0.041 260.031);
-    --input: oklch(0.279 0.041 260.031);
-    --ring: oklch(0.551 0.027 264.364);
-    --chart-1: oklch(0.488 0.243 264.376);
-    --chart-2: oklch(0.696 0.17 162.48);
-    --chart-3: oklch(0.769 0.188 70.08);
-    --chart-4: oklch(0.627 0.265 303.9);
-    --chart-5: oklch(0.645 0.246 16.439);
-    --sidebar: oklch(0.208 0.042 265.755);
-    --sidebar-foreground: oklch(0.984 0.003 247.858);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-    --sidebar-accent: oklch(0.279 0.041 260.031);
-    --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-    --sidebar-border: oklch(0.279 0.041 260.031);
-    --sidebar-ring: oklch(0.551 0.027 264.364);
+    /* Primary - Or Hextech */
+    --tft-gold: #C8AA6E;
+    --tft-gold-light: #F0E6D2;
+    --tft-gold-dark: #785A28;
+    
+    /* Secondary - Bleu Arcane */
+    --tft-cyan: #0AC8B9;
+    --tft-cyan-light: #0DD9C8;
+    --tft-cyan-dark: #099E92;
+    
+    /* Accent - Violet Mystique */
+    --tft-purple: #9D4DFF;
+    --tft-purple-light: #C084FC;
+    --tft-purple-dark: #7C3AED;
+    
+    /* Background - Bleu Nuit */
+    --tft-bg-dark: #0A1428;
+    --tft-bg-darker: #091428;
+    --tft-bg-card: #0A1929;
+    --tft-bg-surface: #1E2328;
+    --tft-bg-elevated: #1E293B;
+    
+    /* Text */
+    --tft-text-primary: #F0E6D2;
+    --tft-text-secondary: #A09B8C;
+    --tft-text-muted: #5B5A56;
+    
+    /* Borders */
+    --tft-border: #1E3A5F;
+    --tft-border-gold: #C8AA6E;
+    
+    /* Status */
+    --tft-success: #00C853;
+    --tft-warning: #FFB800;
+    --tft-error: #FF4444;
+    
+    /* Placements TFT */
+    --tft-1st: #FFD700;
+    --tft-2nd: #C0C0C0;
+    --tft-3rd: #CD7F32;
+    --tft-4th: #00C853;
+
+    /* Shadcn variables mapped to TFT Dark theme */
+    --background: #0A1428;
+    --foreground: #F0E6D2;
+    --card: #0A1929;
+    --card-foreground: #F0E6D2;
+    --popover: #1E2328;
+    --popover-foreground: #F0E6D2;
+    --primary: #C8AA6E;
+    --primary-foreground: #0A1428;
+    --secondary: #0AC8B9;
+    --secondary-foreground: #0A1428;
+    --muted: #1E2328;
+    --muted-foreground: #A09B8C;
+    --accent: #9D4DFF;
+    --accent-foreground: #F0E6D2;
+    --destructive: #FF4444;
+    --destructive-foreground: #F0E6D2;
+    --border: #1E3A5F;
+    --input: #1E2328;
+    --ring: #C8AA6E;
+    --chart-1: #C8AA6E;
+    --chart-2: #0AC8B9;
+    --chart-3: #9D4DFF;
+    --chart-4: #FFD700;
+    --chart-5: #00C853;
+    --sidebar: #091428;
+    --sidebar-foreground: #F0E6D2;
+    --sidebar-primary: #C8AA6E;
+    --sidebar-primary-foreground: #0A1428;
+    --sidebar-accent: #0AC8B9;
+    --sidebar-accent-foreground: #0A1428;
+    --sidebar-border: rgba(200, 170, 110, 0.3);
+    --sidebar-ring: #C8AA6E;
 }
 
 @layer base {
@@ -130,4 +232,261 @@
     body {
         @apply bg-background text-foreground;
     }
+}
+
+/* ==========================================
+   TFT HEXTECH UTILITY CLASSES
+   ========================================== */
+
+/* Glow Effects */
+.tft-glow {
+    box-shadow: 0 0 20px rgba(200, 170, 110, 0.3);
+}
+
+.tft-glow-strong {
+    box-shadow: 0 0 30px rgba(200, 170, 110, 0.5);
+}
+
+.tft-glow-cyan {
+    box-shadow: 0 0 20px rgba(10, 200, 185, 0.3);
+}
+
+.tft-glow-cyan-strong {
+    box-shadow: 0 0 30px rgba(10, 200, 185, 0.5);
+}
+
+.tft-glow-purple {
+    box-shadow: 0 0 20px rgba(157, 77, 255, 0.3);
+}
+
+.tft-glow-hover:hover {
+    box-shadow: 0 0 30px rgba(200, 170, 110, 0.5);
+}
+
+.tft-glow-cyan-hover:hover {
+    box-shadow: 0 0 30px rgba(10, 200, 185, 0.5);
+}
+
+/* Golden Borders */
+.tft-border-gold {
+    border: 1px solid rgba(200, 170, 110, 0.3);
+}
+
+.tft-border-gold-strong {
+    border: 2px solid #C8AA6E;
+}
+
+.tft-border-gold-glow {
+    border: 1px solid rgba(200, 170, 110, 0.5);
+    box-shadow: 0 0 10px rgba(200, 170, 110, 0.2);
+}
+
+/* Gradients */
+.tft-gradient-gold {
+    background: linear-gradient(135deg, #C8AA6E 0%, #785A28 100%);
+}
+
+.tft-gradient-gold-text {
+    background: linear-gradient(135deg, #F0E6D2 0%, #C8AA6E 50%, #785A28 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.tft-gradient-cyan {
+    background: linear-gradient(135deg, #0AC8B9 0%, #099E92 100%);
+}
+
+.tft-gradient-purple {
+    background: linear-gradient(135deg, #9D4DFF 0%, #7C3AED 100%);
+}
+
+.tft-gradient-bg {
+    background: linear-gradient(180deg, #0A1428 0%, #091428 50%, #0A1929 100%);
+}
+
+.tft-gradient-bg-radial {
+    background: radial-gradient(ellipse at center, #1E3A5F 0%, #0A1428 70%);
+}
+
+/* Animations */
+@keyframes tft-shimmer {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+.tft-shimmer {
+    animation: tft-shimmer 2s ease-in-out infinite;
+}
+
+@keyframes tft-pulse-gold {
+    0%, 100% { box-shadow: 0 0 10px rgba(200, 170, 110, 0.3); }
+    50% { box-shadow: 0 0 25px rgba(200, 170, 110, 0.6); }
+}
+
+.tft-pulse-gold {
+    animation: tft-pulse-gold 2s ease-in-out infinite;
+}
+
+@keyframes tft-glow-pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+.tft-glow-pulse {
+    animation: tft-glow-pulse 3s ease-in-out infinite;
+}
+
+/* Card Styles */
+.tft-card {
+    background: var(--tft-bg-card);
+    border: 1px solid rgba(200, 170, 110, 0.2);
+    border-radius: 0.75rem;
+}
+
+.tft-card-elevated {
+    background: var(--tft-bg-elevated);
+    border: 1px solid rgba(200, 170, 110, 0.3);
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.tft-card-gold {
+    background: var(--tft-bg-card);
+    border: 2px solid #C8AA6E;
+    border-radius: 0.75rem;
+    box-shadow: 0 0 15px rgba(200, 170, 110, 0.2);
+}
+
+/* Text Styles */
+.tft-text-gold {
+    color: #C8AA6E;
+}
+
+.tft-text-cyan {
+    color: #0AC8B9;
+}
+
+.tft-text-purple {
+    color: #9D4DFF;
+}
+
+.tft-text-primary {
+    color: var(--tft-text-primary);
+}
+
+.tft-text-secondary {
+    color: var(--tft-text-secondary);
+}
+
+.tft-text-muted {
+    color: var(--tft-text-muted);
+}
+
+/* Background Styles */
+.tft-bg-dark {
+    background-color: var(--tft-bg-dark);
+}
+
+.tft-bg-darker {
+    background-color: var(--tft-bg-darker);
+}
+
+.tft-bg-card {
+    background-color: var(--tft-bg-card);
+}
+
+.tft-bg-surface {
+    background-color: var(--tft-bg-surface);
+}
+
+.tft-bg-elevated {
+    background-color: var(--tft-bg-elevated);
+}
+
+/* Placement Colors */
+.tft-placement-1st {
+    color: var(--tft-1st);
+}
+
+.tft-placement-2nd {
+    color: var(--tft-2nd);
+}
+
+.tft-placement-3rd {
+    color: var(--tft-3rd);
+}
+
+.tft-placement-4th {
+    color: var(--tft-4th);
+}
+
+.tft-placement-1st-bg {
+    background: linear-gradient(135deg, #FFD700 0%, #B8860B 100%);
+}
+
+.tft-placement-2nd-bg {
+    background: linear-gradient(135deg, #C0C0C0 0%, #808080 100%);
+}
+
+.tft-placement-3rd-bg {
+    background: linear-gradient(135deg, #CD7F32 0%, #8B4513 100%);
+}
+
+.tft-placement-4th-bg {
+    background: linear-gradient(135deg, #00C853 0%, #00A040 100%);
+}
+
+/* Hextech Button Styles */
+.tft-btn-primary {
+    background: linear-gradient(135deg, #C8AA6E 0%, #785A28 100%);
+    color: #0A1428;
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.tft-btn-primary:hover {
+    box-shadow: 0 0 20px rgba(200, 170, 110, 0.5);
+    transform: translateY(-1px);
+}
+
+.tft-btn-secondary {
+    background: linear-gradient(135deg, #0AC8B9 0%, #099E92 100%);
+    color: #0A1428;
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.tft-btn-secondary:hover {
+    box-shadow: 0 0 20px rgba(10, 200, 185, 0.5);
+    transform: translateY(-1px);
+}
+
+.tft-btn-ghost {
+    background: transparent;
+    color: #C8AA6E;
+    border: 1px solid rgba(200, 170, 110, 0.5);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.tft-btn-ghost:hover {
+    background: rgba(200, 170, 110, 0.1);
+    border-color: #C8AA6E;
+    box-shadow: 0 0 15px rgba(200, 170, 110, 0.3);
+}
+
+/* Navigation Active States */
+.tft-nav-active {
+    background: rgba(200, 170, 110, 0.1);
+    border-left: 3px solid #C8AA6E;
+    color: #C8AA6E;
+}
+
+.tft-nav-hover:hover {
+    background: rgba(200, 170, 110, 0.05);
+    color: #F0E6D2;
 }
