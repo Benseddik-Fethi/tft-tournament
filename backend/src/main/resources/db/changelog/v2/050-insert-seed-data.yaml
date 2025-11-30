@@ -1,0 +1,1011 @@
+databaseChangeLog:
+  # ─────────────────────────────────────────────────────────────────────────────
+  # SEED DATA - Données fictives pour les tests
+  # ─────────────────────────────────────────────────────────────────────────────
+
+  # Insert Regions
+  - changeSet:
+      id: 050-insert-regions
+      author: benseddik fethi
+      context: dev,test
+      changes:
+        - insert:
+            tableName: regions
+            columns:
+              - column: { name: id, value: '11111111-1111-1111-1111-111111111101' }
+              - column: { name: code, value: 'EMEA' }
+              - column: { name: name, value: 'Europe, Middle East & Africa' }
+              - column: { name: timezone, value: 'Europe/Paris' }
+              - column: { name: servers, value: '["EUW", "EUNE", "TR", "RU"]' }
+              - column: { name: description, value: 'Région couvrant l''Europe, le Moyen-Orient et l''Afrique' }
+              - column: { name: is_active, valueBoolean: true }
+        - insert:
+            tableName: regions
+            columns:
+              - column: { name: id, value: '11111111-1111-1111-1111-111111111102' }
+              - column: { name: code, value: 'NA' }
+              - column: { name: name, value: 'North America' }
+              - column: { name: timezone, value: 'America/Los_Angeles' }
+              - column: { name: servers, value: '["NA"]' }
+              - column: { name: description, value: 'Région Amérique du Nord' }
+              - column: { name: is_active, valueBoolean: true }
+        - insert:
+            tableName: regions
+            columns:
+              - column: { name: id, value: '11111111-1111-1111-1111-111111111103' }
+              - column: { name: code, value: 'LATAM' }
+              - column: { name: name, value: 'Latin America' }
+              - column: { name: timezone, value: 'America/Sao_Paulo' }
+              - column: { name: servers, value: '["LAN", "LAS"]' }
+              - column: { name: description, value: 'Région Amérique Latine' }
+              - column: { name: is_active, valueBoolean: true }
+        - insert:
+            tableName: regions
+            columns:
+              - column: { name: id, value: '11111111-1111-1111-1111-111111111104' }
+              - column: { name: code, value: 'BR' }
+              - column: { name: name, value: 'Brazil' }
+              - column: { name: timezone, value: 'America/Sao_Paulo' }
+              - column: { name: servers, value: '["BR"]' }
+              - column: { name: description, value: 'Région Brésil' }
+              - column: { name: is_active, valueBoolean: true }
+        - insert:
+            tableName: regions
+            columns:
+              - column: { name: id, value: '11111111-1111-1111-1111-111111111105' }
+              - column: { name: code, value: 'APAC' }
+              - column: { name: name, value: 'Asia Pacific' }
+              - column: { name: timezone, value: 'Asia/Singapore' }
+              - column: { name: servers, value: '["OCE", "JP", "SEA", "TW", "VN", "TH", "PH"]' }
+              - column: { name: description, value: 'Région Asie-Pacifique' }
+              - column: { name: is_active, valueBoolean: true }
+        - insert:
+            tableName: regions
+            columns:
+              - column: { name: id, value: '11111111-1111-1111-1111-111111111106' }
+              - column: { name: code, value: 'KR' }
+              - column: { name: name, value: 'Korea' }
+              - column: { name: timezone, value: 'Asia/Seoul' }
+              - column: { name: servers, value: '["KR"]' }
+              - column: { name: description, value: 'Région Corée du Sud' }
+              - column: { name: is_active, valueBoolean: true }
+        - insert:
+            tableName: regions
+            columns:
+              - column: { name: id, value: '11111111-1111-1111-1111-111111111107' }
+              - column: { name: code, value: 'CN' }
+              - column: { name: name, value: 'China' }
+              - column: { name: timezone, value: 'Asia/Shanghai' }
+              - column: { name: servers, value: '["CN"]' }
+              - column: { name: description, value: 'Région Chine' }
+              - column: { name: is_active, valueBoolean: true }
+
+  # Insert Point Systems
+  - changeSet:
+      id: 050-insert-point-systems
+      author: benseddik fethi
+      context: dev,test
+      changes:
+        - insert:
+            tableName: point_systems
+            columns:
+              - column: { name: id, value: '22222222-2222-2222-2222-222222222201' }
+              - column: { name: name, value: 'Standard TFT' }
+              - column: { name: description, value: 'Système de points standard utilisé dans la plupart des tournois TFT' }
+              - column: { name: points_1st, valueNumeric: 8 }
+              - column: { name: points_2nd, valueNumeric: 7 }
+              - column: { name: points_3rd, valueNumeric: 6 }
+              - column: { name: points_4th, valueNumeric: 5 }
+              - column: { name: points_5th, valueNumeric: 4 }
+              - column: { name: points_6th, valueNumeric: 3 }
+              - column: { name: points_7th, valueNumeric: 2 }
+              - column: { name: points_8th, valueNumeric: 1 }
+              - column: { name: is_default, valueBoolean: true }
+              - column: { name: is_system, valueBoolean: true }
+        - insert:
+            tableName: point_systems
+            columns:
+              - column: { name: id, value: '22222222-2222-2222-2222-222222222202' }
+              - column: { name: name, value: 'Top Heavy' }
+              - column: { name: description, value: 'Système favorisant les premières places' }
+              - column: { name: points_1st, valueNumeric: 10 }
+              - column: { name: points_2nd, valueNumeric: 8 }
+              - column: { name: points_3rd, valueNumeric: 7 }
+              - column: { name: points_4th, valueNumeric: 6 }
+              - column: { name: points_5th, valueNumeric: 4 }
+              - column: { name: points_6th, valueNumeric: 3 }
+              - column: { name: points_7th, valueNumeric: 2 }
+              - column: { name: points_8th, valueNumeric: 1 }
+              - column: { name: is_default, valueBoolean: false }
+              - column: { name: is_system, valueBoolean: true }
+        - insert:
+            tableName: point_systems
+            columns:
+              - column: { name: id, value: '22222222-2222-2222-2222-222222222203' }
+              - column: { name: name, value: 'Winner Takes More' }
+              - column: { name: description, value: 'Système très agressif favorisant la victoire' }
+              - column: { name: points_1st, valueNumeric: 12 }
+              - column: { name: points_2nd, valueNumeric: 9 }
+              - column: { name: points_3rd, valueNumeric: 7 }
+              - column: { name: points_4th, valueNumeric: 5 }
+              - column: { name: points_5th, valueNumeric: 4 }
+              - column: { name: points_6th, valueNumeric: 3 }
+              - column: { name: points_7th, valueNumeric: 2 }
+              - column: { name: points_8th, valueNumeric: 1 }
+              - column: { name: is_default, valueBoolean: false }
+              - column: { name: is_system, valueBoolean: true }
+        - insert:
+            tableName: point_systems
+            columns:
+              - column: { name: id, value: '22222222-2222-2222-2222-222222222204' }
+              - column: { name: name, value: 'Flat Top 4' }
+              - column: { name: description, value: 'Système égalitaire pour le top 4 et bottom 4' }
+              - column: { name: points_1st, valueNumeric: 5 }
+              - column: { name: points_2nd, valueNumeric: 5 }
+              - column: { name: points_3rd, valueNumeric: 5 }
+              - column: { name: points_4th, valueNumeric: 5 }
+              - column: { name: points_5th, valueNumeric: 1 }
+              - column: { name: points_6th, valueNumeric: 1 }
+              - column: { name: points_7th, valueNumeric: 1 }
+              - column: { name: points_8th, valueNumeric: 1 }
+              - column: { name: is_default, valueBoolean: false }
+              - column: { name: is_system, valueBoolean: true }
+
+  # Insert Circuits
+  - changeSet:
+      id: 050-insert-circuits
+      author: benseddik fethi
+      context: dev,test
+      changes:
+        - insert:
+            tableName: circuits
+            columns:
+              - column: { name: id, value: '33333333-3333-3333-3333-333333333301' }
+              - column: { name: name, value: 'TFT EMEA Championship 2025' }
+              - column: { name: slug, value: 'tft-emea-championship-2025' }
+              - column: { name: region_id, value: '11111111-1111-1111-1111-111111111101' }
+              - column: { name: year, valueNumeric: 2025 }
+              - column: { name: circuit_type, value: 'OFFICIAL' }
+              - column: { name: description, value: 'Circuit officiel TFT pour la région EMEA en 2025' }
+              - column: { name: prize_pool, valueNumeric: 250000.00 }
+              - column: { name: is_featured, valueBoolean: true }
+              - column: { name: is_active, valueBoolean: true }
+        - insert:
+            tableName: circuits
+            columns:
+              - column: { name: id, value: '33333333-3333-3333-3333-333333333302' }
+              - column: { name: name, value: 'TFT Americas Championship 2025' }
+              - column: { name: slug, value: 'tft-americas-championship-2025' }
+              - column: { name: region_id, value: '11111111-1111-1111-1111-111111111102' }
+              - column: { name: year, valueNumeric: 2025 }
+              - column: { name: circuit_type, value: 'OFFICIAL' }
+              - column: { name: description, value: 'Circuit officiel TFT pour les Amériques en 2025' }
+              - column: { name: prize_pool, valueNumeric: 200000.00 }
+              - column: { name: is_featured, valueBoolean: true }
+              - column: { name: is_active, valueBoolean: true }
+        - insert:
+            tableName: circuits
+            columns:
+              - column: { name: id, value: '33333333-3333-3333-3333-333333333303' }
+              - column: { name: name, value: 'French TFT League 2025' }
+              - column: { name: slug, value: 'french-tft-league-2025' }
+              - column: { name: region_id, value: '11111111-1111-1111-1111-111111111101' }
+              - column: { name: year, valueNumeric: 2025 }
+              - column: { name: circuit_type, value: 'COMMUNITY' }
+              - column: { name: description, value: 'Ligue communautaire française de TFT' }
+              - column: { name: prize_pool, valueNumeric: 10000.00 }
+              - column: { name: is_featured, valueBoolean: false }
+              - column: { name: is_active, valueBoolean: true }
+
+  # Insert Seasons
+  - changeSet:
+      id: 050-insert-seasons
+      author: benseddik fethi
+      context: dev,test
+      changes:
+        - insert:
+            tableName: seasons
+            columns:
+              - column: { name: id, value: '44444444-4444-4444-4444-444444444401' }
+              - column: { name: circuit_id, value: '33333333-3333-3333-3333-333333333301' }
+              - column: { name: name, value: 'Split 1' }
+              - column: { name: slug, value: 'emea-2025-split-1' }
+              - column: { name: start_date, value: '2025-01-15' }
+              - column: { name: end_date, value: '2025-04-30' }
+              - column: { name: status, value: 'ACTIVE' }
+              - column: { name: order_index, valueNumeric: 1 }
+              - column: { name: description, value: 'Premier split de la saison EMEA 2025' }
+        - insert:
+            tableName: seasons
+            columns:
+              - column: { name: id, value: '44444444-4444-4444-4444-444444444402' }
+              - column: { name: circuit_id, value: '33333333-3333-3333-3333-333333333301' }
+              - column: { name: name, value: 'Split 2' }
+              - column: { name: slug, value: 'emea-2025-split-2' }
+              - column: { name: start_date, value: '2025-05-15' }
+              - column: { name: end_date, value: '2025-08-31' }
+              - column: { name: status, value: 'UPCOMING' }
+              - column: { name: order_index, valueNumeric: 2 }
+              - column: { name: description, value: 'Deuxième split de la saison EMEA 2025' }
+
+  # Insert Stages
+  - changeSet:
+      id: 050-insert-stages
+      author: benseddik fethi
+      context: dev,test
+      changes:
+        - insert:
+            tableName: stages
+            columns:
+              - column: { name: id, value: '55555555-5555-5555-5555-555555555501' }
+              - column: { name: season_id, value: '44444444-4444-4444-4444-444444444401' }
+              - column: { name: name, value: 'Open Qualifiers' }
+              - column: { name: slug, value: 'emea-split1-open-qualifiers' }
+              - column: { name: stage_type, value: 'OPEN' }
+              - column: { name: order_index, valueNumeric: 1 }
+              - column: { name: start_date, value: '2025-01-15' }
+              - column: { name: end_date, value: '2025-02-15' }
+              - column: { name: status, value: 'COMPLETED' }
+              - column: { name: qualification_spots, valueNumeric: 32 }
+        - insert:
+            tableName: stages
+            columns:
+              - column: { name: id, value: '55555555-5555-5555-5555-555555555502' }
+              - column: { name: season_id, value: '44444444-4444-4444-4444-444444444401' }
+              - column: { name: name, value: 'Regionals' }
+              - column: { name: slug, value: 'emea-split1-regionals' }
+              - column: { name: stage_type, value: 'REGIONAL' }
+              - column: { name: order_index, valueNumeric: 2 }
+              - column: { name: start_date, value: '2025-02-20' }
+              - column: { name: end_date, value: '2025-03-20' }
+              - column: { name: status, value: 'ACTIVE' }
+              - column: { name: qualification_spots, valueNumeric: 8 }
+        - insert:
+            tableName: stages
+            columns:
+              - column: { name: id, value: '55555555-5555-5555-5555-555555555503' }
+              - column: { name: season_id, value: '44444444-4444-4444-4444-444444444401' }
+              - column: { name: name, value: 'Finals' }
+              - column: { name: slug, value: 'emea-split1-finals' }
+              - column: { name: stage_type, value: 'FINALS' }
+              - column: { name: order_index, valueNumeric: 3 }
+              - column: { name: start_date, value: '2025-04-01' }
+              - column: { name: end_date, value: '2025-04-15' }
+              - column: { name: status, value: 'UPCOMING' }
+              - column: { name: qualification_spots, valueNumeric: 1 }
+
+  # Insert Test Users for Participants
+  - changeSet:
+      id: 050-insert-test-users
+      author: benseddik fethi
+      context: dev,test
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: id, value: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaa001' }
+              - column: { name: email, value: 'tft.player1@test.com' }
+              - column: { name: first_name, value: 'Shadow' }
+              - column: { name: last_name, value: 'Phoenix' }
+              - column: { name: role, value: 'USER' }
+              - column: { name: provider, value: 'EMAIL' }
+              - column: { name: email_verified, valueBoolean: true }
+              - column: { name: preferred_language, value: 'en' }
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: id, value: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaa002' }
+              - column: { name: email, value: 'tft.player2@test.com' }
+              - column: { name: first_name, value: 'Frost' }
+              - column: { name: last_name, value: 'Knight' }
+              - column: { name: role, value: 'USER' }
+              - column: { name: provider, value: 'EMAIL' }
+              - column: { name: email_verified, valueBoolean: true }
+              - column: { name: preferred_language, value: 'en' }
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: id, value: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaa003' }
+              - column: { name: email, value: 'tft.player3@test.com' }
+              - column: { name: first_name, value: 'Dark' }
+              - column: { name: last_name, value: 'Dragon' }
+              - column: { name: role, value: 'USER' }
+              - column: { name: provider, value: 'EMAIL' }
+              - column: { name: email_verified, valueBoolean: true }
+              - column: { name: preferred_language, value: 'fr' }
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: id, value: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaa004' }
+              - column: { name: email, value: 'tft.player4@test.com' }
+              - column: { name: first_name, value: 'Storm' }
+              - column: { name: last_name, value: 'Breaker' }
+              - column: { name: role, value: 'USER' }
+              - column: { name: provider, value: 'EMAIL' }
+              - column: { name: email_verified, valueBoolean: true }
+              - column: { name: preferred_language, value: 'en' }
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: id, value: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaa005' }
+              - column: { name: email, value: 'tft.player5@test.com' }
+              - column: { name: first_name, value: 'Void' }
+              - column: { name: last_name, value: 'Walker' }
+              - column: { name: role, value: 'USER' }
+              - column: { name: provider, value: 'EMAIL' }
+              - column: { name: email_verified, valueBoolean: true }
+              - column: { name: preferred_language, value: 'en' }
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: id, value: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaa006' }
+              - column: { name: email, value: 'tft.player6@test.com' }
+              - column: { name: first_name, value: 'Crystal' }
+              - column: { name: last_name, value: 'Mage' }
+              - column: { name: role, value: 'USER' }
+              - column: { name: provider, value: 'EMAIL' }
+              - column: { name: email_verified, valueBoolean: true }
+              - column: { name: preferred_language, value: 'fr' }
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: id, value: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaa007' }
+              - column: { name: email, value: 'tft.player7@test.com' }
+              - column: { name: first_name, value: 'Iron' }
+              - column: { name: last_name, value: 'Guard' }
+              - column: { name: role, value: 'USER' }
+              - column: { name: provider, value: 'EMAIL' }
+              - column: { name: email_verified, valueBoolean: true }
+              - column: { name: preferred_language, value: 'en' }
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: id, value: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaa008' }
+              - column: { name: email, value: 'tft.player8@test.com' }
+              - column: { name: first_name, value: 'Thunder' }
+              - column: { name: last_name, value: 'Strike' }
+              - column: { name: role, value: 'USER' }
+              - column: { name: provider, value: 'EMAIL' }
+              - column: { name: email_verified, valueBoolean: true }
+              - column: { name: preferred_language, value: 'en' }
+
+  # Insert Standalone Tournament (Community Cup)
+  - changeSet:
+      id: 050-insert-community-tournament
+      author: benseddik fethi
+      context: dev,test
+      changes:
+        - insert:
+            tableName: tournaments
+            columns:
+              - column: { name: id, value: '66666666-6666-6666-6666-666666666601' }
+              - column: { name: name, value: 'TFT Community Cup #1' }
+              - column: { name: slug, value: 'tft-community-cup-1' }
+              - column: { name: description, value: 'Premier tournoi communautaire TFT avec 32 participants' }
+              - column: { name: tournament_type, value: 'COMMUNITY' }
+              - column: { name: status, value: 'IN_PROGRESS' }
+              - column: { name: start_date, value: '2025-02-01T14:00:00Z' }
+              - column: { name: end_date, value: '2025-02-01T22:00:00Z' }
+              - column: { name: max_participants, valueNumeric: 32 }
+              - column: { name: min_participants, valueNumeric: 8 }
+              - column: { name: current_participants, valueNumeric: 8 }
+              - column: { name: is_team_based, valueBoolean: false }
+              - column: { name: region_id, value: '11111111-1111-1111-1111-111111111101' }
+              - column: { name: point_system_id, value: '22222222-2222-2222-2222-222222222201' }
+              - column: { name: is_public, valueBoolean: true }
+              - column: { name: is_featured, valueBoolean: true }
+              - column: { name: prize_pool, valueNumeric: 500.00 }
+
+  # Insert Regional Tournament (in Stage)
+  - changeSet:
+      id: 050-insert-regional-tournament
+      author: benseddik fethi
+      context: dev,test
+      changes:
+        - insert:
+            tableName: tournaments
+            columns:
+              - column: { name: id, value: '66666666-6666-6666-6666-666666666602' }
+              - column: { name: stage_id, value: '55555555-5555-5555-5555-555555555502' }
+              - column: { name: name, value: 'EMEA Regional #1' }
+              - column: { name: slug, value: 'emea-regional-1' }
+              - column: { name: description, value: 'Premier tournoi régional EMEA du Split 1' }
+              - column: { name: tournament_type, value: 'OFFICIAL' }
+              - column: { name: status, value: 'IN_PROGRESS' }
+              - column: { name: start_date, value: '2025-02-20T15:00:00Z' }
+              - column: { name: end_date, value: '2025-02-22T20:00:00Z' }
+              - column: { name: max_participants, valueNumeric: 32 }
+              - column: { name: min_participants, valueNumeric: 16 }
+              - column: { name: current_participants, valueNumeric: 8 }
+              - column: { name: is_team_based, valueBoolean: false }
+              - column: { name: region_id, value: '11111111-1111-1111-1111-111111111101' }
+              - column: { name: point_system_id, value: '22222222-2222-2222-2222-222222222201' }
+              - column: { name: is_public, valueBoolean: true }
+              - column: { name: is_featured, valueBoolean: true }
+              - column: { name: prize_pool, valueNumeric: 25000.00 }
+
+  # Insert Tournament Phases for Community Cup
+  - changeSet:
+      id: 050-insert-community-phases
+      author: benseddik fethi
+      context: dev,test
+      changes:
+        - insert:
+            tableName: tournament_phases
+            columns:
+              - column: { name: id, value: '77777777-7777-7777-7777-777777777701' }
+              - column: { name: tournament_id, value: '66666666-6666-6666-6666-666666666601' }
+              - column: { name: name, value: 'Swiss Stage' }
+              - column: { name: phase_type, value: 'SWISS' }
+              - column: { name: format_type, value: 'SWISS' }
+              - column: { name: order_index, valueNumeric: 1 }
+              - column: { name: status, value: 'ACTIVE' }
+              - column: { name: games_per_round, valueNumeric: 1 }
+              - column: { name: total_rounds, valueNumeric: 5 }
+              - column: { name: players_per_lobby, valueNumeric: 8 }
+              - column: { name: advancing_count, valueNumeric: 8 }
+              - column: { name: point_system_id, value: '22222222-2222-2222-2222-222222222201' }
+              - column: { name: tiebreakers, value: '["AVERAGE_PLACEMENT", "TOTAL_WINS", "HEAD_TO_HEAD"]' }
+        - insert:
+            tableName: tournament_phases
+            columns:
+              - column: { name: id, value: '77777777-7777-7777-7777-777777777702' }
+              - column: { name: tournament_id, value: '66666666-6666-6666-6666-666666666601' }
+              - column: { name: name, value: 'Finals' }
+              - column: { name: phase_type, value: 'SINGLE_LOBBY' }
+              - column: { name: format_type, value: 'POINT_BASED' }
+              - column: { name: order_index, valueNumeric: 2 }
+              - column: { name: status, value: 'UPCOMING' }
+              - column: { name: games_per_round, valueNumeric: 3 }
+              - column: { name: total_rounds, valueNumeric: 1 }
+              - column: { name: players_per_lobby, valueNumeric: 8 }
+              - column: { name: point_system_id, value: '22222222-2222-2222-2222-222222222201' }
+
+  # Insert Tournament Phases for Regional
+  - changeSet:
+      id: 050-insert-regional-phases
+      author: benseddik fethi
+      context: dev,test
+      changes:
+        - insert:
+            tableName: tournament_phases
+            columns:
+              - column: { name: id, value: '77777777-7777-7777-7777-777777777703' }
+              - column: { name: tournament_id, value: '66666666-6666-6666-6666-666666666602' }
+              - column: { name: name, value: 'Group Stage' }
+              - column: { name: phase_type, value: 'GROUPS' }
+              - column: { name: format_type, value: 'ROUND_ROBIN' }
+              - column: { name: order_index, valueNumeric: 1 }
+              - column: { name: status, value: 'ACTIVE' }
+              - column: { name: games_per_round, valueNumeric: 1 }
+              - column: { name: total_rounds, valueNumeric: 3 }
+              - column: { name: players_per_lobby, valueNumeric: 8 }
+              - column: { name: number_of_groups, valueNumeric: 4 }
+              - column: { name: players_per_group, valueNumeric: 8 }
+              - column: { name: advancing_per_group, valueNumeric: 2 }
+              - column: { name: point_system_id, value: '22222222-2222-2222-2222-222222222201' }
+        - insert:
+            tableName: tournament_phases
+            columns:
+              - column: { name: id, value: '77777777-7777-7777-7777-777777777704' }
+              - column: { name: tournament_id, value: '66666666-6666-6666-6666-666666666602' }
+              - column: { name: name, value: 'Playoffs' }
+              - column: { name: phase_type, value: 'BRACKET' }
+              - column: { name: format_type, value: 'SINGLE_ELIMINATION' }
+              - column: { name: order_index, valueNumeric: 2 }
+              - column: { name: status, value: 'UPCOMING' }
+              - column: { name: games_per_round, valueNumeric: 2 }
+              - column: { name: players_per_lobby, valueNumeric: 8 }
+              - column: { name: point_system_id, value: '22222222-2222-2222-2222-222222222201' }
+
+  # Insert Tournament Groups for Regional Group Stage
+  - changeSet:
+      id: 050-insert-tournament-groups
+      author: benseddik fethi
+      context: dev,test
+      changes:
+        - insert:
+            tableName: tournament_groups
+            columns:
+              - column: { name: id, value: '88888888-8888-8888-8888-888888888801' }
+              - column: { name: phase_id, value: '77777777-7777-7777-7777-777777777703' }
+              - column: { name: group_name, value: 'Group A' }
+              - column: { name: order_index, valueNumeric: 1 }
+        - insert:
+            tableName: tournament_groups
+            columns:
+              - column: { name: id, value: '88888888-8888-8888-8888-888888888802' }
+              - column: { name: phase_id, value: '77777777-7777-7777-7777-777777777703' }
+              - column: { name: group_name, value: 'Group B' }
+              - column: { name: order_index, valueNumeric: 2 }
+        - insert:
+            tableName: tournament_groups
+            columns:
+              - column: { name: id, value: '88888888-8888-8888-8888-888888888803' }
+              - column: { name: phase_id, value: '77777777-7777-7777-7777-777777777703' }
+              - column: { name: group_name, value: 'Group C' }
+              - column: { name: order_index, valueNumeric: 3 }
+        - insert:
+            tableName: tournament_groups
+            columns:
+              - column: { name: id, value: '88888888-8888-8888-8888-888888888804' }
+              - column: { name: phase_id, value: '77777777-7777-7777-7777-777777777703' }
+              - column: { name: group_name, value: 'Group D' }
+              - column: { name: order_index, valueNumeric: 4 }
+
+  # Insert Participants for Community Cup
+  - changeSet:
+      id: 050-insert-participants
+      author: benseddik fethi
+      context: dev,test
+      changes:
+        - insert:
+            tableName: participants
+            columns:
+              - column: { name: id, value: '99999999-9999-9999-9999-999999999901' }
+              - column: { name: tournament_id, value: '66666666-6666-6666-6666-666666666601' }
+              - column: { name: user_id, value: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaa001' }
+              - column: { name: display_name, value: 'ShadowPhoenix' }
+              - column: { name: riot_id, value: 'ShadowPhoenix#EUW' }
+              - column: { name: status, value: 'CHECKED_IN' }
+              - column: { name: seed, valueNumeric: 1 }
+              - column: { name: total_points, valueNumeric: 18 }
+              - column: { name: games_played, valueNumeric: 3 }
+              - column: { name: wins, valueNumeric: 1 }
+              - column: { name: top4_count, valueNumeric: 2 }
+              - column: { name: average_placement, valueNumeric: 3.33 }
+              - column: { name: best_placement, valueNumeric: 1 }
+              - column: { name: worst_placement, valueNumeric: 5 }
+              - column: { name: placement_history, value: '[1,4,5]' }
+              - column: { name: registered_at, value: '2025-01-28T10:00:00Z' }
+              - column: { name: checked_in_at, value: '2025-02-01T13:30:00Z' }
+        - insert:
+            tableName: participants
+            columns:
+              - column: { name: id, value: '99999999-9999-9999-9999-999999999902' }
+              - column: { name: tournament_id, value: '66666666-6666-6666-6666-666666666601' }
+              - column: { name: user_id, value: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaa002' }
+              - column: { name: display_name, value: 'FrostKnight' }
+              - column: { name: riot_id, value: 'FrostKnight#EUW' }
+              - column: { name: status, value: 'CHECKED_IN' }
+              - column: { name: seed, valueNumeric: 2 }
+              - column: { name: total_points, valueNumeric: 17 }
+              - column: { name: games_played, valueNumeric: 3 }
+              - column: { name: wins, valueNumeric: 1 }
+              - column: { name: top4_count, valueNumeric: 2 }
+              - column: { name: average_placement, valueNumeric: 3.67 }
+              - column: { name: best_placement, valueNumeric: 1 }
+              - column: { name: worst_placement, valueNumeric: 6 }
+              - column: { name: placement_history, value: '[2,1,6]' }
+              - column: { name: registered_at, value: '2025-01-28T11:00:00Z' }
+              - column: { name: checked_in_at, value: '2025-02-01T13:35:00Z' }
+        - insert:
+            tableName: participants
+            columns:
+              - column: { name: id, value: '99999999-9999-9999-9999-999999999903' }
+              - column: { name: tournament_id, value: '66666666-6666-6666-6666-666666666601' }
+              - column: { name: user_id, value: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaa003' }
+              - column: { name: display_name, value: 'DarkDragon' }
+              - column: { name: riot_id, value: 'DarkDragon#EUW' }
+              - column: { name: status, value: 'CHECKED_IN' }
+              - column: { name: seed, valueNumeric: 3 }
+              - column: { name: total_points, valueNumeric: 16 }
+              - column: { name: games_played, valueNumeric: 3 }
+              - column: { name: wins, valueNumeric: 0 }
+              - column: { name: top4_count, valueNumeric: 2 }
+              - column: { name: average_placement, valueNumeric: 4.00 }
+              - column: { name: best_placement, valueNumeric: 2 }
+              - column: { name: worst_placement, valueNumeric: 7 }
+              - column: { name: placement_history, value: '[3,2,7]' }
+              - column: { name: registered_at, value: '2025-01-28T12:00:00Z' }
+              - column: { name: checked_in_at, value: '2025-02-01T13:40:00Z' }
+        - insert:
+            tableName: participants
+            columns:
+              - column: { name: id, value: '99999999-9999-9999-9999-999999999904' }
+              - column: { name: tournament_id, value: '66666666-6666-6666-6666-666666666601' }
+              - column: { name: user_id, value: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaa004' }
+              - column: { name: display_name, value: 'StormBreaker' }
+              - column: { name: riot_id, value: 'StormBreaker#EUW' }
+              - column: { name: status, value: 'CHECKED_IN' }
+              - column: { name: seed, valueNumeric: 4 }
+              - column: { name: total_points, valueNumeric: 15 }
+              - column: { name: games_played, valueNumeric: 3 }
+              - column: { name: wins, valueNumeric: 1 }
+              - column: { name: top4_count, valueNumeric: 1 }
+              - column: { name: average_placement, valueNumeric: 4.33 }
+              - column: { name: best_placement, valueNumeric: 1 }
+              - column: { name: worst_placement, valueNumeric: 8 }
+              - column: { name: placement_history, value: '[4,1,8]' }
+              - column: { name: registered_at, value: '2025-01-28T13:00:00Z' }
+              - column: { name: checked_in_at, value: '2025-02-01T13:45:00Z' }
+        - insert:
+            tableName: participants
+            columns:
+              - column: { name: id, value: '99999999-9999-9999-9999-999999999905' }
+              - column: { name: tournament_id, value: '66666666-6666-6666-6666-666666666601' }
+              - column: { name: user_id, value: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaa005' }
+              - column: { name: display_name, value: 'VoidWalker' }
+              - column: { name: riot_id, value: 'VoidWalker#EUW' }
+              - column: { name: status, value: 'CHECKED_IN' }
+              - column: { name: seed, valueNumeric: 5 }
+              - column: { name: total_points, valueNumeric: 14 }
+              - column: { name: games_played, valueNumeric: 3 }
+              - column: { name: wins, valueNumeric: 0 }
+              - column: { name: top4_count, valueNumeric: 2 }
+              - column: { name: average_placement, valueNumeric: 4.67 }
+              - column: { name: best_placement, valueNumeric: 3 }
+              - column: { name: worst_placement, valueNumeric: 7 }
+              - column: { name: placement_history, value: '[5,3,7]' }
+              - column: { name: registered_at, value: '2025-01-28T14:00:00Z' }
+              - column: { name: checked_in_at, value: '2025-02-01T13:50:00Z' }
+        - insert:
+            tableName: participants
+            columns:
+              - column: { name: id, value: '99999999-9999-9999-9999-999999999906' }
+              - column: { name: tournament_id, value: '66666666-6666-6666-6666-666666666601' }
+              - column: { name: user_id, value: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaa006' }
+              - column: { name: display_name, value: 'CrystalMage' }
+              - column: { name: riot_id, value: 'CrystalMage#EUW' }
+              - column: { name: status, value: 'CHECKED_IN' }
+              - column: { name: seed, valueNumeric: 6 }
+              - column: { name: total_points, valueNumeric: 12 }
+              - column: { name: games_played, valueNumeric: 3 }
+              - column: { name: wins, valueNumeric: 0 }
+              - column: { name: top4_count, valueNumeric: 1 }
+              - column: { name: average_placement, valueNumeric: 5.33 }
+              - column: { name: best_placement, valueNumeric: 4 }
+              - column: { name: worst_placement, valueNumeric: 8 }
+              - column: { name: placement_history, value: '[6,4,8]' }
+              - column: { name: registered_at, value: '2025-01-28T15:00:00Z' }
+              - column: { name: checked_in_at, value: '2025-02-01T13:55:00Z' }
+        - insert:
+            tableName: participants
+            columns:
+              - column: { name: id, value: '99999999-9999-9999-9999-999999999907' }
+              - column: { name: tournament_id, value: '66666666-6666-6666-6666-666666666601' }
+              - column: { name: user_id, value: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaa007' }
+              - column: { name: display_name, value: 'IronGuard' }
+              - column: { name: riot_id, value: 'IronGuard#EUW' }
+              - column: { name: status, value: 'CHECKED_IN' }
+              - column: { name: seed, valueNumeric: 7 }
+              - column: { name: total_points, valueNumeric: 11 }
+              - column: { name: games_played, valueNumeric: 3 }
+              - column: { name: wins, valueNumeric: 0 }
+              - column: { name: top4_count, valueNumeric: 1 }
+              - column: { name: average_placement, valueNumeric: 5.67 }
+              - column: { name: best_placement, valueNumeric: 3 }
+              - column: { name: worst_placement, valueNumeric: 8 }
+              - column: { name: placement_history, value: '[7,5,6]' }
+              - column: { name: registered_at, value: '2025-01-28T16:00:00Z' }
+              - column: { name: checked_in_at, value: '2025-02-01T13:58:00Z' }
+        - insert:
+            tableName: participants
+            columns:
+              - column: { name: id, value: '99999999-9999-9999-9999-999999999908' }
+              - column: { name: tournament_id, value: '66666666-6666-6666-6666-666666666601' }
+              - column: { name: user_id, value: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaa008' }
+              - column: { name: display_name, value: 'ThunderStrike' }
+              - column: { name: riot_id, value: 'ThunderStrike#EUW' }
+              - column: { name: status, value: 'CHECKED_IN' }
+              - column: { name: seed, valueNumeric: 8 }
+              - column: { name: total_points, valueNumeric: 9 }
+              - column: { name: games_played, valueNumeric: 3 }
+              - column: { name: wins, valueNumeric: 0 }
+              - column: { name: top4_count, valueNumeric: 0 }
+              - column: { name: average_placement, valueNumeric: 6.33 }
+              - column: { name: best_placement, valueNumeric: 5 }
+              - column: { name: worst_placement, valueNumeric: 8 }
+              - column: { name: placement_history, value: '[8,6,5]' }
+              - column: { name: registered_at, value: '2025-01-28T17:00:00Z' }
+              - column: { name: checked_in_at, value: '2025-02-01T13:59:00Z' }
+
+  # Insert Matches for Swiss Stage
+  - changeSet:
+      id: 050-insert-matches
+      author: benseddik fethi
+      context: dev,test
+      changes:
+        - insert:
+            tableName: matches
+            columns:
+              - column: { name: id, value: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbb0001' }
+              - column: { name: phase_id, value: '77777777-7777-7777-7777-777777777701' }
+              - column: { name: name, value: 'Round 1 - Lobby A' }
+              - column: { name: round_number, valueNumeric: 1 }
+              - column: { name: lobby_number, valueNumeric: 1 }
+              - column: { name: status, value: 'COMPLETED' }
+              - column: { name: scheduled_time, value: '2025-02-01T14:00:00Z' }
+              - column: { name: actual_start_time, value: '2025-02-01T14:02:00Z' }
+              - column: { name: end_time, value: '2025-02-01T14:35:00Z' }
+        - insert:
+            tableName: matches
+            columns:
+              - column: { name: id, value: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbb0002' }
+              - column: { name: phase_id, value: '77777777-7777-7777-7777-777777777701' }
+              - column: { name: name, value: 'Round 2 - Lobby A' }
+              - column: { name: round_number, valueNumeric: 2 }
+              - column: { name: lobby_number, valueNumeric: 1 }
+              - column: { name: status, value: 'COMPLETED' }
+              - column: { name: scheduled_time, value: '2025-02-01T15:00:00Z' }
+              - column: { name: actual_start_time, value: '2025-02-01T15:03:00Z' }
+              - column: { name: end_time, value: '2025-02-01T15:38:00Z' }
+        - insert:
+            tableName: matches
+            columns:
+              - column: { name: id, value: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbb0003' }
+              - column: { name: phase_id, value: '77777777-7777-7777-7777-777777777701' }
+              - column: { name: name, value: 'Round 3 - Lobby A' }
+              - column: { name: round_number, valueNumeric: 3 }
+              - column: { name: lobby_number, valueNumeric: 1 }
+              - column: { name: status, value: 'COMPLETED' }
+              - column: { name: scheduled_time, value: '2025-02-01T16:00:00Z' }
+              - column: { name: actual_start_time, value: '2025-02-01T16:01:00Z' }
+              - column: { name: end_time, value: '2025-02-01T16:32:00Z' }
+        - insert:
+            tableName: matches
+            columns:
+              - column: { name: id, value: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbb0004' }
+              - column: { name: phase_id, value: '77777777-7777-7777-7777-777777777701' }
+              - column: { name: name, value: 'Round 4 - Lobby A' }
+              - column: { name: round_number, valueNumeric: 4 }
+              - column: { name: lobby_number, valueNumeric: 1 }
+              - column: { name: status, value: 'SCHEDULED' }
+              - column: { name: scheduled_time, value: '2025-02-01T17:00:00Z' }
+        - insert:
+            tableName: matches
+            columns:
+              - column: { name: id, value: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbb0005' }
+              - column: { name: phase_id, value: '77777777-7777-7777-7777-777777777701' }
+              - column: { name: name, value: 'Round 5 - Lobby A' }
+              - column: { name: round_number, valueNumeric: 5 }
+              - column: { name: lobby_number, valueNumeric: 1 }
+              - column: { name: status, value: 'SCHEDULED' }
+              - column: { name: scheduled_time, value: '2025-02-01T18:00:00Z' }
+
+  # Insert Match Participants
+  - changeSet:
+      id: 050-insert-match-participants
+      author: benseddik fethi
+      context: dev,test
+      changes:
+        - insert:
+            tableName: match_participants
+            columns:
+              - column: { name: id, value: 'cccccccc-cccc-cccc-cccc-cccccccc0001' }
+              - column: { name: match_id, value: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbb0001' }
+              - column: { name: participant_id, value: '99999999-9999-9999-9999-999999999901' }
+              - column: { name: lobby_slot, valueNumeric: 1 }
+              - column: { name: is_checked_in, valueBoolean: true }
+              - column: { name: match_points, valueNumeric: 8 }
+              - column: { name: match_games_played, valueNumeric: 1 }
+        - insert:
+            tableName: match_participants
+            columns:
+              - column: { name: id, value: 'cccccccc-cccc-cccc-cccc-cccccccc0002' }
+              - column: { name: match_id, value: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbb0001' }
+              - column: { name: participant_id, value: '99999999-9999-9999-9999-999999999902' }
+              - column: { name: lobby_slot, valueNumeric: 2 }
+              - column: { name: is_checked_in, valueBoolean: true }
+              - column: { name: match_points, valueNumeric: 7 }
+              - column: { name: match_games_played, valueNumeric: 1 }
+        - insert:
+            tableName: match_participants
+            columns:
+              - column: { name: id, value: 'cccccccc-cccc-cccc-cccc-cccccccc0003' }
+              - column: { name: match_id, value: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbb0001' }
+              - column: { name: participant_id, value: '99999999-9999-9999-9999-999999999903' }
+              - column: { name: lobby_slot, valueNumeric: 3 }
+              - column: { name: is_checked_in, valueBoolean: true }
+              - column: { name: match_points, valueNumeric: 6 }
+              - column: { name: match_games_played, valueNumeric: 1 }
+        - insert:
+            tableName: match_participants
+            columns:
+              - column: { name: id, value: 'cccccccc-cccc-cccc-cccc-cccccccc0004' }
+              - column: { name: match_id, value: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbb0001' }
+              - column: { name: participant_id, value: '99999999-9999-9999-9999-999999999904' }
+              - column: { name: lobby_slot, valueNumeric: 4 }
+              - column: { name: is_checked_in, valueBoolean: true }
+              - column: { name: match_points, valueNumeric: 5 }
+              - column: { name: match_games_played, valueNumeric: 1 }
+        - insert:
+            tableName: match_participants
+            columns:
+              - column: { name: id, value: 'cccccccc-cccc-cccc-cccc-cccccccc0005' }
+              - column: { name: match_id, value: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbb0001' }
+              - column: { name: participant_id, value: '99999999-9999-9999-9999-999999999905' }
+              - column: { name: lobby_slot, valueNumeric: 5 }
+              - column: { name: is_checked_in, valueBoolean: true }
+              - column: { name: match_points, valueNumeric: 4 }
+              - column: { name: match_games_played, valueNumeric: 1 }
+        - insert:
+            tableName: match_participants
+            columns:
+              - column: { name: id, value: 'cccccccc-cccc-cccc-cccc-cccccccc0006' }
+              - column: { name: match_id, value: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbb0001' }
+              - column: { name: participant_id, value: '99999999-9999-9999-9999-999999999906' }
+              - column: { name: lobby_slot, valueNumeric: 6 }
+              - column: { name: is_checked_in, valueBoolean: true }
+              - column: { name: match_points, valueNumeric: 3 }
+              - column: { name: match_games_played, valueNumeric: 1 }
+        - insert:
+            tableName: match_participants
+            columns:
+              - column: { name: id, value: 'cccccccc-cccc-cccc-cccc-cccccccc0007' }
+              - column: { name: match_id, value: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbb0001' }
+              - column: { name: participant_id, value: '99999999-9999-9999-9999-999999999907' }
+              - column: { name: lobby_slot, valueNumeric: 7 }
+              - column: { name: is_checked_in, valueBoolean: true }
+              - column: { name: match_points, valueNumeric: 2 }
+              - column: { name: match_games_played, valueNumeric: 1 }
+        - insert:
+            tableName: match_participants
+            columns:
+              - column: { name: id, value: 'cccccccc-cccc-cccc-cccc-cccccccc0008' }
+              - column: { name: match_id, value: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbb0001' }
+              - column: { name: participant_id, value: '99999999-9999-9999-9999-999999999908' }
+              - column: { name: lobby_slot, valueNumeric: 8 }
+              - column: { name: is_checked_in, valueBoolean: true }
+              - column: { name: match_points, valueNumeric: 1 }
+              - column: { name: match_games_played, valueNumeric: 1 }
+
+  # Insert Games
+  - changeSet:
+      id: 050-insert-games
+      author: benseddik fethi
+      context: dev,test
+      changes:
+        - insert:
+            tableName: games
+            columns:
+              - column: { name: id, value: 'dddddddd-dddd-dddd-dddd-dddddddd0001' }
+              - column: { name: match_id, value: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbb0001' }
+              - column: { name: game_number, valueNumeric: 1 }
+              - column: { name: status, value: 'COMPLETED' }
+              - column: { name: start_time, value: '2025-02-01T14:02:00Z' }
+              - column: { name: end_time, value: '2025-02-01T14:35:00Z' }
+              - column: { name: duration_seconds, valueNumeric: 1980 }
+              - column: { name: game_set, value: 'Set 12' }
+              - column: { name: game_patch, value: '14.2' }
+        - insert:
+            tableName: games
+            columns:
+              - column: { name: id, value: 'dddddddd-dddd-dddd-dddd-dddddddd0002' }
+              - column: { name: match_id, value: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbb0002' }
+              - column: { name: game_number, valueNumeric: 1 }
+              - column: { name: status, value: 'COMPLETED' }
+              - column: { name: start_time, value: '2025-02-01T15:03:00Z' }
+              - column: { name: end_time, value: '2025-02-01T15:38:00Z' }
+              - column: { name: duration_seconds, valueNumeric: 2100 }
+              - column: { name: game_set, value: 'Set 12' }
+              - column: { name: game_patch, value: '14.2' }
+        - insert:
+            tableName: games
+            columns:
+              - column: { name: id, value: 'dddddddd-dddd-dddd-dddd-dddddddd0003' }
+              - column: { name: match_id, value: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbb0003' }
+              - column: { name: game_number, valueNumeric: 1 }
+              - column: { name: status, value: 'COMPLETED' }
+              - column: { name: start_time, value: '2025-02-01T16:01:00Z' }
+              - column: { name: end_time, value: '2025-02-01T16:32:00Z' }
+              - column: { name: duration_seconds, valueNumeric: 1860 }
+              - column: { name: game_set, value: 'Set 12' }
+              - column: { name: game_patch, value: '14.2' }
+
+  # Insert Game Results for Game 1
+  - changeSet:
+      id: 050-insert-game-results-1
+      author: benseddik fethi
+      context: dev,test
+      changes:
+        - insert:
+            tableName: game_results
+            columns:
+              - column: { name: id, value: 'eeeeeeee-eeee-eeee-eeee-eeeeeeee0001' }
+              - column: { name: game_id, value: 'dddddddd-dddd-dddd-dddd-dddddddd0001' }
+              - column: { name: participant_id, value: '99999999-9999-9999-9999-999999999901' }
+              - column: { name: placement, valueNumeric: 1 }
+              - column: { name: points, valueNumeric: 8 }
+              - column: { name: final_health, valueNumeric: 42 }
+              - column: { name: rounds_survived, valueNumeric: 32 }
+              - column: { name: players_eliminated, valueNumeric: 2 }
+              - column: { name: composition, value: '["Syndra", "Ahri", "Zoe", "Lulu", "Nami", "Soraka", "Yuumi", "Neeko"]' }
+              - column: { name: augments, value: '["Jeweled Lotus", "Astral Embrace", "Cosmic Barrier"]' }
+              - column: { name: is_validated, valueBoolean: true }
+              - column: { name: result_source, value: 'MANUAL' }
+        - insert:
+            tableName: game_results
+            columns:
+              - column: { name: id, value: 'eeeeeeee-eeee-eeee-eeee-eeeeeeee0002' }
+              - column: { name: game_id, value: 'dddddddd-dddd-dddd-dddd-dddddddd0001' }
+              - column: { name: participant_id, value: '99999999-9999-9999-9999-999999999902' }
+              - column: { name: placement, valueNumeric: 2 }
+              - column: { name: points, valueNumeric: 7 }
+              - column: { name: final_health, valueNumeric: 0 }
+              - column: { name: rounds_survived, valueNumeric: 31 }
+              - column: { name: players_eliminated, valueNumeric: 1 }
+              - column: { name: composition, value: '["Olaf", "Sejuani", "Braum", "Ornn", "Gragas", "Udyr", "Volibear", "Nunu"]' }
+              - column: { name: augments, value: '["Freljord Heart", "Glacial Duet", "Frozen Arsenal"]' }
+              - column: { name: is_validated, valueBoolean: true }
+              - column: { name: result_source, value: 'MANUAL' }
+        - insert:
+            tableName: game_results
+            columns:
+              - column: { name: id, value: 'eeeeeeee-eeee-eeee-eeee-eeeeeeee0003' }
+              - column: { name: game_id, value: 'dddddddd-dddd-dddd-dddd-dddddddd0001' }
+              - column: { name: participant_id, value: '99999999-9999-9999-9999-999999999903' }
+              - column: { name: placement, valueNumeric: 3 }
+              - column: { name: points, valueNumeric: 6 }
+              - column: { name: final_health, valueNumeric: 0 }
+              - column: { name: rounds_survived, valueNumeric: 29 }
+              - column: { name: players_eliminated, valueNumeric: 1 }
+              - column: { name: composition, value: '["Kayn", "Akali", "Talon", "Katarina", "Pyke", "Rengar", "Qiyana", "Zed"]' }
+              - column: { name: augments, value: '["Shadow Isles", "Assassin Crest", "Blade Dance"]' }
+              - column: { name: is_validated, valueBoolean: true }
+              - column: { name: result_source, value: 'MANUAL' }
+        - insert:
+            tableName: game_results
+            columns:
+              - column: { name: id, value: 'eeeeeeee-eeee-eeee-eeee-eeeeeeee0004' }
+              - column: { name: game_id, value: 'dddddddd-dddd-dddd-dddd-dddddddd0001' }
+              - column: { name: participant_id, value: '99999999-9999-9999-9999-999999999904' }
+              - column: { name: placement, valueNumeric: 4 }
+              - column: { name: points, valueNumeric: 5 }
+              - column: { name: final_health, valueNumeric: 0 }
+              - column: { name: rounds_survived, valueNumeric: 27 }
+              - column: { name: players_eliminated, valueNumeric: 1 }
+              - column: { name: is_validated, valueBoolean: true }
+              - column: { name: result_source, value: 'MANUAL' }
+        - insert:
+            tableName: game_results
+            columns:
+              - column: { name: id, value: 'eeeeeeee-eeee-eeee-eeee-eeeeeeee0005' }
+              - column: { name: game_id, value: 'dddddddd-dddd-dddd-dddd-dddddddd0001' }
+              - column: { name: participant_id, value: '99999999-9999-9999-9999-999999999905' }
+              - column: { name: placement, valueNumeric: 5 }
+              - column: { name: points, valueNumeric: 4 }
+              - column: { name: final_health, valueNumeric: 0 }
+              - column: { name: rounds_survived, valueNumeric: 25 }
+              - column: { name: players_eliminated, valueNumeric: 0 }
+              - column: { name: is_validated, valueBoolean: true }
+              - column: { name: result_source, value: 'MANUAL' }
+        - insert:
+            tableName: game_results
+            columns:
+              - column: { name: id, value: 'eeeeeeee-eeee-eeee-eeee-eeeeeeee0006' }
+              - column: { name: game_id, value: 'dddddddd-dddd-dddd-dddd-dddddddd0001' }
+              - column: { name: participant_id, value: '99999999-9999-9999-9999-999999999906' }
+              - column: { name: placement, valueNumeric: 6 }
+              - column: { name: points, valueNumeric: 3 }
+              - column: { name: final_health, valueNumeric: 0 }
+              - column: { name: rounds_survived, valueNumeric: 23 }
+              - column: { name: players_eliminated, valueNumeric: 0 }
+              - column: { name: is_validated, valueBoolean: true }
+              - column: { name: result_source, value: 'MANUAL' }
+        - insert:
+            tableName: game_results
+            columns:
+              - column: { name: id, value: 'eeeeeeee-eeee-eeee-eeee-eeeeeeee0007' }
+              - column: { name: game_id, value: 'dddddddd-dddd-dddd-dddd-dddddddd0001' }
+              - column: { name: participant_id, value: '99999999-9999-9999-9999-999999999907' }
+              - column: { name: placement, valueNumeric: 7 }
+              - column: { name: points, valueNumeric: 2 }
+              - column: { name: final_health, valueNumeric: 0 }
+              - column: { name: rounds_survived, valueNumeric: 20 }
+              - column: { name: players_eliminated, valueNumeric: 0 }
+              - column: { name: is_validated, valueBoolean: true }
+              - column: { name: result_source, value: 'MANUAL' }
+        - insert:
+            tableName: game_results
+            columns:
+              - column: { name: id, value: 'eeeeeeee-eeee-eeee-eeee-eeeeeeee0008' }
+              - column: { name: game_id, value: 'dddddddd-dddd-dddd-dddd-dddddddd0001' }
+              - column: { name: participant_id, value: '99999999-9999-9999-9999-999999999908' }
+              - column: { name: placement, valueNumeric: 8 }
+              - column: { name: points, valueNumeric: 1 }
+              - column: { name: final_health, valueNumeric: 0 }
+              - column: { name: rounds_survived, valueNumeric: 18 }
+              - column: { name: players_eliminated, valueNumeric: 0 }
+              - column: { name: is_validated, valueBoolean: true }
+              - column: { name: result_source, value: 'MANUAL' }

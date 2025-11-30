@@ -1,0 +1,93 @@
+databaseChangeLog:
+  - changeSet:
+      id: 011-create-teams-table
+      author: benseddik fethi
+      changes:
+        - createTable:
+            tableName: teams
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tag
+                  type: varchar(10)
+              - column:
+                  name: tournament_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: captain_id
+                  type: uuid
+              - column:
+                  name: team_size
+                  type: int
+                  defaultValueNumeric: 1
+                  constraints:
+                    nullable: false
+              - column:
+                  name: logo_url
+                  type: varchar(500)
+              - column:
+                  name: status
+                  type: varchar(20)
+                  defaultValue: 'PENDING'
+                  constraints:
+                    nullable: false
+              - column:
+                  name: total_points
+                  type: int
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+
+        - addForeignKeyConstraint:
+            baseTableName: teams
+            baseColumnNames: tournament_id
+            constraintName: fk_team_tournament
+            referencedTableName: tournaments
+            referencedColumnNames: id
+            onDelete: CASCADE
+
+        - addForeignKeyConstraint:
+            baseTableName: teams
+            baseColumnNames: captain_id
+            constraintName: fk_team_captain
+            referencedTableName: users
+            referencedColumnNames: id
+            onDelete: SET NULL
+
+        - createIndex:
+            indexName: idx_team_tournament
+            tableName: teams
+            columns:
+              - column:
+                  name: tournament_id
+
+        - createIndex:
+            indexName: idx_team_status
+            tableName: teams
+            columns:
+              - column:
+                  name: status

@@ -1,0 +1,217 @@
+databaseChangeLog:
+  - changeSet:
+      id: 008-create-tournaments-table
+      author: benseddik fethi
+      changes:
+        - createTable:
+            tableName: tournaments
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: stage_id
+                  type: uuid
+              - column:
+                  name: name
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: slug
+                  type: varchar(250)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: description
+                  type: text
+              - column:
+                  name: tournament_type
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(30)
+                  defaultValue: 'DRAFT'
+                  constraints:
+                    nullable: false
+              - column:
+                  name: registration_start
+                  type: timestamp with time zone
+              - column:
+                  name: registration_end
+                  type: timestamp with time zone
+              - column:
+                  name: check_in_start
+                  type: timestamp with time zone
+              - column:
+                  name: check_in_end
+                  type: timestamp with time zone
+              - column:
+                  name: start_date
+                  type: timestamp with time zone
+              - column:
+                  name: end_date
+                  type: timestamp with time zone
+              - column:
+                  name: max_participants
+                  type: int
+              - column:
+                  name: min_participants
+                  type: int
+              - column:
+                  name: current_participants
+                  type: int
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_team_based
+                  type: boolean
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+              - column:
+                  name: team_size
+                  type: int
+              - column:
+                  name: logo_url
+                  type: varchar(500)
+              - column:
+                  name: banner_url
+                  type: varchar(500)
+              - column:
+                  name: prize_pool
+                  type: decimal(12,2)
+              - column:
+                  name: prize_distribution
+                  type: text
+              - column:
+                  name: custom_rules
+                  type: text
+              - column:
+                  name: stream_url
+                  type: varchar(500)
+              - column:
+                  name: discord_url
+                  type: varchar(500)
+              - column:
+                  name: region_id
+                  type: uuid
+              - column:
+                  name: organizer_id
+                  type: uuid
+              - column:
+                  name: point_system_id
+                  type: uuid
+              - column:
+                  name: is_public
+                  type: boolean
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_featured
+                  type: boolean
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+
+        - addForeignKeyConstraint:
+            baseTableName: tournaments
+            baseColumnNames: stage_id
+            constraintName: fk_tournament_stage
+            referencedTableName: stages
+            referencedColumnNames: id
+            onDelete: SET NULL
+
+        - addForeignKeyConstraint:
+            baseTableName: tournaments
+            baseColumnNames: region_id
+            constraintName: fk_tournament_region
+            referencedTableName: regions
+            referencedColumnNames: id
+            onDelete: SET NULL
+
+        - addForeignKeyConstraint:
+            baseTableName: tournaments
+            baseColumnNames: organizer_id
+            constraintName: fk_tournament_organizer
+            referencedTableName: users
+            referencedColumnNames: id
+            onDelete: SET NULL
+
+        - addForeignKeyConstraint:
+            baseTableName: tournaments
+            baseColumnNames: point_system_id
+            constraintName: fk_tournament_point_system
+            referencedTableName: point_systems
+            referencedColumnNames: id
+            onDelete: SET NULL
+
+        - createIndex:
+            indexName: idx_tournament_slug
+            tableName: tournaments
+            unique: true
+            columns:
+              - column:
+                  name: slug
+
+        - createIndex:
+            indexName: idx_tournament_stage
+            tableName: tournaments
+            columns:
+              - column:
+                  name: stage_id
+
+        - createIndex:
+            indexName: idx_tournament_status
+            tableName: tournaments
+            columns:
+              - column:
+                  name: status
+
+        - createIndex:
+            indexName: idx_tournament_region
+            tableName: tournaments
+            columns:
+              - column:
+                  name: region_id
+
+        - createIndex:
+            indexName: idx_tournament_start_date
+            tableName: tournaments
+            columns:
+              - column:
+                  name: start_date
+
+        - createIndex:
+            indexName: idx_tournament_is_public
+            tableName: tournaments
+            columns:
+              - column:
+                  name: is_public
+
+        - createIndex:
+            indexName: idx_tournament_is_featured
+            tableName: tournaments
+            columns:
+              - column:
+                  name: is_featured

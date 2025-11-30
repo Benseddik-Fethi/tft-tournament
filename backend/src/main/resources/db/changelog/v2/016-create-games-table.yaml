@@ -1,0 +1,85 @@
+databaseChangeLog:
+  - changeSet:
+      id: 016-create-games-table
+      author: benseddik fethi
+      changes:
+        - createTable:
+            tableName: games
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: match_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: game_number
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(20)
+                  defaultValue: 'PENDING'
+                  constraints:
+                    nullable: false
+              - column:
+                  name: start_time
+                  type: timestamp with time zone
+              - column:
+                  name: end_time
+                  type: timestamp with time zone
+              - column:
+                  name: duration_seconds
+                  type: int
+              - column:
+                  name: riot_match_id
+                  type: varchar(100)
+              - column:
+                  name: game_set
+                  type: varchar(20)
+              - column:
+                  name: game_patch
+                  type: varchar(20)
+              - column:
+                  name: notes
+                  type: text
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+
+        - addForeignKeyConstraint:
+            baseTableName: games
+            baseColumnNames: match_id
+            constraintName: fk_game_match
+            referencedTableName: matches
+            referencedColumnNames: id
+            onDelete: CASCADE
+
+        - createIndex:
+            indexName: idx_game_match
+            tableName: games
+            columns:
+              - column:
+                  name: match_id
+
+        - createIndex:
+            indexName: idx_game_status
+            tableName: games
+            columns:
+              - column:
+                  name: status

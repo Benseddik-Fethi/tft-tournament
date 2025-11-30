@@ -32,5 +32,43 @@ databaseChangeLog:
       file: db/changelog/v1/009-add-preferred-language-to-users.yaml
 
   # ─────────────────────────────────────────────────────────────────────────────
-  # TEST DATA (dev/test context only)
+  # TOURNAMENTS - Gestion des tournois TFT
   # ─────────────────────────────────────────────────────────────────────────────
+  - include:
+      file: db/changelog/v2/003-create-regions-table.yaml
+  - include:
+      file: db/changelog/v2/004-create-point-systems-table.yaml
+  - include:
+      file: db/changelog/v2/005-create-circuits-table.yaml
+  - include:
+      file: db/changelog/v2/006-create-seasons-table.yaml
+  - include:
+      file: db/changelog/v2/007-create-stages-table.yaml
+  - include:
+      file: db/changelog/v2/008-create-tournaments-table.yaml
+  - include:
+      file: db/changelog/v2/009-create-tournament-phases-table.yaml
+  - include:
+      file: db/changelog/v2/010-create-tournament-groups-table.yaml
+  - include:
+      file: db/changelog/v2/011-create-teams-table.yaml
+  - include:
+      file: db/changelog/v2/012-create-participants-table.yaml
+  - include:
+      file: db/changelog/v2/013-create-group-participants-table.yaml
+  - include:
+      file: db/changelog/v2/014-create-matches-table.yaml
+  - include:
+      file: db/changelog/v2/015-create-match-participants-table.yaml
+  - include:
+      file: db/changelog/v2/016-create-games-table.yaml
+  - include:
+      file: db/changelog/v2/017-create-game-results-table.yaml
+  - include:
+      file: db/changelog/v2/018-create-tournament-admins-table.yaml
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # SEED DATA (dev/test context only)
+  # ─────────────────────────────────────────────────────────────────────────────
+  - include:
+      file: db/changelog/v2/050-insert-seed-data.yaml

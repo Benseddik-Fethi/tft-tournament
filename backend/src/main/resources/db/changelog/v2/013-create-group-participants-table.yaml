@@ -1,0 +1,90 @@
+databaseChangeLog:
+  - changeSet:
+      id: 013-create-group-participants-table
+      author: benseddik fethi
+      changes:
+        - createTable:
+            tableName: group_participants
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: group_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: participant_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: seed
+                  type: int
+              - column:
+                  name: group_points
+                  type: int
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+              - column:
+                  name: group_games_played
+                  type: int
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+              - column:
+                  name: group_rank
+                  type: int
+              - column:
+                  name: is_advanced
+                  type: boolean
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_eliminated
+                  type: boolean
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+
+        - addForeignKeyConstraint:
+            baseTableName: group_participants
+            baseColumnNames: group_id
+            constraintName: fk_group_participant_group
+            referencedTableName: tournament_groups
+            referencedColumnNames: id
+            onDelete: CASCADE
+
+        - addForeignKeyConstraint:
+            baseTableName: group_participants
+            baseColumnNames: participant_id
+            constraintName: fk_group_participant_participant
+            referencedTableName: participants
+            referencedColumnNames: id
+            onDelete: CASCADE
+
+        - createIndex:
+            indexName: idx_group_participant_group
+            tableName: group_participants
+            columns:
+              - column:
+                  name: group_id
+
+        - createIndex:
+            indexName: idx_group_participant_participant
+            tableName: group_participants
+            columns:
+              - column:
+                  name: participant_id

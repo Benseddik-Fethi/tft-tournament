@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: 018-create-tournament-admins-table
+      author: benseddik fethi
+      changes:
+        - createTable:
+            tableName: tournament_admins
+            columns:
+              - column:
+                  name: tournament_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+
+        - addPrimaryKey:
+            tableName: tournament_admins
+            columnNames: tournament_id, user_id
+            constraintName: pk_tournament_admins
+
+        - addForeignKeyConstraint:
+            baseTableName: tournament_admins
+            baseColumnNames: tournament_id
+            constraintName: fk_tournament_admin_tournament
+            referencedTableName: tournaments
+            referencedColumnNames: id
+            onDelete: CASCADE
+
+        - addForeignKeyConstraint:
+            baseTableName: tournament_admins
+            baseColumnNames: user_id
+            constraintName: fk_tournament_admin_user
+            referencedTableName: users
+            referencedColumnNames: id
+            onDelete: CASCADE
