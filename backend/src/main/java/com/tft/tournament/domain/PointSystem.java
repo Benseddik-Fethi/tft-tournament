@@ -88,6 +88,7 @@ public class PointSystem {
      *
      * @param placement le placement (1-8)
      * @return les points correspondants
+     * @throws IllegalArgumentException si le placement n'est pas entre 1 et 8
      */
     public int getPointsForPlacement(int placement) {
         return switch (placement) {
@@ -99,7 +100,9 @@ public class PointSystem {
             case 6 -> points6th;
             case 7 -> points7th;
             case 8 -> points8th;
-            default -> 0;
+            default -> throw new IllegalArgumentException(
+                    String.format("Placement invalide: %d. Le placement doit être entre 1 et 8.", placement)
+            );
         };
     }
 }
