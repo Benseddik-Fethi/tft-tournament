@@ -54,23 +54,27 @@ export default function RegisterPage() {
             icon={Shield}
             title={t('register.title')}
             description={t('register.subtitle')}
+            backgroundGradient="from-[#0A1428] via-[#091428] to-[#0A1929]"
+            iconGradient="from-[#C8AA6E] to-[#785A28]"
+            iconShadowColor="shadow-[0_0_20px_rgba(200,170,110,0.4)]"
+            titleColor="text-[#C8AA6E]"
         >
             <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-3">
                     <div className="space-y-1.5">
-                        <Label className="text-gray-600 dark:text-gray-300 pl-1">{t('register.firstName')}</Label>
+                        <Label className="text-[#A09B8C] pl-1">{t('register.firstName')}</Label>
                         <Input
                             placeholder={t('register.firstNamePlaceholder')}
-                            className="h-11 bg-slate-50 dark:bg-slate-950 border-transparent focus:bg-white dark:focus:bg-slate-900 rounded-xl"
+                            className="h-11 bg-[#1E2328] border-[rgba(200,170,110,0.2)] focus:bg-[#1E293B] focus:border-[#C8AA6E] rounded-xl text-[#F0E6D2] placeholder:text-[#5B5A56]"
                             value={formData.firstName}
                             onChange={(e) => setFormData({...formData, firstName: e.target.value})}
                         />
                     </div>
                     <div className="space-y-1.5">
-                        <Label className="text-gray-600 dark:text-gray-300 pl-1">{t('register.lastName')}</Label>
+                        <Label className="text-[#A09B8C] pl-1">{t('register.lastName')}</Label>
                         <Input
                             placeholder={t('register.lastNamePlaceholder')}
-                            className="h-11 bg-slate-50 dark:bg-slate-950 border-transparent focus:bg-white dark:focus:bg-slate-900 rounded-xl"
+                            className="h-11 bg-[#1E2328] border-[rgba(200,170,110,0.2)] focus:bg-[#1E293B] focus:border-[#C8AA6E] rounded-xl text-[#F0E6D2] placeholder:text-[#5B5A56]"
                             value={formData.lastName}
                             onChange={(e) => setFormData({...formData, lastName: e.target.value})}
                         />
@@ -78,12 +82,12 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="space-y-1.5">
-                    <Label className="text-gray-600 dark:text-gray-300 pl-1">{t('register.email')}</Label>
+                    <Label className="text-[#A09B8C] pl-1">{t('register.email')}</Label>
                     <Input
                         icon={Mail}
                         placeholder={t('register.emailPlaceholder')}
                         type="email"
-                        className="h-11 pl-10 bg-slate-50 dark:bg-slate-950 border-transparent focus:bg-white dark:focus:bg-slate-900 rounded-xl"
+                        className="h-11 pl-10 bg-[#1E2328] border-[rgba(200,170,110,0.2)] focus:bg-[#1E293B] focus:border-[#C8AA6E] rounded-xl text-[#F0E6D2] placeholder:text-[#5B5A56]"
                         value={formData.email}
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
                     />
@@ -108,7 +112,8 @@ export default function RegisterPage() {
                 {error && <ErrorMessage message={error} />}
 
                 <Button
-                    className="w-full h-12 text-base font-bold rounded-2xl bg-gradient-to-r from-indigo-500 to-purple-500 hover:opacity-90 shadow-md shadow-indigo-100 dark:shadow-none text-white mt-2"
+                    variant="tft-primary"
+                    className="w-full h-12 text-base font-bold rounded-2xl mt-2"
                     onClick={handleRegister}
                     disabled={isLoading}>
                     {isLoading ? t('register.submitting') : t('register.submit')} <ChevronRight className="ml-2 h-5 w-5"/>
@@ -117,15 +122,15 @@ export default function RegisterPage() {
 
             <div className="relative py-2">
                 <div className="absolute inset-0 flex items-center"><Separator
-                    className="bg-gray-100 dark:bg-slate-800"/></div>
+                    className="bg-[rgba(200,170,110,0.15)]"/></div>
                 <div className="relative flex justify-center text-xs uppercase"><span
-                    className="bg-white dark:bg-slate-900 px-4 text-gray-400 font-medium">{t('register.or')}</span></div>
+                    className="bg-[#0A1929] px-4 text-[#5B5A56] font-medium">{t('register.or')}</span></div>
             </div>
 
             <SocialLoginButtons disabled={isLoading} />
 
-            <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-4">
-                {t('register.hasAccount')} <Link to={ROUTES.LOGIN} className="text-indigo-500 font-bold hover:underline ml-1">{t('register.signIn')}</Link>
+            <p className="text-center text-sm text-[#A09B8C] mt-4">
+                {t('register.hasAccount')} <Link to={ROUTES.LOGIN} className="text-[#C8AA6E] font-bold hover:underline ml-1">{t('register.signIn')}</Link>
             </p>
         </AuthCard>
     );

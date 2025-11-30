@@ -19,11 +19,21 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
+        // TFT Hextech Variants
+        "tft-primary":
+          "bg-gradient-to-r from-[#C8AA6E] to-[#785A28] text-[#0A1428] font-semibold hover:shadow-[0_0_20px_rgba(200,170,110,0.5)] hover:-translate-y-0.5 transition-all duration-300",
+        "tft-secondary":
+          "bg-gradient-to-r from-[#0AC8B9] to-[#099E92] text-[#0A1428] font-semibold hover:shadow-[0_0_20px_rgba(10,200,185,0.5)] hover:-translate-y-0.5 transition-all duration-300",
+        "tft-ghost":
+          "bg-transparent text-[#C8AA6E] border border-[rgba(200,170,110,0.5)] font-semibold hover:bg-[rgba(200,170,110,0.1)] hover:border-[#C8AA6E] hover:shadow-[0_0_15px_rgba(200,170,110,0.3)] transition-all duration-300",
+        "tft-outline":
+          "bg-transparent text-[#F0E6D2] border border-[rgba(200,170,110,0.3)] hover:border-[#C8AA6E] hover:text-[#C8AA6E] transition-all duration-300",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
         sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
         lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
+        xl: "h-12 rounded-lg px-8 has-[>svg]:px-6 text-base",
         icon: "size-9",
         "icon-sm": "size-8",
         "icon-lg": "size-10",

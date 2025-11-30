@@ -6,6 +6,7 @@ import ProfilePage from "@/pages/ProfilePage";
 import {useAuth} from "@/context/AuthContext";
 import RegisterPage from "@/pages/RegisterPage.tsx";
 import LoginPage from "@/pages/LoginPage.tsx";
+import LandingPage from "@/pages/LandingPage.tsx";
 import {ProtectedRoute} from "@/components/ProtectedRoute.tsx";
 import DashboardLayout from "@/layouts/DashboardLayout.tsx";
 import DashboardPage from "@/pages/DashboardPage.tsx";
@@ -20,14 +21,15 @@ import { ROUTES } from "@/config";
 function RootRedirect() {
     const { t } = useTranslation('pages');
     const {user, isLoading} = useAuth();
-    if (isLoading) return <div className="min-h-screen flex items-center justify-center">{t('loading')}</div>;
-    return <Navigate to={user ? ROUTES.DASHBOARD : ROUTES.LOGIN} replace/>;
+    if (isLoading) return <div className="min-h-screen flex items-center justify-center bg-[#0A1428] text-[#F0E6D2]">{t('loading')}</div>;
+    // If user is logged in, redirect to dashboard; otherwise show landing page
+    return user ? <Navigate to={ROUTES.DASHBOARD} replace/> : <LandingPage />;
 }
 
 function App() {
     return (
         <Routes>
-            {/* Route racine */}
+            {/* Route racine - Landing page or redirect to dashboard */}
             <Route path={ROUTES.HOME} element={<RootRedirect/>}/>
 
             {/* Pages publiques */}

@@ -3,6 +3,7 @@
  */
 export const ROUTES = {
   HOME: '/',
+  LANDING: '/',
   LOGIN: '/login',
   REGISTER: '/register',
   DASHBOARD: '/dashboard',

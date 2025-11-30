@@ -1,15 +1,34 @@
 import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
-function Card({ className, ...props }: React.ComponentProps<"div">) {
+const cardVariants = cva(
+  "flex flex-col gap-6 rounded-xl border py-6 shadow-sm",
+  {
+    variants: {
+      variant: {
+        default: "bg-card text-card-foreground",
+        "tft-card": "bg-[var(--tft-bg-card)] text-[var(--tft-text-primary)] border-[rgba(200,170,110,0.2)]",
+        "tft-card-elevated": "bg-[var(--tft-bg-elevated)] text-[var(--tft-text-primary)] border-[rgba(200,170,110,0.3)] shadow-[0_4px_20px_rgba(0,0,0,0.3)]",
+        "tft-card-gold": "bg-[var(--tft-bg-card)] text-[var(--tft-text-primary)] border-2 border-[#C8AA6E] shadow-[0_0_15px_rgba(200,170,110,0.2)]",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+)
+
+function Card({ 
+  className, 
+  variant,
+  ...props 
+}: React.ComponentProps<"div"> & VariantProps<typeof cardVariants>) {
   return (
     <div
       data-slot="card"
-      className={cn(
-        "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm",
-        className
-      )}
+      className={cn(cardVariants({ variant }), className)}
       {...props}
     />
   )
@@ -83,6 +102,7 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
 
 export {
   Card,
+  cardVariants,
   CardHeader,
   CardFooter,
   CardTitle,
