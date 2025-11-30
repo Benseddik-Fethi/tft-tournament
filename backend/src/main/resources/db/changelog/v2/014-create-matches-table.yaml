@@ -1,0 +1,117 @@
+databaseChangeLog:
+  - changeSet:
+      id: 014-create-matches-table
+      author: benseddik fethi
+      changes:
+        - createTable:
+            tableName: matches
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: phase_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: group_id
+                  type: uuid
+              - column:
+                  name: name
+                  type: varchar(100)
+              - column:
+                  name: round_number
+                  type: int
+              - column:
+                  name: lobby_number
+                  type: int
+              - column:
+                  name: status
+                  type: varchar(20)
+                  defaultValue: 'SCHEDULED'
+                  constraints:
+                    nullable: false
+              - column:
+                  name: scheduled_time
+                  type: timestamp with time zone
+              - column:
+                  name: actual_start_time
+                  type: timestamp with time zone
+              - column:
+                  name: end_time
+                  type: timestamp with time zone
+              - column:
+                  name: lobby_code
+                  type: varchar(50)
+              - column:
+                  name: lobby_password
+                  type: varchar(50)
+              - column:
+                  name: stream_url
+                  type: varchar(500)
+              - column:
+                  name: vod_url
+                  type: varchar(500)
+              - column:
+                  name: notes
+                  type: text
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+
+        - addForeignKeyConstraint:
+            baseTableName: matches
+            baseColumnNames: phase_id
+            constraintName: fk_match_phase
+            referencedTableName: tournament_phases
+            referencedColumnNames: id
+            onDelete: CASCADE
+
+        - addForeignKeyConstraint:
+            baseTableName: matches
+            baseColumnNames: group_id
+            constraintName: fk_match_group
+            referencedTableName: tournament_groups
+            referencedColumnNames: id
+            onDelete: SET NULL
+
+        - createIndex:
+            indexName: idx_match_phase
+            tableName: matches
+            columns:
+              - column:
+                  name: phase_id
+
+        - createIndex:
+            indexName: idx_match_group
+            tableName: matches
+            columns:
+              - column:
+                  name: group_id
+
+        - createIndex:
+            indexName: idx_match_status
+            tableName: matches
+            columns:
+              - column:
+                  name: status
+
+        - createIndex:
+            indexName: idx_match_scheduled_time
+            tableName: matches
+            columns:
+              - column:
+                  name: scheduled_time

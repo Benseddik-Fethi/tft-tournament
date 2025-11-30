@@ -1,0 +1,93 @@
+databaseChangeLog:
+  - changeSet:
+      id: 006-create-seasons-table
+      author: benseddik fethi
+      changes:
+        - createTable:
+            tableName: seasons
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: circuit_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: slug
+                  type: varchar(250)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: start_date
+                  type: date
+              - column:
+                  name: end_date
+                  type: date
+              - column:
+                  name: status
+                  type: varchar(20)
+                  defaultValue: 'UPCOMING'
+                  constraints:
+                    nullable: false
+              - column:
+                  name: order_index
+                  type: int
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: text
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+
+        - addForeignKeyConstraint:
+            baseTableName: seasons
+            baseColumnNames: circuit_id
+            constraintName: fk_season_circuit
+            referencedTableName: circuits
+            referencedColumnNames: id
+            onDelete: CASCADE
+
+        - createIndex:
+            indexName: idx_season_slug
+            tableName: seasons
+            unique: true
+            columns:
+              - column:
+                  name: slug
+
+        - createIndex:
+            indexName: idx_season_circuit
+            tableName: seasons
+            columns:
+              - column:
+                  name: circuit_id
+
+        - createIndex:
+            indexName: idx_season_status
+            tableName: seasons
+            columns:
+              - column:
+                  name: status
