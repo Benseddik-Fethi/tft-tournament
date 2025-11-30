@@ -113,10 +113,10 @@ export default function DashboardPage() {
             {/* Quick Actions */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {[
-                    { icon: Trophy, label: "Nouveau tournoi", color: "from-[#C8AA6E] to-[#785A28]" },
-                    { icon: Users, label: "Gérer joueurs", color: "from-[#0AC8B9] to-[#099E92]" },
-                    { icon: BarChart3, label: "Standings", color: "from-[#9D4DFF] to-[#7C3AED]" },
-                    { icon: Zap, label: "Lancer match", color: "from-[#FFB800] to-[#CC9300]" },
+                    { icon: Trophy, labelKey: "quickActions.newTournament", color: "from-[#C8AA6E] to-[#785A28]" },
+                    { icon: Users, labelKey: "quickActions.managePlayers", color: "from-[#0AC8B9] to-[#099E92]" },
+                    { icon: BarChart3, labelKey: "quickActions.standings", color: "from-[#9D4DFF] to-[#7C3AED]" },
+                    { icon: Zap, labelKey: "quickActions.startMatch", color: "from-[#FFB800] to-[#CC9300]" },
                 ].map((action, index) => {
                     const Icon = action.icon;
                     return (
@@ -128,7 +128,7 @@ export default function DashboardPage() {
                                 <Icon size={20} className="text-[#0A1428]" />
                             </div>
                             <span className="text-sm font-medium text-[#A09B8C] group-hover:text-[#F0E6D2] transition-colors">
-                                {action.label}
+                                {t(`dashboard.${action.labelKey}`)}
                             </span>
                         </button>
                     );

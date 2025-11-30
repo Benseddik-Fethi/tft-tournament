@@ -85,7 +85,13 @@
     "noMatches": "No upcoming matches",
     "totalTournaments": "Total Tournaments",
     "totalPlayers": "Total Players",
-    "activeTournaments": "Active Tournaments"
+    "activeTournaments": "Active Tournaments",
+    "quickActions": {
+      "newTournament": "New tournament",
+      "managePlayers": "Manage players",
+      "standings": "Standings",
+      "startMatch": "Start match"
+    }
   },
   "profile": {
     "title": "My Profile",
