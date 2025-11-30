@@ -1,6 +1,6 @@
-# Template Spring Boot + React avec Sécurité Complète
+# 🎮 TFT Tournament - Plateforme de Tournois Teamfight Tactics
 
-Un template fullstack moderne avec authentification JWT sécurisée, OAuth2 et architecture propre.
+Une plateforme web moderne pour organiser, gérer et suivre des tournois TFT (Teamfight Tactics).
 
 ## 📋 Table des matières
 
@@ -9,126 +9,84 @@ Un template fullstack moderne avec authentification JWT sécurisée, OAuth2 et a
 - [Architecture](#-architecture)
 - [Technologies](#-technologies)
 - [Prérequis](#-prérequis)
-- [Installation et Configuration](#-installation-et-configuration)
-- [Structure du Projet](#-structure-du-projet)
-- [Sécurité](#-sécurité)
+- [Installation](#-installation)
+- [Configuration](#-configuration)
+- [Lancement](#-lancement)
 - [API Documentation](#-api-documentation)
-- [Tests](#-tests)
-- [Déploiement](#-déploiement)
+- [Roadmap](#-roadmap)
 - [Auteur](#-auteur)
-- [Licence](#-licence)
 
 ## 🎯 Description
 
-Ce template fournit une base solide pour développer des applications web fullstack sécurisées. Il implémente les meilleures pratiques de sécurité recommandées par l'OWASP et offre une architecture modulaire et maintenable.
+TFT Tournament est une solution complète pour la gestion de tournois Teamfight Tactics, destinée aux :
+- **Organisateurs** : Création et gestion de tournois avec différents formats
+- **Joueurs** : Inscription, suivi des résultats et classements
+- **Spectateurs** : Consultation des standings en temps réel
+- **Casters & Streamers** : Page dédiée aux POV et VODs Twitch
 
 ### Points forts
 
-- **Sécurité de niveau bancaire** : Argon2 pour le hashage, JWT avec rotation des tokens, protection CSRF/XSS
-- **Clean Architecture** : Séparation claire des responsabilités entre les couches
-- **Prêt pour la production** : Rate limiting, audit logging, gestion des sessions
-- **DX optimisée** : Hot reload, validation automatique, documentation Swagger
+- 🏆 **Formats flexibles** : Swiss, Bracket, Round Robin, Lobby unique
+- 📊 **Standings automatiques** : Calcul des points TFT avec gestion des tiebreaks
+- 🎥 **Intégration Twitch** : POV joueurs et casters avec player embedded
+- 🔐 **Sécurité robuste** : JWT, OAuth2 (Google, Discord), protection brute force
 
 ## ✨ Fonctionnalités
 
-### Authentification & Autorisation
-- ✅ Authentification JWT (Access Token + Refresh Token)
+### MVP (Version actuelle)
+- ✅ Authentification JWT sécurisée (cookies HTTP-only)
 - ✅ OAuth2 (Google, Facebook)
-- ✅ Vérification d'email obligatoire
-- ✅ Réinitialisation de mot de passe
-- ✅ Protection brute force avec verrouillage de compte
-- ✅ Sessions multiples avec révocation
+- ✅ Gestion des utilisateurs avec rôles (ADMIN, ORGANIZER, USER)
+- ✅ Vérification email et réinitialisation mot de passe
+- 🚧 Création et gestion de tournois
+- 🚧 Inscription des participants
+- 🚧 Génération automatique des matchs
+- 🚧 Saisie des résultats
+- 🚧 Calcul des standings avec tiebreaks
 
-### Sécurité
-- ✅ Hashage Argon2id (recommandation OWASP)
-- ✅ Tokens en cookies HTTP-only
-- ✅ Rate limiting par IP
-- ✅ Headers de sécurité (CSP, HSTS, X-Frame-Options)
-- ✅ Protection timing attack
-
-### Gestion des utilisateurs
-- ✅ Inscription avec validation email
-- ✅ Gestion du profil
-- ✅ Rôles et permissions (RBAC)
-- ✅ Audit logging des actions sensibles
-
-### Emails transactionnels
-- ✅ Templates Thymeleaf
-- ✅ Envoi asynchrone
-- ✅ Email de vérification
-- ✅ Email de réinitialisation de mot de passe
-- ✅ Email de bienvenue
+### V1+ (Roadmap)
+- 📋 Formats complexes (phases multiples)
+- 📋 Export CSV/PDF des résultats
+- 📋 Notifications temps réel
+- 📋 Intégration Riot API
+- 📋 OAuth Discord
+- 📋 Page POV & Casters Twitch
+- 📋 Mode ligue
 
 ## 🏗️ Architecture
 
-### Backend (Clean Architecture)
+### Backend (Spring Boot - Clean Architecture)
 
 ```
-backend/src/main/java/com/company/backend/
-├── config/           # Configuration Spring (Security, JWT, CORS, etc.)
-├── controller/       # Contrôleurs REST (API endpoints)
-├── domain/           # Entités JPA (User, Session, Token, etc.)
-├── dto/              # Objets de transfert (Request/Response)
-│   ├── request/      # DTOs des requêtes entrantes
-│   └── response/     # DTOs des réponses sortantes
-├── exception/        # Exceptions métier et handler global
-├── mapper/           # Mappers MapStruct (Entity <-> DTO)
-├── repository/       # Repositories Spring Data JPA
-├── security/         # Filtres et handlers de sécurité
-│   ├── jwt/          # Authentification JWT
-│   └── oauth2/       # Authentification OAuth2
-├── service/          # Interfaces des services métier
-│   └── impl/         # Implémentations des services
-└── util/             # Utilitaires (IP resolver, etc.)
+backend/src/main/java/com/tft/tournament/
+├── config/           # Configuration (Security, JWT, CORS)
+├── controller/       # Contrôleurs REST
+├── domain/           # Entités JPA
+├── dto/              # Objets de transfert
+│   ├── request/
+│   └── response/
+├── exception/        # Gestion des erreurs
+├── mapper/           # MapStruct mappers
+├── repository/       # Spring Data JPA
+├── security/         # JWT & OAuth2
+├── service/          # Logique métier
+└── util/             # Utilitaires
 ```
 
-### Frontend
+### Frontend (React + TypeScript)
 
 ```
 frontend/src/
-├── components/       # Composants React réutilisables
-├── pages/            # Pages de l'application
+├── components/       # Composants réutilisables
+├── config/           # Configuration
+├── context/          # Contextes React
 ├── hooks/            # Hooks personnalisés
-├── lib/              # Utilitaires et configurations
+├── i18n/             # Internationalisation
+├── layouts/          # Layouts de page
+├── lib/              # Utilitaires
+├── pages/            # Pages de l'application
+├── services/         # Services API
 └── types/            # Types TypeScript
-```
-
-### Diagramme de flux d'authentification
-
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                           AUTHENTIFICATION                               │
-├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│  1. LOGIN                                                                │
-│  ┌────────┐      ┌────────┐      ┌────────┐      ┌────────┐            │
-│  │ Client │ ──▶  │  API   │ ──▶  │ Auth   │ ──▶  │  DB    │            │
-│  │        │      │        │      │ Service│      │        │            │
-│  │        │ ◀──  │        │ ◀──  │        │ ◀──  │        │            │
-│  └────────┘      └────────┘      └────────┘      └────────┘            │
-│      │                │                                                  │
-│      │  Access Token (Cookie HTTP-only)                                 │
-│      │  Refresh Token (Cookie HTTP-only)                                │
-│      ▼                                                                   │
-│                                                                          │
-│  2. REQUÊTES AUTHENTIFIÉES                                              │
-│  ┌────────┐      ┌────────┐      ┌────────┐                            │
-│  │ Client │ ──▶  │  JWT   │ ──▶  │  API   │                            │
-│  │        │      │ Filter │      │        │                            │
-│  │        │ ◀──  │        │ ◀──  │        │                            │
-│  └────────┘      └────────┘      └────────┘                            │
-│                                                                          │
-│  3. REFRESH TOKEN                                                        │
-│  ┌────────┐      ┌────────┐      ┌────────┐                            │
-│  │ Client │ ──▶  │  API   │ ──▶  │Session │                            │
-│  │        │      │/refresh│      │  DB    │                            │
-│  │        │ ◀──  │        │ ◀──  │        │                            │
-│  └────────┘      └────────┘      └────────┘                            │
-│      │                                                                   │
-│      │  Nouveaux tokens (rotation)                                      │
-│      ▼                                                                   │
-│                                                                          │
-└─────────────────────────────────────────────────────────────────────────┘
 ```
 
 ## 🛠️ Technologies
@@ -136,383 +94,149 @@ frontend/src/
 ### Backend
 | Technologie | Version | Description |
 |-------------|---------|-------------|
-| Java | 21 | Langage de programmation |
-| Spring Boot | 3.4 | Framework applicatif |
-| Spring Security | 6 | Sécurité et authentification |
-| JJWT | 0.13 | Gestion des tokens JWT |
-| MapStruct | 1.5 | Mapping objets |
-| PostgreSQL | 15+ | Base de données |
-| Argon2 | - | Hashage des mots de passe |
-| Bucket4j | - | Rate limiting |
-| Thymeleaf | - | Templates emails |
+| Java | 21 | Langage |
+| Spring Boot | 4.0 | Framework |
+| Spring Security | 6 | Authentification |
+| PostgreSQL | 18+ | Base de données |
+| JJWT | 0.13 | Tokens JWT |
+| MapStruct | 1.6 | Mapping DTO |
+| Liquibase | - | Migrations BDD |
 
 ### Frontend
 | Technologie | Version | Description |
 |-------------|---------|-------------|
-| React | 19 | Bibliothèque UI |
-| TypeScript | 5.9 | Typage statique |
+| React | 19 | Framework UI |
+| TypeScript | 5.9 | Typage |
 | Vite | 7 | Build tool |
-| Tailwind CSS | 4 | Framework CSS |
-| Shadcn/ui | - | Composants UI |
-| React Hook Form | 7 | Gestion des formulaires |
-| Zod | 4 | Validation des données |
+| Tailwind CSS | 4 | Styling |
+| Shadcn/ui | - | Composants |
+| React Hook Form | 7 | Formulaires |
+| Zod | 4 | Validation |
 | Axios | 1.13 | Client HTTP |
+| i18next | 25 | i18n |
 
 ## 📦 Prérequis
 
-- **Java** 21 ou supérieur
-- **Node.js** 20 ou supérieur
-- **PostgreSQL** 15 ou supérieur
-- **Maven** 3.9 ou supérieur
+- **Java** 21+
+- **Node.js** 20+
+- **PostgreSQL** 15+ (ou Docker)
+- **Maven** 3.9+
 
-## 🚀 Installation et Configuration
+## 🚀 Installation
 
 ### 1. Cloner le repository
 
 ```bash
-git clone https://github.com/Benseddik-Fethi/template-spring-react-security.git
-cd template-spring-react-security
+git clone https://github.com/Benseddik-Fethi/tft-tournament.git
+cd tft-tournament
 ```
 
-### 2. Configuration de la base de données
+### 2. Lancer les services Docker
 
-Créer une base de données PostgreSQL :
-
-```sql
-CREATE DATABASE template_db;
-CREATE USER template_user WITH PASSWORD 'your_password';
-GRANT ALL PRIVILEGES ON DATABASE template_db TO template_user;
+```bash
+docker-compose up -d
 ```
 
-### 3. Variables d'environnement
+Cela démarre :
+- PostgreSQL sur `localhost:5432`
+- Mailpit (emails de test) sur `localhost:8025`
 
-#### Backend (`backend/application.yml` ou variables d'environnement)
+### 3. Configurer le backend
 
-```yaml
-# Base de données
-spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/template_db
-    username: template_user
-    password: ${DB_PASSWORD}
-
-# JWT - CRITIQUE : Générer un secret de 64+ caractères
-jwt:
-  secret: ${JWT_SECRET}  # openssl rand -base64 64
-  access-token:
-    expiration: 15m
-  refresh-token:
-    expiration: 7d
-  issuer: template-api
-  audience: template-app
-
-# OAuth2 (optionnel)
-spring:
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            client-id: ${GOOGLE_CLIENT_ID}
-            client-secret: ${GOOGLE_CLIENT_SECRET}
-
-# Email (optionnel)
-spring:
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: ${MAIL_USERNAME}
-    password: ${MAIL_PASSWORD}
-
-# Application
-app:
-  frontend-url: http://localhost:5173
-  name: Template App
-  security:
-    cors:
-      allowed-origins:
-        - http://localhost:5173
-    rate-limit:
-      enabled: true
-      requests-per-minute: 60
-      auth-requests-per-minute: 10
-    brute-force:
-      max-attempts: 5
-      lock-duration: 15m
+```bash
+cd backend
+cp .env.example .env
+# Éditer .env si nécessaire
 ```
 
-#### Frontend (`.env`)
+### 4. Installer les dépendances frontend
 
-```env
-VITE_API_URL=http://localhost:8080/api/v1
+```bash
+cd frontend
+npm install
 ```
 
-### 4. Lancement
+## ⚙️ Configuration
 
-#### Backend
+### Variables d'environnement (backend/.env)
+
+| Variable | Description | Défaut |
+|----------|-------------|--------|
+| `PORT` | Port du serveur | 8080 |
+| `DATABASE_URL` | URL PostgreSQL | jdbc:postgresql://localhost:5432/tft_tournament_db |
+| `JWT_SECRET` | Secret JWT (64+ chars) | - |
+| `GOOGLE_CLIENT_ID` | OAuth Google | - |
+| `MAIL_HOST` | Serveur SMTP | localhost |
+
+## 🏃 Lancement
+
+### Backend
 
 ```bash
 cd backend
 mvn spring-boot:run
 ```
 
-Le backend démarre sur http://localhost:8080
-
-#### Frontend
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Le frontend démarre sur http://localhost:5173
-
-### 5. Comptes de test (profil non-prod)
-
-| Email | Mot de passe | Rôle |
-|-------|--------------|------|
-| admin@template.com | Password123! | ADMIN |
-| user@template.com | Password123! | USER |
-
-## 📁 Structure du Projet
-
-```
-template-spring-react-security/
-├── backend/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/com/company/backend/
-│   │   │   │   ├── BackendApplication.java
-│   │   │   │   ├── config/
-│   │   │   │   │   ├── SecurityConfig.java
-│   │   │   │   │   ├── JwtProperties.java
-│   │   │   │   │   ├── SecurityProperties.java
-│   │   │   │   │   └── ...
-│   │   │   │   ├── controller/
-│   │   │   │   │   ├── AuthController.java
-│   │   │   │   │   └── UserController.java
-│   │   │   │   ├── domain/
-│   │   │   │   │   ├── User.java
-│   │   │   │   │   ├── Session.java
-│   │   │   │   │   ├── AuditLog.java
-│   │   │   │   │   └── ...
-│   │   │   │   ├── dto/
-│   │   │   │   ├── exception/
-│   │   │   │   ├── mapper/
-│   │   │   │   ├── repository/
-│   │   │   │   ├── security/
-│   │   │   │   ├── service/
-│   │   │   │   └── util/
-│   │   │   └── resources/
-│   │   │       ├── application.yml
-│   │   │       └── templates/email/
-│   │   └── test/
-│   └── pom.xml
-├── frontend/
-│   ├── src/
-│   ├── package.json
-│   └── vite.config.ts
-└── README.md
-```
-
-## 🔐 Sécurité
-
-### Authentification JWT
-
-#### Access Token
-- **Durée** : 15 minutes (configurable)
-- **Stockage** : Cookie HTTP-only
-- **Contenu** : ID utilisateur, email, rôle
-
-#### Refresh Token
-- **Durée** : 7 jours (configurable)
-- **Stockage** : Cookie HTTP-only + hash SHA-256 en base
-- **Rotation** : Nouveau token à chaque refresh
-
-### Hashage des mots de passe
-
-Utilisation d'**Argon2id** avec les paramètres OWASP 2024 :
-
-| Paramètre | Valeur | Description |
-|-----------|--------|-------------|
-| Salt | 16 bytes | Sel aléatoire |
-| Hash | 32 bytes | Longueur du hash |
-| Parallelism | 4 | Threads CPU |
-| Memory | 64 MB | Mémoire utilisée |
-| Iterations | 4 | Nombre de passes |
-
-### Headers de sécurité
-
-```
-Content-Security-Policy: default-src 'self'; script-src 'self'; ...
-X-Frame-Options: DENY
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 1; mode=block
-Strict-Transport-Security: max-age=31536000; includeSubDomains
-Referrer-Policy: strict-origin-when-cross-origin
-Permissions-Policy: geolocation=(), microphone=(), camera=()
-```
-
-### Rate Limiting
-
-| Endpoint | Limite | Fenêtre |
-|----------|--------|---------|
-| Général | 60 requêtes | 1 minute |
-| Authentification | 10 requêtes | 1 minute |
-
-### Protection Brute Force
-
-- **Tentatives max** : 5
-- **Durée verrouillage** : 15 minutes
-- **Logging** : Toutes les tentatives sont enregistrées
-
-### Audit Logging
-
-Actions enregistrées :
-- Connexion réussie/échouée
-- Déconnexion
-- Verrouillage de compte
-- Changement de mot de passe
-- Connexion OAuth2
-- Vérification d'email
-
-## 📡 API Documentation
-
-### Endpoints d'authentification
-
-| Méthode | Endpoint | Description | Auth |
-|---------|----------|-------------|------|
-| POST | `/api/v1/auth/register` | Inscription | Non |
-| POST | `/api/v1/auth/login` | Connexion | Non |
-| POST | `/api/v1/auth/refresh` | Rafraîchir les tokens | Non |
-| POST | `/api/v1/auth/logout` | Déconnexion | Oui |
-| POST | `/api/v1/auth/logout-all` | Déconnexion totale | Oui |
-| GET | `/api/v1/auth/me` | Utilisateur courant | Oui |
-| POST | `/api/v1/auth/oauth/exchange` | Échanger code OAuth2 | Non |
-
-### Endpoints utilisateurs
-
-| Méthode | Endpoint | Description | Auth |
-|---------|----------|-------------|------|
-| POST | `/api/v1/users/verify-email` | Vérifier email | Non |
-| POST | `/api/v1/users/resend-verification` | Renvoyer vérification | Non |
-| POST | `/api/v1/users/forgot-password` | Demander reset | Non |
-| GET | `/api/v1/users/reset-password/validate` | Valider token reset | Non |
-| POST | `/api/v1/users/reset-password` | Réinitialiser mdp | Non |
-| POST | `/api/v1/users/change-password` | Changer mdp | Oui |
-| GET | `/api/v1/users/profile` | Voir profil | Oui |
-
-### Exemples de requêtes
-
-#### Inscription
-```bash
-curl -X POST http://localhost:8080/api/v1/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{
-    "email": "user@example.com",
-    "password": "SecurePass123!",
-    "firstName": "John",
-    "lastName": "Doe"
-  }'
-```
-
-#### Connexion
-```bash
-curl -X POST http://localhost:8080/api/v1/auth/login \
-  -H "Content-Type: application/json" \
-  -c cookies.txt \
-  -d '{
-    "email": "user@example.com",
-    "password": "SecurePass123!"
-  }'
-```
-
-#### Requête authentifiée
-```bash
-curl -X GET http://localhost:8080/api/v1/auth/me \
-  -b cookies.txt
-```
-
-## 🧪 Tests
-
-### Backend
-
-```bash
-cd backend
-
-# Tests unitaires et d'intégration
-mvn test
-
-# Avec rapport de couverture
-mvn test jacoco:report
-```
+Le serveur démarre sur http://localhost:8080
 
 ### Frontend
 
 ```bash
 cd frontend
-
-# Linting
-npm run lint
-
-# Build
-npm run build
+npm run dev
 ```
 
-## 🚢 Déploiement
+L'application démarre sur http://localhost:5173
 
-### Variables d'environnement de production
+### Comptes de test (mode dev)
 
-```bash
-# CRITIQUE - Sécurité
-JWT_SECRET=<secret-64-caractères-minimum>
-DB_PASSWORD=<mot-de-passe-fort>
+| Email | Mot de passe | Rôle |
+|-------|--------------|------|
+| admin@tft-tournament.com | Password123! | ADMIN |
+| user@tft-tournament.com | Password123! | USER |
 
-# Base de données
-DATABASE_URL=jdbc:postgresql://host:5432/db
+## 📡 API Documentation
 
-# OAuth2 (si utilisé)
-GOOGLE_CLIENT_ID=<client-id>
-GOOGLE_CLIENT_SECRET=<client-secret>
+### Authentification
 
-# Email (si utilisé)
-MAIL_USERNAME=<email>
-MAIL_PASSWORD=<app-password>
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|
+| POST | `/api/v1/auth/register` | Inscription |
+| POST | `/api/v1/auth/login` | Connexion |
+| POST | `/api/v1/auth/refresh` | Rafraîchir tokens |
+| POST | `/api/v1/auth/logout` | Déconnexion |
+| GET | `/api/v1/auth/me` | Utilisateur courant |
 
-# Application
-APP_FRONTEND_URL=https://votre-domaine.com
-SPRING_PROFILES_ACTIVE=prod
-```
+### Tournois (à venir)
 
-### Docker (exemple)
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|
+| POST | `/api/v1/tournaments` | Créer un tournoi |
+| GET | `/api/v1/tournaments` | Lister les tournois |
+| GET | `/api/v1/tournaments/{id}` | Détails d'un tournoi |
+| POST | `/api/v1/tournaments/{id}/participants` | S'inscrire |
+| POST | `/api/v1/tournaments/{id}/matches` | Générer les matchs |
+| PUT | `/api/v1/matches/{id}/results` | Saisir résultats |
 
-```dockerfile
-# Backend
-FROM eclipse-temurin:21-jre
-COPY target/*.jar app.jar
-ENTRYPOINT ["java", "-jar", "app.jar"]
-```
+## 🗺️ Roadmap
 
-### Recommandations production
-
-1. **HTTPS obligatoire** : Configurer SSL/TLS
-2. **Cookies sécurisés** : Activer `Secure` et `SameSite=Strict`
-3. **Rate limiting distribué** : Remplacer Caffeine par Redis
-4. **Monitoring** : Activer Actuator et Prometheus
-5. **Logs centralisés** : ELK Stack ou équivalent
-6. **Backup BDD** : Configurer des sauvegardes automatiques
+- [x] Sprint 1-2 : Authentification & Base
+- [ ] Sprint 3 : Entités Tournament, Participant, Match
+- [ ] Sprint 4 : Génération de matchs & Formats
+- [ ] Sprint 5 : Calcul standings & Tiebreaks
+- [ ] Sprint 6 : OAuth Discord
+- [ ] Sprint 7 : Page Media & POV Twitch
+- [ ] Sprint 8 : Dashboard & Export
 
 ## 👤 Auteur
 
 **Fethi Benseddik**
-
 - GitHub: [@Benseddik-Fethi](https://github.com/Benseddik-Fethi)
 
 ## 📄 Licence
 
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+Ce projet est sous licence MIT.
 
 ---
 
-⭐ Si ce template vous a été utile, n'hésitez pas à lui donner une étoile sur GitHub !
+⭐ N'hésitez pas à contribuer ou à ouvrir des issues !
