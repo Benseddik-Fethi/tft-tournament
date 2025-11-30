@@ -1,0 +1,103 @@
+{
+  "dashboard": {
+    "title": "Dashboard",
+    "welcomeMessage": "Bienvenue sur votre template de démarrage",
+    "documentation": "Documentation",
+    "newAction": "Nouvelle Action",
+    "securityStatus": "Statut Sécurité",
+    "secured": "Sécurisé",
+    "userRole": "Rôle Utilisateur",
+    "apiPerformance": "Performance API",
+    "optimal": "Optimale",
+    "readyToCode": "Prêt à coder ?",
+    "templateDescription": "Ce template inclut tout ce dont vous avez besoin pour démarrer votre SaaS : Authentification complète (JWT, Cookies, OAuth2), gestion des utilisateurs, emails transactionnels et UI moderne.",
+    "backendFeature": "Backend Spring Boot 3.4 Clean Architecture",
+    "frontendFeature": "Frontend React 19 + Tailwind + Shadcn",
+    "securityFeature": "Sécurité avancée (Rate Limit, Argon2, HttpOnly)",
+    "yourContentHere": "Votre contenu ici",
+    "startAdding": "Commencez par ajouter vos entités dans le backend et créez vos pages ici."
+  },
+  "profile": {
+    "title": "Mon Profil",
+    "subtitle": "Gérez vos informations personnelles",
+    "description": "Consultez et gérez vos informations personnelles",
+    "avatar": "Photo de profil",
+    "changeAvatar": "Changer la photo de profil",
+    "personalInfo": "Informations personnelles",
+    "personalInfoDescription": "Vos informations de base telles qu'affichées sur votre profil",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "Email",
+    "memberSince": "Membre depuis",
+    "lastLogin": "Dernière connexion",
+    "editProfile": "Modifier le profil",
+    "accountStats": "Statistiques du compte",
+    "accountStatsDescription": "Aperçu de l'activité de votre compte",
+    "emailStatus": "Statut de l'email",
+    "emailVerified": "Vérifié",
+    "emailNotVerified": "Non vérifié",
+    "notAvailable": "Non disponible",
+    "security": {
+      "title": "Sécurité",
+      "changePassword": "Changer le mot de passe",
+      "changePasswordDescription": "Modifiez votre mot de passe actuel",
+      "sessions": "Sessions actives",
+      "sessionsDescription": "Gérez vos appareils connectés"
+    },
+    "dangerZone": {
+      "title": "Zone danger",
+      "deleteAccount": "Supprimer mon compte",
+      "deleteWarning": "Cette action est irréversible. Toutes vos données seront supprimées définitivement."
+    }
+  },
+  "settings": {
+    "title": "Paramètres",
+    "subtitle": "Personnalisez votre expérience",
+    "description": "Gérez vos préférences et les paramètres de votre compte",
+    "language": {
+      "title": "Langue",
+      "description": "Choisissez votre langue préférée"
+    },
+    "theme": {
+      "title": "Thème",
+      "description": "Personnalisez l'apparence de l'application",
+      "light": "Clair",
+      "dark": "Sombre",
+      "system": "Système"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "emailNotifications": "Notifications par email",
+      "emailNotificationsDescription": "Recevoir des emails pour les mises à jour importantes"
+    }
+  },
+  "emailSent": {
+    "title": "Vérifiez vos emails",
+    "message": "Nous avons envoyé un lien de confirmation à votre adresse email. Veuillez cliquer dessus pour activer votre compte.",
+    "backToLogin": "Retour à la connexion",
+    "noEmailReceived": "Je n'ai rien reçu"
+  },
+  "resendVerification": {
+    "title": "Renvoyer le lien",
+    "description": "Recevez un nouveau lien d'activation",
+    "email": "Email",
+    "submit": "Envoyer",
+    "submitting": "Envoi...",
+    "successMessage": "Email envoyé ! Vérifiez votre boîte de réception.",
+    "backToLogin": "Retour connexion",
+    "errorMessage": "Une erreur est survenue."
+  },
+  "layout": {
+    "brandName": "Template",
+    "dashboard": "Dashboard",
+    "profile": "Mon Profil",
+    "settings": "Paramètres",
+    "logout": "Se déconnecter"
+  },
+  "loading": "Chargement...",
+  "notFound": {
+    "title": "Page non trouvée",
+    "message": "La page que vous recherchez n'existe pas.",
+    "backToHome": "Retour à l'accueil"
+  }
+}

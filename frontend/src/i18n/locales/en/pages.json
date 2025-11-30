@@ -1,0 +1,103 @@
+{
+  "dashboard": {
+    "title": "Dashboard",
+    "welcomeMessage": "Welcome to your starter template",
+    "documentation": "Documentation",
+    "newAction": "New Action",
+    "securityStatus": "Security Status",
+    "secured": "Secured",
+    "userRole": "User Role",
+    "apiPerformance": "API Performance",
+    "optimal": "Optimal",
+    "readyToCode": "Ready to code?",
+    "templateDescription": "This template includes everything you need to start your SaaS: Complete authentication (JWT, Cookies, OAuth2), user management, transactional emails and modern UI.",
+    "backendFeature": "Backend Spring Boot 3.4 Clean Architecture",
+    "frontendFeature": "Frontend React 19 + Tailwind + Shadcn",
+    "securityFeature": "Advanced Security (Rate Limit, Argon2, HttpOnly)",
+    "yourContentHere": "Your content here",
+    "startAdding": "Start by adding your entities in the backend and create your pages here."
+  },
+  "profile": {
+    "title": "My Profile",
+    "subtitle": "Manage your personal information",
+    "description": "View and manage your personal information",
+    "avatar": "Profile picture",
+    "changeAvatar": "Change profile picture",
+    "personalInfo": "Personal Information",
+    "personalInfoDescription": "Your basic information as displayed on your profile",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "memberSince": "Member since",
+    "lastLogin": "Last login",
+    "editProfile": "Edit profile",
+    "accountStats": "Account Statistics",
+    "accountStatsDescription": "Overview of your account activity",
+    "emailStatus": "Email Status",
+    "emailVerified": "Verified",
+    "emailNotVerified": "Not verified",
+    "notAvailable": "Not available",
+    "security": {
+      "title": "Security",
+      "changePassword": "Change password",
+      "changePasswordDescription": "Update your current password",
+      "sessions": "Active sessions",
+      "sessionsDescription": "Manage your connected devices"
+    },
+    "dangerZone": {
+      "title": "Danger zone",
+      "deleteAccount": "Delete my account",
+      "deleteWarning": "This action cannot be undone. All your data will be permanently deleted."
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Customize your experience",
+    "description": "Manage your preferences and account settings",
+    "language": {
+      "title": "Language",
+      "description": "Choose your preferred language"
+    },
+    "theme": {
+      "title": "Theme",
+      "description": "Customize the app appearance",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "emailNotifications": "Email notifications",
+      "emailNotificationsDescription": "Receive emails for important updates"
+    }
+  },
+  "emailSent": {
+    "title": "Check your emails",
+    "message": "We have sent a confirmation link to your email address. Please click on it to activate your account.",
+    "backToLogin": "Back to login",
+    "noEmailReceived": "I haven't received anything"
+  },
+  "resendVerification": {
+    "title": "Resend link",
+    "description": "Receive a new activation link",
+    "email": "Email",
+    "submit": "Send",
+    "submitting": "Sending...",
+    "successMessage": "Email sent! Check your inbox.",
+    "backToLogin": "Back to login",
+    "errorMessage": "An error occurred."
+  },
+  "layout": {
+    "brandName": "Template",
+    "dashboard": "Dashboard",
+    "profile": "My Profile",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "loading": "Loading...",
+  "notFound": {
+    "title": "Page not found",
+    "message": "The page you are looking for does not exist.",
+    "backToHome": "Back to home"
+  }
+}
