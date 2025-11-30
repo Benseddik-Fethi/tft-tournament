@@ -2,6 +2,7 @@ package com.tft.tournament;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 /**
  * Tests d'intégration pour le contexte applicatif Spring Boot.
@@ -11,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @since 2025
  */
 @SpringBootTest
+@ActiveProfiles("test")
 class BackendApplicationTests {
 
     /**
