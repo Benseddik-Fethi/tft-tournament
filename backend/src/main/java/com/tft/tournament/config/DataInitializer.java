@@ -53,7 +53,7 @@ public class DataInitializer {
             log.info("Initialisation du jeu de données de démarrage...");
 
             createAccount(
-                    "admin@template.com",
+                    "admin@tft-tournament.com",
                     "Password123!",
                     "Admin",
                     "System",
@@ -61,7 +61,7 @@ public class DataInitializer {
             );
 
             createAccount(
-                    "user@template.com",
+                    "user@tft-tournament.com",
                     "Password123!",
                     "Jean",
                     "Dupont",
@@ -69,8 +69,8 @@ public class DataInitializer {
             );
 
             log.info("Jeu de données initialisé avec succès !");
-            log.info("Admin: admin@template.com / Password123!");
-            log.info("User:  user@template.com  / Password123!");
+            log.info("Admin: admin@tft-tournament.com / Password123!");
+            log.info("User:  user@tft-tournament.com  / Password123!");
         };
     }
 

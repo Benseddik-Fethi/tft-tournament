@@ -43,10 +43,10 @@ public record JwtProperties(
             refreshToken = new RefreshToken(Duration.ofDays(7));
         }
         if (issuer == null || issuer.isBlank()) {
-            issuer = "template-api";
+            issuer = "tft-tournament-api";
         }
         if (audience == null || audience.isBlank()) {
-            audience = "template-app";
+            audience = "tft-tournament-app";
         }
     }
 

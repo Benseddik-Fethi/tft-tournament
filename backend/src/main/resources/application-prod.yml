@@ -1,5 +1,5 @@
 # ═══════════════════════════════════════════════════════════════════════════════
-# template API - Profil PRODUCTION
+# TFT TOURNAMENT API - Profil PRODUCTION
 # 🛡️ Paramètres de sécurité renforcés
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -36,7 +36,7 @@ server:
 logging:
   level:
     root: WARN
-    com.template: INFO
+    com.tft.tournament: INFO
     org.springframework.security: WARN
     org.hibernate.SQL: WARN
   # Format JSON pour les agrégateurs de logs (ELK, Datadog, etc.)

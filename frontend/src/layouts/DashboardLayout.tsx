@@ -11,7 +11,7 @@ export default function DashboardLayout() {
     const navigate = useNavigate();
     const location = useLocation();
 
-    // Menu générique pour le template
+    // Menu items for navigation
     const navItems = [
         {id: "/dashboard", label: t('layout.dashboard'), icon: Home},
         {id: "/profile", label: t('layout.profile'), icon: User},

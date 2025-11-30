@@ -36,10 +36,10 @@ public class EmailServiceImpl implements EmailService {
     @Value("${app.mail.enabled:false}")
     private boolean mailEnabled;
 
-    @Value("${app.mail.from:noreply@template.com}")
+    @Value("${app.mail.from:noreply@tft-tournament.com}")
     private String fromAddress;
 
-    @Value("${app.name:template}")
+    @Value("${app.name:TFT Tournament}")
     private String appName;
 
     /**
