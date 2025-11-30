@@ -8,11 +8,11 @@
         <version>4.0.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.company</groupId>
-    <artifactId>backend</artifactId>
+    <groupId>com.tft</groupId>
+    <artifactId>tft-tournament-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>backend</name>
-    <description>backend</description>
+    <name>TFT Tournament API</name>
+    <description>API REST pour la plateforme de gestion de tournois TFT</description>
     <url/>
     <licenses>
         <license/>

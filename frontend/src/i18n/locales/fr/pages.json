@@ -1,7 +1,7 @@
 {
   "dashboard": {
     "title": "Dashboard",
-    "welcomeMessage": "Bienvenue sur votre template de démarrage",
+    "welcomeMessage": "Bienvenue sur TFT Tournament",
     "documentation": "Documentation",
     "newAction": "Nouvelle Action",
     "securityStatus": "Statut Sécurité",
@@ -10,8 +10,8 @@
     "apiPerformance": "Performance API",
     "optimal": "Optimale",
     "readyToCode": "Prêt à coder ?",
-    "templateDescription": "Ce template inclut tout ce dont vous avez besoin pour démarrer votre SaaS : Authentification complète (JWT, Cookies, OAuth2), gestion des utilisateurs, emails transactionnels et UI moderne.",
-    "backendFeature": "Backend Spring Boot 3.4 Clean Architecture",
+    "templateDescription": "TFT Tournament est une plateforme complète pour gérer les tournois Teamfight Tactics : Formats flexibles (Swiss, Bracket, Round Robin), calcul automatique des standings, et intégration Twitch.",
+    "backendFeature": "Backend Spring Boot 4.0 Clean Architecture",
     "frontendFeature": "Frontend React 19 + Tailwind + Shadcn",
     "securityFeature": "Sécurité avancée (Rate Limit, Argon2, HttpOnly)",
     "yourContentHere": "Votre contenu ici",
@@ -88,7 +88,7 @@
     "errorMessage": "Une erreur est survenue."
   },
   "layout": {
-    "brandName": "Template",
+    "brandName": "TFT Tournament",
     "dashboard": "Dashboard",
     "profile": "Mon Profil",
     "settings": "Paramètres",
