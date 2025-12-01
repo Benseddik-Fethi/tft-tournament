@@ -86,11 +86,10 @@ export default function DashboardPage() {
                             transition={{ duration: 0.4, delay: index * 0.1 }}
                             whileHover={{ 
                                 y: -8,
-                                rotateX: 5,
-                                rotateY: -5,
+                                scale: 1.02,
                                 transition: { duration: 0.2 }
                             }}
-                            style={{ transformStyle: 'preserve-3d', perspective: 1000 }}
+                            className="will-change-transform"
                         >
                             <Card variant="glass" className="p-6 rounded-2xl flex items-center gap-4 cursor-pointer">
                                 <motion.div 
