@@ -6,6 +6,7 @@ Une plateforme web moderne pour organiser, gérer et suivre des tournois TFT (Te
 
 - [Description](#-description)
 - [Fonctionnalités](#-fonctionnalités)
+- [Wireframes](#-wireframes)
 - [Architecture](#-architecture)
 - [Technologies](#-technologies)
 - [Prérequis](#-prérequis)
@@ -13,6 +14,7 @@ Une plateforme web moderne pour organiser, gérer et suivre des tournois TFT (Te
 - [Configuration](#-configuration)
 - [Lancement](#-lancement)
 - [API Documentation](#-api-documentation)
+- [Sécurité](#-sécurité)
 - [Roadmap](#-roadmap)
 - [Auteur](#-auteur)
 
@@ -23,6 +25,8 @@ TFT Tournament est une solution complète pour la gestion de tournois Teamfight 
 - **Joueurs** : Inscription, suivi des résultats et classements
 - **Spectateurs** : Consultation des standings en temps réel
 - **Casters & Streamers** : Page dédiée aux POV et VODs Twitch
+
+> 📄 Pour les spécifications détaillées de l'API et des wireframes, voir [wireframes_api_complete.md](wireframes_api_complete.md)
 
 ### Points forts
 
@@ -35,26 +39,51 @@ TFT Tournament est une solution complète pour la gestion de tournois Teamfight 
 
 ### MVP (Version actuelle)
 - ✅ Authentification JWT sécurisée (cookies HTTP-only)
-- ✅ OAuth2 (Google, Facebook)
-- ✅ Gestion des utilisateurs avec rôles (ADMIN, ORGANIZER, USER)
+- ✅ OAuth2 (Google, Discord, Twitch prévu)
+- ✅ Gestion des utilisateurs avec rôles (ADMIN, ORGANIZER, PLAYER, CASTER)
 - ✅ Vérification email et réinitialisation mot de passe
 - ✅ Design Hextech TFT (thème dark/light)
 - ✅ Entités de données (Tournament, Match, Participant, etc.)
-- 🚧 API REST Tournois
-- 🚧 Pages publiques (liste tournois, détails, circuits)
-- 🚧 Inscription des participants
+- ✅ API REST Tournois (CRUD complet)
+- ✅ Pages publiques (liste tournois, détails, circuits)
+- ✅ Inscription des participants
 - 🚧 Génération automatique des matchs
-- 🚧 Saisie des résultats
+- 🚧 Saisie des résultats avec preuves
 - 🚧 Calcul des standings avec tiebreaks
 
-### V1+ (Roadmap)
-- 📋 Formats complexes (phases multiples)
+### V1 - Media & POV
+- 📋 Page Media / POV avec filtres
+- 📋 Import automatique VODs Twitch
+- 📋 Modération des médias (approve/reject)
+- 📋 Page Caster avec consentement Twitch
+- 📋 Player embedded Twitch
+
+### V2 - Administration
+- 📋 Dashboard organisateur complet
+- 📋 Audit log des actions
+- 📋 Regenerate pairings
 - 📋 Export CSV/PDF des résultats
-- 📋 Notifications temps réel
+
+### V3+
+- 📋 Formats complexes (phases multiples)
+- 📋 Notifications temps réel (WebSocket)
 - 📋 Intégration Riot API
-- 📋 OAuth Discord
-- 📋 Page POV & Casters Twitch
-- 📋 Mode ligue
+- 📋 Mode ligue / circuits
+
+## 🎨 Wireframes
+
+### Pages principales
+
+| Page | Description | Status |
+|------|-------------|--------|
+| Page d'accueil | Hero CTA, grille tournois en cours, prochains tournois | ✅ |
+| Création tournoi | Wizard 5 étapes (Infos, Format, Participants, Settings, Review) | 🚧 |
+| Vue tournoi | 3 colonnes (Infos/Participants, Standings/Matches/Schedule/Media, Widgets) | 🚧 |
+| Saisie résultats | Modal avec placements, calcul points, upload preuve | 🚧 |
+| Dashboard organisateur | Overview, Participants, Matches, Media modération, Settings, Audit log | 📋 |
+| Page Media/POV | Filtres, grille médias, player modal, admin actions | 📋 |
+| Page Caster | Profil, POV list, consentement Twitch | 📋 |
+| Profil utilisateur | Comptes connectés, mes tournois, préférences | ✅ |
 
 ## 🏗️ Architecture
 
@@ -204,33 +233,91 @@ L'application démarre sur http://localhost:5173
 
 | Méthode | Endpoint | Description |
 |---------|----------|-------------|
-| POST | `/api/v1/auth/register` | Inscription |
-| POST | `/api/v1/auth/login` | Connexion |
-| POST | `/api/v1/auth/refresh` | Rafraîchir tokens |
+| POST | `/api/v1/auth/login` | Connexion (retourne 204 + cookie http-only) |
 | POST | `/api/v1/auth/logout` | Déconnexion |
-| GET | `/api/v1/auth/me` | Utilisateur courant |
+| GET | `/api/v1/auth/me` | Utilisateur courant (id, email, username, roles, providers) |
+| POST | `/api/v1/auth/register` | Inscription |
+| POST | `/api/v1/auth/refresh` | Rafraîchir tokens |
 
-### Tournois (à venir)
+### Tournois
 
 | Méthode | Endpoint | Description |
 |---------|----------|-------------|
 | POST | `/api/v1/tournaments` | Créer un tournoi |
-| GET | `/api/v1/tournaments` | Lister les tournois |
-| GET | `/api/v1/tournaments/{id}` | Détails d'un tournoi |
+| GET | `/api/v1/public/tournaments` | Lister les tournois (+ pagination) |
+| GET | `/api/v1/public/tournaments/{slug}` | Détails d'un tournoi |
+| GET | `/api/v1/public/tournaments/{slug}/standings` | Classement |
+
+### Participants
+
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|
 | POST | `/api/v1/tournaments/{id}/participants` | S'inscrire |
-| POST | `/api/v1/tournaments/{id}/matches` | Générer les matchs |
-| PUT | `/api/v1/matches/{id}/results` | Saisir résultats |
+| DELETE | `/api/v1/participants/{id}` | Se désinscrire |
+
+### Matches & Résultats
+
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|
+| GET | `/api/v1/public/tournaments/{slug}/matches` | Liste des matchs |
+| POST | `/api/v1/matches/{id}/results` | Soumettre résultats (placements, points, notes, evidence_url) |
+
+### Media (POV / Casters / Twitch)
+
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|
+| GET | `/api/v1/tournaments/{id}/media` | Liste des médias |
+| POST | `/api/v1/tournaments/{id}/media/import` | Import VODs Twitch |
+| POST | `/api/v1/tournaments/{id}/media/upload` | Upload média |
+| PUT | `/api/v1/media/{id}/status` | Approuver/Rejeter média |
+| POST | `/api/v1/media/consent` | Consentement caster |
+
+### Admin
+
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|
+| GET | `/api/v1/tournaments/{id}/audit` | Audit log |
+| POST | `/api/v1/admin/tournaments/{id}/regenerate-pairings` | Régénérer pairings |
+
+### Webhooks
+
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|
+| POST | `/api/v1/webhooks/twitch/eventsub` | Callback Twitch EventSub |
+
+### Format d'erreur
+
+```json
+{
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Invalid fields",
+    "details": [{"field": "rules.scoring", "message": "missing"}],
+    "trace_id": "abcd-1234"
+  }
+}
+```
+
+## 🔐 Sécurité
+
+- **Cookies HTTP-only** : Tokens JWT stockés de manière sécurisée
+- **CSRF** : Protection obligatoire sur les mutations
+- **Rate Limiting** : Protection contre les abus
+- **Consentement média** : Obligatoire pour l'import de VODs
+- **OAuth2** : Google, Discord, Twitch
 
 ## 🗺️ Roadmap
 
 - [x] Sprint 1-2 : Authentification & Base
 - [x] Sprint 3 : Entités Tournament, Participant, Match
 - [x] Sprint 3.5 : Design Hextech TFT
-- [ ] Sprint 4 : API Tournois & Pages publiques (en cours)
-- [ ] Sprint 5 : Calcul standings & Tiebreaks
-- [ ] Sprint 6 : OAuth Discord
-- [ ] Sprint 7 : Page Media & POV Twitch
-- [ ] Sprint 8 : Dashboard & Export
+- [x] Sprint 4 : API Tournois & Pages publiques
+- [ ] Sprint 5 : Calcul standings & Tiebreaks (en cours)
+- [ ] Sprint 6 : Saisie résultats avec modal
+- [ ] Sprint 7 : OAuth Discord & Twitch
+- [ ] Sprint 8 : Page Media & POV Twitch
+- [ ] Sprint 9 : Dashboard organisateur
+- [ ] Sprint 10 : Audit log & Admin features
 
 ## 🎨 Thème
 
