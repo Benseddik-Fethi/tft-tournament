@@ -1,0 +1,151 @@
+databaseChangeLog:
+  - changeSet:
+      id: 019-create-media-table
+      author: benseddik fethi
+      changes:
+        - createTable:
+            tableName: media
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: tournament_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: caster_id
+                  type: uuid
+                  constraints:
+                    nullable: true
+              - column:
+                  name: match_id
+                  type: uuid
+                  constraints:
+                    nullable: true
+              - column:
+                  name: type
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: text
+              - column:
+                  name: embed_url
+                  type: varchar(500)
+              - column:
+                  name: thumbnail_url
+                  type: varchar(500)
+              - column:
+                  name: source_url
+                  type: varchar(500)
+              - column:
+                  name: status
+                  type: varchar(20)
+                  defaultValue: 'PENDING'
+                  constraints:
+                    nullable: false
+              - column:
+                  name: moderator_comment
+                  type: text
+              - column:
+                  name: moderated_by
+                  type: uuid
+              - column:
+                  name: moderated_at
+                  type: timestamp with time zone
+              - column:
+                  name: twitch_video_id
+                  type: varchar(100)
+              - column:
+                  name: duration_seconds
+                  type: int
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+
+        - addForeignKeyConstraint:
+            baseTableName: media
+            baseColumnNames: tournament_id
+            constraintName: fk_media_tournament
+            referencedTableName: tournaments
+            referencedColumnNames: id
+            onDelete: CASCADE
+
+        - addForeignKeyConstraint:
+            baseTableName: media
+            baseColumnNames: caster_id
+            constraintName: fk_media_caster
+            referencedTableName: users
+            referencedColumnNames: id
+            onDelete: SET NULL
+
+        - addForeignKeyConstraint:
+            baseTableName: media
+            baseColumnNames: match_id
+            constraintName: fk_media_match
+            referencedTableName: matches
+            referencedColumnNames: id
+            onDelete: SET NULL
+
+        - addForeignKeyConstraint:
+            baseTableName: media
+            baseColumnNames: moderated_by
+            constraintName: fk_media_moderator
+            referencedTableName: users
+            referencedColumnNames: id
+            onDelete: SET NULL
+
+        - createIndex:
+            indexName: idx_media_tournament
+            tableName: media
+            columns:
+              - column:
+                  name: tournament_id
+
+        - createIndex:
+            indexName: idx_media_caster
+            tableName: media
+            columns:
+              - column:
+                  name: caster_id
+
+        - createIndex:
+            indexName: idx_media_match
+            tableName: media
+            columns:
+              - column:
+                  name: match_id
+
+        - createIndex:
+            indexName: idx_media_status
+            tableName: media
+            columns:
+              - column:
+                  name: status
+
+        - createIndex:
+            indexName: idx_media_type
+            tableName: media
+            columns:
+              - column:
+                  name: type

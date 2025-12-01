@@ -68,6 +68,14 @@ databaseChangeLog:
       file: db/changelog/v2/018-create-tournament-admins-table.yaml
 
   # ─────────────────────────────────────────────────────────────────────────────
+  # MEDIA - Gestion des médias et POV (Twitch, uploads)
+  # ─────────────────────────────────────────────────────────────────────────────
+  - include:
+      file: db/changelog/v2/019-create-media-table.yaml
+  - include:
+      file: db/changelog/v2/020-create-media-consents-table.yaml
+
+  # ─────────────────────────────────────────────────────────────────────────────
   # TEST USER ACCOUNTS (non-prod context only)
   # Credentials: admin@tft-tournament.com / Password123!
   #              user@tft-tournament.com / Password123!
