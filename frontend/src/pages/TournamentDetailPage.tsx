@@ -124,10 +124,10 @@ export default function TournamentDetailPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#0A1428] flex items-center justify-center">
+      <div className="min-h-screen bg-[var(--tft-bg-dark)] flex items-center justify-center">
         <div className="text-center">
           <div className="inline-block w-8 h-8 border-2 border-[#C8AA6E] border-t-transparent rounded-full animate-spin" />
-          <p className="mt-4 text-[#A09B8C]">{t('loading')}</p>
+          <p className="mt-4 text-[var(--tft-text-secondary)]">{t('loading')}</p>
         </div>
       </div>
     );
@@ -135,10 +135,10 @@ export default function TournamentDetailPage() {
 
   if (!tournament) {
     return (
-      <div className="min-h-screen bg-[#0A1428] flex items-center justify-center">
+      <div className="min-h-screen bg-[var(--tft-bg-dark)] flex items-center justify-center">
         <div className="text-center">
-          <Trophy className="w-16 h-16 text-[#5B5A56] mx-auto mb-4" />
-          <h2 className="text-xl font-semibold text-[#F0E6D2] mb-2">
+          <Trophy className="w-16 h-16 text-[var(--tft-text-muted)] mx-auto mb-4" />
+          <h2 className="text-xl font-semibold text-[var(--tft-text-primary)] mb-2">
             {t('tournament.notFound')}
           </h2>
           <Link to="/tournaments">
@@ -154,19 +154,19 @@ export default function TournamentDetailPage() {
   const canRegister = tournament.status === 'REGISTRATION_OPEN' && user;
 
   return (
-    <div className="min-h-screen bg-[#0A1428]">
+    <div className="min-h-screen bg-[var(--tft-bg-dark)]">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[rgba(200,170,110,0.1)] bg-[#0A1428]/80 backdrop-blur-md">
+      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[var(--tft-border)] bg-[var(--tft-bg-dark)]/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-8">
             <Link to={ROUTES.HOME}>
               <TftLogo size="sm" />
             </Link>
             <div className="hidden md:flex items-center gap-6">
-              <Link to="/tournaments" className="text-[#A09B8C] hover:text-[#F0E6D2] transition-colors">
+              <Link to="/tournaments" className="text-[var(--tft-text-secondary)] hover:text-[var(--tft-text-primary)] transition-colors">
                 {t('nav.tournaments')}
               </Link>
-              <Link to="/circuits" className="text-[#A09B8C] hover:text-[#F0E6D2] transition-colors">
+              <Link to="/circuits" className="text-[var(--tft-text-secondary)] hover:text-[var(--tft-text-primary)] transition-colors">
                 {t('nav.circuits')}
               </Link>
             </div>
@@ -199,9 +199,9 @@ export default function TournamentDetailPage() {
             className="w-full h-full object-cover"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-[#1E3A5F] to-[#0A1929]" />
+          <div className="w-full h-full bg-gradient-to-br from-[#1E3A5F] to-[var(--tft-bg-card)]" />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A1428] via-[#0A1428]/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--tft-bg-dark)] via-[var(--tft-bg-dark)]/50 to-transparent" />
       </div>
 
       {/* Main Content */}
@@ -211,7 +211,7 @@ export default function TournamentDetailPage() {
           <div className="flex flex-col md:flex-row gap-6 mb-8">
             {/* Logo */}
             {tournament.logoUrl && (
-              <div className="w-24 h-24 rounded-xl bg-[#0A1929] border-2 border-[rgba(200,170,110,0.3)] overflow-hidden flex-shrink-0">
+              <div className="w-24 h-24 rounded-xl bg-[var(--tft-bg-card)] border-2 border-[rgba(200,170,110,0.3)] overflow-hidden flex-shrink-0">
                 <img src={tournament.logoUrl} alt="" className="w-full h-full object-cover" />
               </div>
             )}
@@ -220,16 +220,16 @@ export default function TournamentDetailPage() {
               <div className="flex items-center gap-3 mb-2">
                 <TournamentStatusBadge status={tournament.status} />
                 {tournament.region && (
-                  <span className="text-sm text-[#A09B8C] bg-[rgba(200,170,110,0.1)] px-2 py-1 rounded">
+                  <span className="text-sm text-[var(--tft-text-secondary)] bg-[rgba(200,170,110,0.1)] px-2 py-1 rounded">
                     {tournament.region.name}
                   </span>
                 )}
               </div>
-              <h1 className="text-3xl md:text-4xl font-bold text-[#F0E6D2] mb-2">
+              <h1 className="text-3xl md:text-4xl font-bold text-[var(--tft-text-primary)] mb-2">
                 {tournament.name}
               </h1>
               {tournament.organizer && (
-                <p className="text-[#A09B8C]">
+                <p className="text-[var(--tft-text-secondary)]">
                   {t('tournament.organizedBy')} {tournament.organizer.firstName} {tournament.organizer.lastName}
                 </p>
               )}
@@ -259,21 +259,21 @@ export default function TournamentDetailPage() {
           </div>
 
           {/* Quick Info */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 p-4 bg-[#091428] rounded-lg border border-[rgba(200,170,110,0.1)]">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 p-4 bg-[var(--tft-bg-darker)] rounded-lg border border-[var(--tft-border)]">
             {tournament.startDate && (
               <div className="flex items-center gap-3">
                 <Calendar className="w-5 h-5 text-[#C8AA6E]" />
                 <div>
-                  <p className="text-xs text-[#A09B8C]">{t('tournament.startDate')}</p>
-                  <p className="text-sm text-[#F0E6D2]">{formatDate(tournament.startDate)}</p>
+                  <p className="text-xs text-[var(--tft-text-secondary)]">{t('tournament.startDate')}</p>
+                  <p className="text-sm text-[var(--tft-text-primary)]">{formatDate(tournament.startDate)}</p>
                 </div>
               </div>
             )}
             <div className="flex items-center gap-3">
               <Users className="w-5 h-5 text-[#C8AA6E]" />
               <div>
-                <p className="text-xs text-[#A09B8C]">{t('tournament.participants')}</p>
-                <p className="text-sm text-[#F0E6D2]">
+                <p className="text-xs text-[var(--tft-text-secondary)]">{t('tournament.participants')}</p>
+                <p className="text-sm text-[var(--tft-text-primary)]">
                   {tournament.currentParticipants}
                   {tournament.maxParticipants && ` / ${tournament.maxParticipants}`}
                 </p>
@@ -283,7 +283,7 @@ export default function TournamentDetailPage() {
               <div className="flex items-center gap-3">
                 <Trophy className="w-5 h-5 text-[#C8AA6E]" />
                 <div>
-                  <p className="text-xs text-[#A09B8C]">{t('tournament.prizePool')}</p>
+                  <p className="text-xs text-[var(--tft-text-secondary)]">{t('tournament.prizePool')}</p>
                   <p className="text-sm text-[#C8AA6E]">{tournament.prizePool}</p>
                 </div>
               </div>
@@ -292,8 +292,8 @@ export default function TournamentDetailPage() {
               <div className="flex items-center gap-3">
                 <Clock className="w-5 h-5 text-[#C8AA6E]" />
                 <div>
-                  <p className="text-xs text-[#A09B8C]">{t('tournament.checkIn')}</p>
-                  <p className="text-sm text-[#F0E6D2]">{formatTime(tournament.checkInStart)}</p>
+                  <p className="text-xs text-[var(--tft-text-secondary)]">{t('tournament.checkIn')}</p>
+                  <p className="text-sm text-[var(--tft-text-primary)]">{formatTime(tournament.checkInStart)}</p>
                 </div>
               </div>
             )}
@@ -301,7 +301,7 @@ export default function TournamentDetailPage() {
 
           {/* Tabs */}
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="w-full justify-start bg-[#091428] border border-[rgba(200,170,110,0.1)] p-1 rounded-lg">
+            <TabsList className="w-full justify-start bg-[var(--tft-bg-darker)] border border-[var(--tft-border)] p-1 rounded-lg">
               <TabsTrigger
                 value="info"
                 className="data-[state=active]:bg-[rgba(200,170,110,0.1)] data-[state=active]:text-[#C8AA6E]"
@@ -333,34 +333,34 @@ export default function TournamentDetailPage() {
               <div className="space-y-6">
                 {tournament.description && (
                   <div>
-                    <h3 className="text-lg font-semibold text-[#F0E6D2] mb-2">
+                    <h3 className="text-lg font-semibold text-[var(--tft-text-primary)] mb-2">
                       {t('tournament.description')}
                     </h3>
-                    <p className="text-[#A09B8C] whitespace-pre-line">{tournament.description}</p>
+                    <p className="text-[var(--tft-text-secondary)] whitespace-pre-line">{tournament.description}</p>
                   </div>
                 )}
 
                 {tournament.customRules && (
                   <div>
-                    <h3 className="text-lg font-semibold text-[#F0E6D2] mb-2">
+                    <h3 className="text-lg font-semibold text-[var(--tft-text-primary)] mb-2">
                       {t('tournament.rules')}
                     </h3>
-                    <p className="text-[#A09B8C] whitespace-pre-line">{tournament.customRules}</p>
+                    <p className="text-[var(--tft-text-secondary)] whitespace-pre-line">{tournament.customRules}</p>
                   </div>
                 )}
 
                 {tournament.prizeDistribution && (
                   <div>
-                    <h3 className="text-lg font-semibold text-[#F0E6D2] mb-2">
+                    <h3 className="text-lg font-semibold text-[var(--tft-text-primary)] mb-2">
                       {t('tournament.prizeDistribution')}
                     </h3>
-                    <p className="text-[#A09B8C] whitespace-pre-line">{tournament.prizeDistribution}</p>
+                    <p className="text-[var(--tft-text-secondary)] whitespace-pre-line">{tournament.prizeDistribution}</p>
                   </div>
                 )}
 
                 {tournament.discordUrl && (
                   <div>
-                    <h3 className="text-lg font-semibold text-[#F0E6D2] mb-2">
+                    <h3 className="text-lg font-semibold text-[var(--tft-text-primary)] mb-2">
                       {t('tournament.discord')}
                     </h3>
                     <a
@@ -390,7 +390,7 @@ export default function TournamentDetailPage() {
             {/* Matches Tab */}
             <TabsContent value="matches" className="mt-6">
               {matches.length === 0 ? (
-                <div className="text-center py-8 text-[#A09B8C]">
+                <div className="text-center py-8 text-[var(--tft-text-secondary)]">
                   {t('tournament.noMatches')}
                 </div>
               ) : (

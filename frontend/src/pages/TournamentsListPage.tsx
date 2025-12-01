@@ -110,9 +110,9 @@ export default function TournamentsListPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A1428]">
+    <div className="min-h-screen bg-[var(--tft-bg-dark)]">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[rgba(200,170,110,0.1)] bg-[#0A1428]/80 backdrop-blur-md">
+      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[var(--tft-border)] bg-[var(--tft-bg-dark)]/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-8">
             <Link to={ROUTES.HOME}>
@@ -127,7 +127,7 @@ export default function TournamentsListPage() {
               </Link>
               <Link
                 to="/circuits"
-                className="text-[#A09B8C] hover:text-[#F0E6D2] transition-colors"
+                className="text-[var(--tft-text-secondary)] hover:text-[var(--tft-text-primary)] transition-colors"
               >
                 {t('nav.circuits')}
               </Link>
@@ -166,11 +166,11 @@ export default function TournamentsListPage() {
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-2">
               <Trophy className="w-8 h-8 text-[#C8AA6E]" />
-              <h1 className="text-3xl font-bold text-[#F0E6D2]">
+              <h1 className="text-3xl font-bold text-[var(--tft-text-primary)]">
                 {t('tournaments.title')}
               </h1>
             </div>
-            <p className="text-[#A09B8C]">
+            <p className="text-[var(--tft-text-secondary)]">
               {t('tournaments.subtitle')}
             </p>
           </div>
@@ -180,13 +180,13 @@ export default function TournamentsListPage() {
             <div className="flex flex-col sm:flex-row gap-4">
               {/* Search */}
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#5B5A56]" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[var(--tft-text-muted)]" />
                 <Input
                   type="text"
                   placeholder={t('tournaments.searchPlaceholder')}
                   value={search}
                   onChange={(e) => handleSearch(e.target.value)}
-                  className="pl-10 bg-[#0A1929] border-[rgba(200,170,110,0.2)] text-[#F0E6D2] placeholder:text-[#5B5A56]"
+                  className="pl-10 bg-[var(--tft-bg-card)] border-[var(--tft-border)] text-[var(--tft-text-primary)] placeholder:text-[var(--tft-text-muted)]"
                 />
               </div>
 
@@ -204,16 +204,16 @@ export default function TournamentsListPage() {
 
             {/* Filters Panel */}
             {showFilters && (
-              <div className="flex flex-wrap gap-4 p-4 bg-[#091428] rounded-lg border border-[rgba(200,170,110,0.1)]">
+              <div className="flex flex-wrap gap-4 p-4 bg-[var(--tft-bg-darker)] rounded-lg border border-[var(--tft-border)]">
                 {/* Region Filter */}
                 <div className="flex-1 min-w-[200px]">
-                  <label className="block text-sm text-[#A09B8C] mb-2">
+                  <label className="block text-sm text-[var(--tft-text-secondary)] mb-2">
                     {t('tournaments.filterRegion')}
                   </label>
                   <select
                     value={selectedRegion}
                     onChange={(e) => handleRegionChange(e.target.value)}
-                    className="w-full px-3 py-2 bg-[#0A1929] border border-[rgba(200,170,110,0.2)] rounded text-[#F0E6D2]"
+                    className="w-full px-3 py-2 bg-[var(--tft-bg-card)] border border-[var(--tft-border)] rounded text-[var(--tft-text-primary)]"
                   >
                     <option value="">{t('tournaments.allRegions')}</option>
                     {regions.map((region) => (
@@ -226,13 +226,13 @@ export default function TournamentsListPage() {
 
                 {/* Status Filter */}
                 <div className="flex-1 min-w-[200px]">
-                  <label className="block text-sm text-[#A09B8C] mb-2">
+                  <label className="block text-sm text-[var(--tft-text-secondary)] mb-2">
                     {t('tournaments.filterStatus')}
                   </label>
                   <select
                     value={selectedStatus}
                     onChange={(e) => handleStatusChange(e.target.value as TournamentStatus | '')}
-                    className="w-full px-3 py-2 bg-[#0A1929] border border-[rgba(200,170,110,0.2)] rounded text-[#F0E6D2]"
+                    className="w-full px-3 py-2 bg-[var(--tft-bg-card)] border border-[var(--tft-border)] rounded text-[var(--tft-text-primary)]"
                   >
                     <option value="">{t('tournaments.allStatuses')}</option>
                     {statuses.map((status) => (
@@ -250,21 +250,21 @@ export default function TournamentsListPage() {
           {isLoading ? (
             <div className="text-center py-16">
               <div className="inline-block w-8 h-8 border-2 border-[#C8AA6E] border-t-transparent rounded-full animate-spin" />
-              <p className="mt-4 text-[#A09B8C]">{t('loading')}</p>
+              <p className="mt-4 text-[var(--tft-text-secondary)]">{t('loading')}</p>
             </div>
           ) : tournaments.length === 0 ? (
             <div className="text-center py-16">
-              <Trophy className="w-16 h-16 text-[#5B5A56] mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-[#F0E6D2] mb-2">
+              <Trophy className="w-16 h-16 text-[var(--tft-text-muted)] mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-[var(--tft-text-primary)] mb-2">
                 {t('tournaments.noResults')}
               </h3>
-              <p className="text-[#A09B8C]">
+              <p className="text-[var(--tft-text-secondary)]">
                 {t('tournaments.noResultsHint')}
               </p>
             </div>
           ) : (
             <>
-              <p className="text-sm text-[#A09B8C] mb-4">
+              <p className="text-sm text-[var(--tft-text-secondary)] mb-4">
                 {t('tournaments.resultsCount', { count: tournaments.length })}
               </p>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

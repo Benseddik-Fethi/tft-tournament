@@ -44,16 +44,16 @@ export function CircuitCard({ circuit, className }: CircuitCardProps) {
               alt={circuit.name}
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A1929] to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[var(--tft-bg-card)] to-transparent" />
           </div>
         ) : (
-          <div className="h-32 bg-gradient-to-br from-[#1E3A5F] to-[#0A1929] rounded-t-xl" />
+          <div className="h-32 bg-gradient-to-br from-[#1E3A5F] to-[var(--tft-bg-card)] rounded-t-xl" />
         )}
 
         <CardHeader className="relative -mt-8 pb-2">
           <div className="flex items-end gap-4">
             {/* Logo */}
-            <div className="w-16 h-16 rounded-xl bg-[#0A1929] border-2 border-[rgba(200,170,110,0.3)] overflow-hidden flex-shrink-0">
+            <div className="w-16 h-16 rounded-xl bg-[var(--tft-bg-card)] border-2 border-[rgba(200,170,110,0.3)] overflow-hidden flex-shrink-0">
               {circuit.logoUrl ? (
                 <img
                   src={circuit.logoUrl}
@@ -73,7 +73,7 @@ export function CircuitCard({ circuit, className }: CircuitCardProps) {
             </span>
           </div>
 
-          <h3 className="text-lg font-semibold text-[#F0E6D2] mt-3 line-clamp-2 group-hover:text-[#C8AA6E] transition-colors">
+          <h3 className="text-lg font-semibold text-[var(--tft-text-primary)] mt-3 line-clamp-2 group-hover:text-[#C8AA6E] transition-colors">
             {circuit.name}
           </h3>
         </CardHeader>
@@ -81,14 +81,14 @@ export function CircuitCard({ circuit, className }: CircuitCardProps) {
         <CardContent className="pt-0">
           <div className="space-y-2">
             {/* Year */}
-            <div className="flex items-center gap-2 text-sm text-[#A09B8C]">
+            <div className="flex items-center gap-2 text-sm text-[var(--tft-text-secondary)]">
               <Calendar className="w-4 h-4 text-[#C8AA6E]" />
               <span>{circuit.year}</span>
             </div>
 
             {/* Region */}
             {circuit.region && (
-              <div className="flex items-center gap-2 text-sm text-[#A09B8C]">
+              <div className="flex items-center gap-2 text-sm text-[var(--tft-text-secondary)]">
                 <Globe className="w-4 h-4 text-[#C8AA6E]" />
                 <span>{circuit.region.name}</span>
               </div>
@@ -104,7 +104,7 @@ export function CircuitCard({ circuit, className }: CircuitCardProps) {
 
             {/* Active Season */}
             {circuit.activeSeasonName && (
-              <div className="mt-4 pt-4 border-t border-[rgba(200,170,110,0.1)]">
+              <div className="mt-4 pt-4 border-t border-[var(--tft-border)]">
                 <span className="text-xs text-[#0AC8B9]">
                   {t('activeSeason')}: {circuit.activeSeasonName}
                 </span>

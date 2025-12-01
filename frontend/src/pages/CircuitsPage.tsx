@@ -72,9 +72,9 @@ export default function CircuitsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A1428]">
+    <div className="min-h-screen bg-[var(--tft-bg-dark)]">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[rgba(200,170,110,0.1)] bg-[#0A1428]/80 backdrop-blur-md">
+      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[var(--tft-border)] bg-[var(--tft-bg-dark)]/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-8">
             <Link to={ROUTES.HOME}>
@@ -83,7 +83,7 @@ export default function CircuitsPage() {
             <div className="hidden md:flex items-center gap-6">
               <Link
                 to="/tournaments"
-                className="text-[#A09B8C] hover:text-[#F0E6D2] transition-colors"
+                className="text-[var(--tft-text-secondary)] hover:text-[var(--tft-text-primary)] transition-colors"
               >
                 {t('nav.tournaments')}
               </Link>
@@ -128,11 +128,11 @@ export default function CircuitsPage() {
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-2">
               <Layers className="w-8 h-8 text-[#C8AA6E]" />
-              <h1 className="text-3xl font-bold text-[#F0E6D2]">
+              <h1 className="text-3xl font-bold text-[var(--tft-text-primary)]">
                 {t('circuits.title')}
               </h1>
             </div>
-            <p className="text-[#A09B8C]">
+            <p className="text-[var(--tft-text-secondary)]">
               {t('circuits.subtitle')}
             </p>
           </div>
@@ -144,7 +144,7 @@ export default function CircuitsPage() {
               className={`px-4 py-2 rounded-lg font-medium transition-all ${
                 selectedRegion === ''
                   ? 'bg-[#C8AA6E] text-[#0A1428]'
-                  : 'bg-[rgba(200,170,110,0.1)] text-[#F0E6D2] hover:bg-[rgba(200,170,110,0.2)]'
+                  : 'bg-[rgba(200,170,110,0.1)] text-[var(--tft-text-primary)] hover:bg-[rgba(200,170,110,0.2)]'
               }`}
             >
               <Globe className="w-4 h-4 inline-block mr-2" />
@@ -157,7 +157,7 @@ export default function CircuitsPage() {
                 className={`px-4 py-2 rounded-lg font-medium transition-all ${
                   selectedRegion === region.id
                     ? 'bg-[#C8AA6E] text-[#0A1428]'
-                    : 'bg-[rgba(200,170,110,0.1)] text-[#F0E6D2] hover:bg-[rgba(200,170,110,0.2)]'
+                    : 'bg-[rgba(200,170,110,0.1)] text-[var(--tft-text-primary)] hover:bg-[rgba(200,170,110,0.2)]'
                 }`}
               >
                 {region.code}
@@ -169,21 +169,21 @@ export default function CircuitsPage() {
           {isLoading ? (
             <div className="text-center py-16">
               <div className="inline-block w-8 h-8 border-2 border-[#C8AA6E] border-t-transparent rounded-full animate-spin" />
-              <p className="mt-4 text-[#A09B8C]">{t('loading')}</p>
+              <p className="mt-4 text-[var(--tft-text-secondary)]">{t('loading')}</p>
             </div>
           ) : circuits.length === 0 ? (
             <div className="text-center py-16">
-              <Layers className="w-16 h-16 text-[#5B5A56] mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-[#F0E6D2] mb-2">
+              <Layers className="w-16 h-16 text-[var(--tft-text-muted)] mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-[var(--tft-text-primary)] mb-2">
                 {t('circuits.noResults')}
               </h3>
-              <p className="text-[#A09B8C]">
+              <p className="text-[var(--tft-text-secondary)]">
                 {t('circuits.noResultsHint')}
               </p>
             </div>
           ) : (
             <>
-              <p className="text-sm text-[#A09B8C] mb-4">
+              <p className="text-sm text-[var(--tft-text-secondary)] mb-4">
                 {t('circuits.resultsCount', { count: circuits.length })}
               </p>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
