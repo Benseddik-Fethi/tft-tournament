@@ -54,7 +54,6 @@ export default function RegisterPage() {
             icon={Shield}
             title={t('register.title')}
             description={t('register.subtitle')}
-            backgroundGradient="from-[#0A1428] via-[#091428] to-[#0A1929]"
             iconGradient="from-[#C8AA6E] to-[#785A28]"
             iconShadowColor="shadow-[0_0_20px_rgba(200,170,110,0.4)]"
             titleColor="text-[#C8AA6E]"
@@ -62,19 +61,19 @@ export default function RegisterPage() {
             <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-3">
                     <div className="space-y-1.5">
-                        <Label className="text-[#A09B8C] pl-1">{t('register.firstName')}</Label>
+                        <Label className="text-[var(--tft-text-secondary)] pl-1">{t('register.firstName')}</Label>
                         <Input
                             placeholder={t('register.firstNamePlaceholder')}
-                            className="h-11 bg-[#1E2328] border-[rgba(200,170,110,0.2)] focus:bg-[#1E293B] focus:border-[#C8AA6E] rounded-xl text-[#F0E6D2] placeholder:text-[#5B5A56]"
+                            className="h-11 bg-[var(--tft-bg-surface)] border-[var(--tft-border)] focus:bg-[var(--tft-bg-elevated)] focus:border-[#C8AA6E] rounded-xl text-[var(--tft-text-primary)] placeholder:text-[var(--tft-text-muted)]"
                             value={formData.firstName}
                             onChange={(e) => setFormData({...formData, firstName: e.target.value})}
                         />
                     </div>
                     <div className="space-y-1.5">
-                        <Label className="text-[#A09B8C] pl-1">{t('register.lastName')}</Label>
+                        <Label className="text-[var(--tft-text-secondary)] pl-1">{t('register.lastName')}</Label>
                         <Input
                             placeholder={t('register.lastNamePlaceholder')}
-                            className="h-11 bg-[#1E2328] border-[rgba(200,170,110,0.2)] focus:bg-[#1E293B] focus:border-[#C8AA6E] rounded-xl text-[#F0E6D2] placeholder:text-[#5B5A56]"
+                            className="h-11 bg-[var(--tft-bg-surface)] border-[var(--tft-border)] focus:bg-[var(--tft-bg-elevated)] focus:border-[#C8AA6E] rounded-xl text-[var(--tft-text-primary)] placeholder:text-[var(--tft-text-muted)]"
                             value={formData.lastName}
                             onChange={(e) => setFormData({...formData, lastName: e.target.value})}
                         />
@@ -82,12 +81,12 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="space-y-1.5">
-                    <Label className="text-[#A09B8C] pl-1">{t('register.email')}</Label>
+                    <Label className="text-[var(--tft-text-secondary)] pl-1">{t('register.email')}</Label>
                     <Input
                         icon={Mail}
                         placeholder={t('register.emailPlaceholder')}
                         type="email"
-                        className="h-11 pl-10 bg-[#1E2328] border-[rgba(200,170,110,0.2)] focus:bg-[#1E293B] focus:border-[#C8AA6E] rounded-xl text-[#F0E6D2] placeholder:text-[#5B5A56]"
+                        className="h-11 pl-10 bg-[var(--tft-bg-surface)] border-[var(--tft-border)] focus:bg-[var(--tft-bg-elevated)] focus:border-[#C8AA6E] rounded-xl text-[var(--tft-text-primary)] placeholder:text-[var(--tft-text-muted)]"
                         value={formData.email}
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
                     />
@@ -122,14 +121,14 @@ export default function RegisterPage() {
 
             <div className="relative py-2">
                 <div className="absolute inset-0 flex items-center"><Separator
-                    className="bg-[rgba(200,170,110,0.15)]"/></div>
+                    className="bg-[var(--tft-border)]"/></div>
                 <div className="relative flex justify-center text-xs uppercase"><span
-                    className="bg-[#0A1929] px-4 text-[#5B5A56] font-medium">{t('register.or')}</span></div>
+                    className="bg-[var(--tft-bg-card)] px-4 text-[var(--tft-text-muted)] font-medium">{t('register.or')}</span></div>
             </div>
 
             <SocialLoginButtons disabled={isLoading} />
 
-            <p className="text-center text-sm text-[#A09B8C] mt-4">
+            <p className="text-center text-sm text-[var(--tft-text-secondary)] mt-4">
                 {t('register.hasAccount')} <Link to={ROUTES.LOGIN} className="text-[#C8AA6E] font-bold hover:underline ml-1">{t('register.signIn')}</Link>
             </p>
         </AuthCard>
