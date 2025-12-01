@@ -32,23 +32,23 @@ export default function ProfilePage() {
         <div className="space-y-8 animate-in fade-in duration-500">
             {/* Header */}
             <div>
-                <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+                <h1 className="text-3xl font-bold text-[#0A1428] dark:text-[#F0E6D2]">
                     {t('pages:profile.title')}
                 </h1>
-                <p className="text-gray-500 dark:text-gray-400 mt-2">
+                <p className="text-[#5B5A56] dark:text-[#A09B8C] mt-2">
                     {t('pages:profile.subtitle')}
                 </p>
             </div>
 
             {/* Personal Information Section */}
-            <Card className="p-6 border border-gray-100 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900 rounded-2xl">
+            <Card className="p-6 border border-[#C8D4E0] dark:border-[#1E3A5F] shadow-sm bg-[#FFFFFF] dark:bg-[#0A1929] rounded-2xl">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-900/20 flex items-center justify-center text-indigo-600">
+                        <div className="w-10 h-10 rounded-xl bg-[#C8AA6E]/10 dark:bg-[#C8AA6E]/20 flex items-center justify-center text-[#C8AA6E]">
                             <User size={20} />
                         </div>
-                        <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        <h2 className="text-lg font-semibold text-[#0A1428] dark:text-[#F0E6D2]">
                             {t('pages:profile.personalInfo')}
                         </h2>
                     </div>
@@ -64,7 +64,7 @@ export default function ProfilePage() {
                     {/* Avatar */}
                     <Avatar className="h-16 w-16 flex-shrink-0">
                         <AvatarImage />
-                        <AvatarFallback className="text-lg bg-gradient-to-br from-indigo-400 to-purple-400 text-white">
+                        <AvatarFallback className="text-lg bg-gradient-to-br from-[#C8AA6E] to-[#785A28] text-[#0A1428]">
                             {user?.firstName?.[0] || ''}{user?.lastName?.[0] || ''}
                         </AvatarFallback>
                     </Avatar>
@@ -72,60 +72,60 @@ export default function ProfilePage() {
                     {/* 2 columns information grid */}
                     <div className="flex-1 grid grid-cols-2 gap-x-8 gap-y-4">
                         <div>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">{t('pages:profile.firstName')}</p>
-                            <p className="font-medium text-gray-900 dark:text-white">{user?.firstName || '-'}</p>
+                            <p className="text-sm text-[#5B5A56] dark:text-[#A09B8C]">{t('pages:profile.firstName')}</p>
+                            <p className="font-medium text-[#0A1428] dark:text-[#F0E6D2]">{user?.firstName || '-'}</p>
                         </div>
                         <div>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">{t('pages:profile.lastName')}</p>
-                            <p className="font-medium text-gray-900 dark:text-white">{user?.lastName || '-'}</p>
+                            <p className="text-sm text-[#5B5A56] dark:text-[#A09B8C]">{t('pages:profile.lastName')}</p>
+                            <p className="font-medium text-[#0A1428] dark:text-[#F0E6D2]">{user?.lastName || '-'}</p>
                         </div>
                         <div>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">{t('pages:profile.email')}</p>
-                            <p className="font-medium text-gray-900 dark:text-white">{user?.email || '-'}</p>
+                            <p className="text-sm text-[#5B5A56] dark:text-[#A09B8C]">{t('pages:profile.email')}</p>
+                            <p className="font-medium text-[#0A1428] dark:text-[#F0E6D2]">{user?.email || '-'}</p>
                         </div>
                         <div>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">{t('pages:profile.memberSince')}</p>
-                            <p className="font-medium text-gray-900 dark:text-white">{formatDate(null)}</p>
+                            <p className="text-sm text-[#5B5A56] dark:text-[#A09B8C]">{t('pages:profile.memberSince')}</p>
+                            <p className="font-medium text-[#0A1428] dark:text-[#F0E6D2]">{formatDate(null)}</p>
                         </div>
                     </div>
                 </div>
             </Card>
 
             {/* Security Section */}
-            <Card className="p-6 border border-gray-100 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900 rounded-2xl">
+            <Card className="p-6 border border-[#C8D4E0] dark:border-[#1E3A5F] shadow-sm bg-[#FFFFFF] dark:bg-[#0A1929] rounded-2xl">
                 <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 rounded-xl bg-green-100 dark:bg-green-900/20 flex items-center justify-center text-green-600">
+                    <div className="w-10 h-10 rounded-xl bg-[#0AC8B9]/10 dark:bg-[#0AC8B9]/20 flex items-center justify-center text-[#0AC8B9]">
                         <Shield size={20} />
                     </div>
-                    <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+                    <h2 className="text-xl font-bold text-[#0A1428] dark:text-[#F0E6D2]">
                         {t('pages:profile.security.title')}
                     </h2>
                 </div>
 
                 <div className="space-y-4">
                     {/* Change Password */}
-                    <div className="flex items-center justify-between p-4 rounded-xl border border-gray-100 dark:border-slate-800 bg-gray-50 dark:bg-slate-800/50">
+                    <div className="flex items-center justify-between p-4 rounded-xl border border-[#C8D4E0] dark:border-[#1E3A5F] bg-[#F0F4F8] dark:bg-[#1E2328]">
                         <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-900/20 flex items-center justify-center text-amber-600">
+                            <div className="w-10 h-10 rounded-xl bg-[#C8AA6E]/10 dark:bg-[#C8AA6E]/20 flex items-center justify-center text-[#C8AA6E]">
                                 <Key size={20} />
                             </div>
                             <div>
-                                <p className="font-medium text-gray-900 dark:text-white">{t('pages:profile.security.changePassword')}</p>
-                                <p className="text-sm text-gray-500 dark:text-gray-400">{t('pages:profile.security.changePasswordDescription')}</p>
+                                <p className="font-medium text-[#0A1428] dark:text-[#F0E6D2]">{t('pages:profile.security.changePassword')}</p>
+                                <p className="text-sm text-[#5B5A56] dark:text-[#A09B8C]">{t('pages:profile.security.changePasswordDescription')}</p>
                             </div>
                         </div>
                         <Button variant="outline">{t('common:actions.edit')}</Button>
                     </div>
 
                     {/* Active Sessions */}
-                    <div className="flex items-center justify-between p-4 rounded-xl border border-gray-100 dark:border-slate-800 bg-gray-50 dark:bg-slate-800/50">
+                    <div className="flex items-center justify-between p-4 rounded-xl border border-[#C8D4E0] dark:border-[#1E3A5F] bg-[#F0F4F8] dark:bg-[#1E2328]">
                         <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/20 flex items-center justify-center text-blue-600">
+                            <div className="w-10 h-10 rounded-xl bg-[#0AC8B9]/10 dark:bg-[#0AC8B9]/20 flex items-center justify-center text-[#0AC8B9]">
                                 <Monitor size={20} />
                             </div>
                             <div>
-                                <p className="font-medium text-gray-900 dark:text-white">{t('pages:profile.security.sessions')}</p>
-                                <p className="text-sm text-gray-500 dark:text-gray-400">{t('pages:profile.security.sessionsDescription')}</p>
+                                <p className="font-medium text-[#0A1428] dark:text-[#F0E6D2]">{t('pages:profile.security.sessions')}</p>
+                                <p className="text-sm text-[#5B5A56] dark:text-[#A09B8C]">{t('pages:profile.security.sessionsDescription')}</p>
                             </div>
                         </div>
                         <Button variant="outline">{t('common:actions.view')}</Button>
@@ -134,7 +134,7 @@ export default function ProfilePage() {
             </Card>
 
             {/* Danger Zone */}
-            <Card className="p-6 border border-red-200 dark:border-red-900/50 shadow-sm bg-white dark:bg-slate-900 rounded-2xl">
+            <Card className="p-6 border border-red-200 dark:border-red-900/50 shadow-sm bg-[#FFFFFF] dark:bg-[#0A1929] rounded-2xl">
                 <div className="flex items-center gap-3 mb-6">
                     <div className="w-10 h-10 rounded-xl bg-red-100 dark:bg-red-900/20 flex items-center justify-center text-red-600">
                         <AlertTriangle size={20} />
@@ -146,8 +146,8 @@ export default function ProfilePage() {
 
                 <div className="flex items-center justify-between p-4 rounded-xl border border-red-200 dark:border-red-900/30 bg-red-50 dark:bg-red-900/10">
                     <div>
-                        <p className="font-medium text-gray-900 dark:text-white">{t('pages:profile.dangerZone.deleteAccount')}</p>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">{t('pages:profile.dangerZone.deleteWarning')}</p>
+                        <p className="font-medium text-[#0A1428] dark:text-[#F0E6D2]">{t('pages:profile.dangerZone.deleteAccount')}</p>
+                        <p className="text-sm text-[#5B5A56] dark:text-[#A09B8C]">{t('pages:profile.dangerZone.deleteWarning')}</p>
                     </div>
                     <Button variant="destructive">
                         <Trash2 className="h-4 w-4 mr-2" />

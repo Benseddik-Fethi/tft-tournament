@@ -40,28 +40,28 @@ export default function ForgotPasswordPage() {
             description={isSubmitted
                 ? t('forgotPassword.subtitleSuccess')
                 : t('forgotPassword.subtitle')}
-            iconGradient="from-rose-400 to-pink-500"
-            titleColor="text-rose-500"
-            backgroundGradient="from-rose-50 via-pink-50 to-amber-50"
-            iconShadowColor="shadow-rose-200"
+            iconGradient="from-[#C8AA6E] to-[#785A28]"
+            titleColor="text-[#C8AA6E]"
+            backgroundGradient="from-[#F0F4F8] via-[#E8EEF4] to-[#F0E6D2]/20 dark:from-[#0A1428] dark:via-[#091428] dark:to-[#0A1929]"
+            iconShadowColor="shadow-[#C8AA6E]/30"
         >
             {isSubmitted ? (
                 <div className="text-center space-y-6">
-                    <div className="mx-auto w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center">
-                        <CheckCircle size={32} className="text-green-500" />
+                    <div className="mx-auto w-16 h-16 bg-[#0AC8B9]/10 dark:bg-[#0AC8B9]/20 rounded-full flex items-center justify-center">
+                        <CheckCircle size={32} className="text-[#0AC8B9]" />
                     </div>
                     <div className="space-y-2">
-                        <p className="text-gray-600 dark:text-gray-300">
+                        <p className="text-[#5B5A56] dark:text-[#A09B8C]">
                             {t('forgotPassword.successMessage')}
                         </p>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                        <p className="text-sm text-[#5B5A56] dark:text-[#A09B8C]">
                             {t('forgotPassword.checkSpam')}
                         </p>
                     </div>
                     <Link to={ROUTES.LOGIN}>
                         <Button
                             variant="outline"
-                            className="w-full h-12 rounded-xl border-gray-200 dark:border-slate-700 font-semibold"
+                            className="w-full h-12 rounded-xl border-[#C8D4E0] dark:border-[#1E3A5F] font-semibold"
                         >
                             <ArrowLeft className="mr-2 h-4 w-4" />
                             {t('forgotPassword.backToLogin')}
@@ -71,12 +71,12 @@ export default function ForgotPasswordPage() {
             ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="space-y-1.5">
-                        <Label className="text-gray-600 dark:text-gray-300 font-medium pl-1">
+                        <Label className="text-[#5B5A56] dark:text-[#A09B8C] font-medium pl-1">
                             {t('forgotPassword.email')}
                         </Label>
                         <Input
                             icon={Mail}
-                            className="h-12 bg-slate-50 dark:bg-slate-950 border-transparent focus:bg-white dark:focus:bg-slate-900 focus:border-rose-200 rounded-xl pl-11 text-gray-600 dark:text-white shadow-sm"
+                            className="h-12 bg-[#F0F4F8] dark:bg-[#0A1428] border-transparent focus:bg-[#FFFFFF] dark:focus:bg-[#0A1929] focus:border-[#C8AA6E]/50 rounded-xl pl-11 text-[#0A1428] dark:text-[#F0E6D2] shadow-sm"
                             placeholder={t('forgotPassword.emailPlaceholder')}
                             type="email"
                             value={email}
@@ -90,7 +90,7 @@ export default function ForgotPasswordPage() {
                     <Button
                         type="submit"
                         disabled={isLoading || !email}
-                        className="w-full h-14 text-base font-bold rounded-2xl bg-gradient-to-r from-[#FF6B6B] to-[#FF8E8E] hover:opacity-90 shadow-md shadow-rose-100 dark:shadow-none text-white disabled:opacity-50"
+                        className="w-full h-14 text-base font-bold rounded-2xl bg-gradient-to-r from-[#C8AA6E] to-[#785A28] hover:opacity-90 shadow-md shadow-[#C8AA6E]/20 dark:shadow-none text-[#0A1428] disabled:opacity-50"
                     >
                         {isLoading ? (
                             <>
@@ -105,7 +105,7 @@ export default function ForgotPasswordPage() {
                     <div className="text-center pt-2">
                         <Link
                             to={ROUTES.LOGIN}
-                            className="text-sm text-gray-500 dark:text-gray-400 hover:text-rose-500 font-medium inline-flex items-center"
+                            className="text-sm text-[#5B5A56] dark:text-[#A09B8C] hover:text-[#C8AA6E] font-medium inline-flex items-center"
                         >
                             <ArrowLeft className="mr-1 h-4 w-4" />
                             {t('forgotPassword.backToLogin')}

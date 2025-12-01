@@ -29,26 +29,26 @@ export default function VerifyEmailPage() {
     }, [token]);
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-slate-950 flex items-center justify-center p-4 relative">
+        <div className="min-h-screen bg-[#F0F4F8] dark:bg-[#0A1428] flex items-center justify-center p-4 relative">
             {/* Language switcher - top right position */}
             <div className="absolute top-4 right-4 z-20">
                 <LanguageSwitcher />
             </div>
             
-            <Card className="w-full max-w-md text-center p-6">
+            <Card className="w-full max-w-md text-center p-6 bg-[#FFFFFF] dark:bg-[#0A1929] border-[#C8D4E0] dark:border-[#1E3A5F]">
                 <CardContent className="space-y-6 pt-6">
                     {status === "loading" && (
                         <>
-                            <Loader2 className="w-12 h-12 text-rose-500 animate-spin mx-auto" />
-                            <h2 className="text-xl font-semibold">{t('verifyEmail.verifying')}</h2>
+                            <Loader2 className="w-12 h-12 text-[#C8AA6E] animate-spin mx-auto" />
+                            <h2 className="text-xl font-semibold text-[#0A1428] dark:text-[#F0E6D2]">{t('verifyEmail.verifying')}</h2>
                         </>
                     )}
 
                     {status === "success" && (
                         <>
-                            <CheckCircle className="w-12 h-12 text-green-500 mx-auto" />
-                            <h2 className="text-xl font-bold text-green-600">{t('verifyEmail.successTitle')}</h2>
-                            <p className="text-gray-500">{t('verifyEmail.successMessage')}</p>
+                            <CheckCircle className="w-12 h-12 text-[#0AC8B9] mx-auto" />
+                            <h2 className="text-xl font-bold text-[#0AC8B9]">{t('verifyEmail.successTitle')}</h2>
+                            <p className="text-[#5B5A56] dark:text-[#A09B8C]">{t('verifyEmail.successMessage')}</p>
                             <Button onClick={() => navigate(ROUTES.LOGIN)} className="w-full">
                                 {t('verifyEmail.signIn')}
                             </Button>
@@ -59,7 +59,7 @@ export default function VerifyEmailPage() {
                         <>
                             <XCircle className="w-12 h-12 text-red-500 mx-auto" />
                             <h2 className="text-xl font-bold text-red-600">{t('verifyEmail.errorTitle')}</h2>
-                            <p className="text-gray-500">{t('verifyEmail.errorMessage')}</p>
+                            <p className="text-[#5B5A56] dark:text-[#A09B8C]">{t('verifyEmail.errorMessage')}</p>
                             <Button variant="outline" onClick={() => navigate(ROUTES.LOGIN)} className="w-full">
                                 {t('verifyEmail.backToHome')}
                             </Button>

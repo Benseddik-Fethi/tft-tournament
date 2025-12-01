@@ -74,15 +74,15 @@ export default function ResetPasswordPage() {
     // Loading state
     if (status === "loading") {
         return (
-            <div className="min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 to-amber-50 flex items-center justify-center p-6 relative overflow-hidden dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+            <div className="min-h-screen bg-gradient-to-br from-[#F0F4F8] via-[#E8EEF4] to-[#F0E6D2]/20 flex items-center justify-center p-6 relative overflow-hidden dark:from-[#0A1428] dark:via-[#091428] dark:to-[#0A1929]">
                 {/* Language switcher - top right position */}
                 <div className="absolute top-4 right-4 z-20">
                     <LanguageSwitcher />
                 </div>
-                <Card className="w-full max-w-md relative z-10 border-white/50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm shadow-xl dark:border-slate-800">
+                <Card className="w-full max-w-md relative z-10 border-[#C8D4E0]/50 bg-[#FFFFFF]/80 dark:bg-[#0A1929]/80 backdrop-blur-sm shadow-xl dark:border-[#1E3A5F]">
                     <CardContent className="p-8 text-center">
-                        <Loader2 className="w-12 h-12 text-rose-500 animate-spin mx-auto mb-4" />
-                        <p className="text-gray-600 dark:text-gray-300 font-medium">{t('resetPassword.verifyingLink')}</p>
+                        <Loader2 className="w-12 h-12 text-[#C8AA6E] animate-spin mx-auto mb-4" />
+                        <p className="text-[#5B5A56] dark:text-[#A09B8C] font-medium">{t('resetPassword.verifyingLink')}</p>
                     </CardContent>
                 </Card>
             </div>
@@ -92,12 +92,12 @@ export default function ResetPasswordPage() {
     // Invalid token state
     if (status === "invalid") {
         return (
-            <div className="min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 to-amber-50 flex items-center justify-center p-6 relative overflow-hidden dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+            <div className="min-h-screen bg-gradient-to-br from-[#F0F4F8] via-[#E8EEF4] to-[#F0E6D2]/20 flex items-center justify-center p-6 relative overflow-hidden dark:from-[#0A1428] dark:via-[#091428] dark:to-[#0A1929]">
                 {/* Language switcher - top right position */}
                 <div className="absolute top-4 right-4 z-20">
                     <LanguageSwitcher />
                 </div>
-                <Card className="w-full max-w-md relative z-10 border-white/50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm shadow-xl dark:border-slate-800">
+                <Card className="w-full max-w-md relative z-10 border-[#C8D4E0]/50 bg-[#FFFFFF]/80 dark:bg-[#0A1929]/80 backdrop-blur-sm shadow-xl dark:border-[#1E3A5F]">
                     <CardHeader className="text-center pt-10">
                         <div className="mx-auto w-20 h-20 bg-red-100 dark:bg-red-900/30 rounded-3xl mb-4 flex items-center justify-center">
                             <XCircle size={40} className="text-red-500" />
@@ -105,24 +105,24 @@ export default function ResetPasswordPage() {
                         <CardTitle className="text-2xl font-bold text-red-500 mb-1">
                             {t('resetPassword.invalidLink')}
                         </CardTitle>
-                        <CardDescription className="text-gray-500 dark:text-gray-400 font-medium">
+                        <CardDescription className="text-[#5B5A56] dark:text-[#A09B8C] font-medium">
                             {t('resetPassword.invalidLinkDescription')}
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="p-8 space-y-4">
-                        <p className="text-center text-gray-600 dark:text-gray-300 text-sm">
+                        <p className="text-center text-[#5B5A56] dark:text-[#A09B8C] text-sm">
                             {t('resetPassword.linkExpiredMessage')}
                         </p>
                         <div className="space-y-3">
                             <Link to={ROUTES.AUTH.FORGOT_PASSWORD}>
-                                <Button className="w-full h-12 text-base font-bold rounded-2xl bg-gradient-to-r from-[#FF6B6B] to-[#FF8E8E] hover:opacity-90 shadow-md shadow-rose-100 dark:shadow-none text-white">
+                                <Button className="w-full h-12 text-base font-bold rounded-2xl bg-gradient-to-r from-[#C8AA6E] to-[#785A28] hover:opacity-90 shadow-md shadow-[#C8AA6E]/20 dark:shadow-none text-[#0A1428]">
                                     {t('resetPassword.requestNewLink')}
                                 </Button>
                             </Link>
                             <Link to={ROUTES.LOGIN}>
                                 <Button
                                     variant="outline"
-                                    className="w-full h-12 rounded-xl border-gray-200 dark:border-slate-700 font-semibold"
+                                    className="w-full h-12 rounded-xl border-[#C8D4E0] dark:border-[#1E3A5F] font-semibold"
                                 >
                                     <ArrowLeft className="mr-2 h-4 w-4" />
                                     {t('resetPassword.backToLogin')}
@@ -138,27 +138,27 @@ export default function ResetPasswordPage() {
     // Success state
     if (status === "success") {
         return (
-            <div className="min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 to-amber-50 flex items-center justify-center p-6 relative overflow-hidden dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+            <div className="min-h-screen bg-gradient-to-br from-[#F0F4F8] via-[#E8EEF4] to-[#F0E6D2]/20 flex items-center justify-center p-6 relative overflow-hidden dark:from-[#0A1428] dark:via-[#091428] dark:to-[#0A1929]">
                 {/* Language switcher - top right position */}
                 <div className="absolute top-4 right-4 z-20">
                     <LanguageSwitcher />
                 </div>
-                <Card className="w-full max-w-md relative z-10 border-white/50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm shadow-xl dark:border-slate-800">
+                <Card className="w-full max-w-md relative z-10 border-[#C8D4E0]/50 bg-[#FFFFFF]/80 dark:bg-[#0A1929]/80 backdrop-blur-sm shadow-xl dark:border-[#1E3A5F]">
                     <CardHeader className="text-center pt-10">
-                        <div className="mx-auto w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-3xl mb-4 flex items-center justify-center">
-                            <CheckCircle size={40} className="text-green-500" />
+                        <div className="mx-auto w-20 h-20 bg-[#0AC8B9]/10 dark:bg-[#0AC8B9]/20 rounded-3xl mb-4 flex items-center justify-center">
+                            <CheckCircle size={40} className="text-[#0AC8B9]" />
                         </div>
-                        <CardTitle className="text-2xl font-bold text-green-500 mb-1">
+                        <CardTitle className="text-2xl font-bold text-[#0AC8B9] mb-1">
                             {t('resetPassword.successTitle')}
                         </CardTitle>
-                        <CardDescription className="text-gray-500 dark:text-gray-400 font-medium">
+                        <CardDescription className="text-[#5B5A56] dark:text-[#A09B8C] font-medium">
                             {t('resetPassword.successMessage')}
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="p-8">
                         <Button
                             onClick={() => navigate(ROUTES.LOGIN)}
-                            className="w-full h-14 text-base font-bold rounded-2xl bg-gradient-to-r from-[#FF6B6B] to-[#FF8E8E] hover:opacity-90 shadow-md shadow-rose-100 dark:shadow-none text-white"
+                            className="w-full h-14 text-base font-bold rounded-2xl bg-gradient-to-r from-[#C8AA6E] to-[#785A28] hover:opacity-90 shadow-md shadow-[#C8AA6E]/20 dark:shadow-none text-[#0A1428]"
                         >
                             {t('resetPassword.signIn')}
                         </Button>
@@ -170,20 +170,20 @@ export default function ResetPasswordPage() {
 
     // Valid token - show form (also handles error state with form)
     return (
-        <div className="min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 to-amber-50 flex items-center justify-center p-6 relative overflow-hidden dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+        <div className="min-h-screen bg-gradient-to-br from-[#F0F4F8] via-[#E8EEF4] to-[#F0E6D2]/20 flex items-center justify-center p-6 relative overflow-hidden dark:from-[#0A1428] dark:via-[#091428] dark:to-[#0A1929]">
             {/* Language switcher - top right position */}
             <div className="absolute top-4 right-4 z-20">
                 <LanguageSwitcher />
             </div>
-            <Card className="w-full max-w-md relative z-10 border-white/50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm shadow-xl dark:border-slate-800">
+            <Card className="w-full max-w-md relative z-10 border-[#C8D4E0]/50 bg-[#FFFFFF]/80 dark:bg-[#0A1929]/80 backdrop-blur-sm shadow-xl dark:border-[#1E3A5F]">
                 <CardHeader className="text-center pt-10">
-                    <div className="mx-auto w-20 h-20 bg-gradient-to-br from-rose-400 to-pink-500 rounded-3xl mb-4 flex items-center justify-center shadow-lg shadow-rose-200 dark:shadow-none">
-                        <KeyRound size={40} className="text-white" />
+                    <div className="mx-auto w-20 h-20 bg-gradient-to-br from-[#C8AA6E] to-[#785A28] rounded-3xl mb-4 flex items-center justify-center shadow-lg shadow-[#C8AA6E]/30 dark:shadow-none">
+                        <KeyRound size={40} className="text-[#0A1428]" />
                     </div>
-                    <CardTitle className="text-3xl font-bold text-rose-500 mb-1">
+                    <CardTitle className="text-3xl font-bold text-[#C8AA6E] mb-1">
                         {t('resetPassword.title')}
                     </CardTitle>
-                    <CardDescription className="text-gray-500 dark:text-gray-400 font-medium">
+                    <CardDescription className="text-[#5B5A56] dark:text-[#A09B8C] font-medium">
                         {t('resetPassword.subtitle')}
                     </CardDescription>
                 </CardHeader>
@@ -198,8 +198,8 @@ export default function ResetPasswordPage() {
                         />
 
                         {/* Password rules */}
-                        <div className="bg-slate-50 dark:bg-slate-950 rounded-xl p-4 space-y-2">
-                            <p className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-2">
+                        <div className="bg-[#F0F4F8] dark:bg-[#0A1428] rounded-xl p-4 space-y-2">
+                            <p className="text-xs font-medium text-[#5B5A56] dark:text-[#A09B8C] mb-2">
                                 {t('resetPassword.passwordCriteria')}
                             </p>
                             {passwordRules.map((rule) => {
@@ -207,11 +207,11 @@ export default function ResetPasswordPage() {
                                 return (
                                     <div key={rule.id} className="flex items-center gap-2 text-sm">
                                         {isValid ? (
-                                            <CheckCircle size={16} className="text-green-500 flex-shrink-0" />
+                                            <CheckCircle size={16} className="text-[#0AC8B9] flex-shrink-0" />
                                         ) : (
-                                            <XCircle size={16} className="text-gray-300 dark:text-gray-600 flex-shrink-0" />
+                                            <XCircle size={16} className="text-[#A09B8C] dark:text-[#5B5A56] flex-shrink-0" />
                                         )}
-                                        <span className={isValid ? "text-green-600 dark:text-green-400" : "text-gray-500 dark:text-gray-400"}>
+                                        <span className={isValid ? "text-[#0AC8B9]" : "text-[#5B5A56] dark:text-[#A09B8C]"}>
                                             {rule.label}
                                         </span>
                                     </div>
@@ -232,7 +232,7 @@ export default function ResetPasswordPage() {
                         <Button
                             type="submit"
                             disabled={!canSubmit}
-                            className="w-full h-14 text-base font-bold rounded-2xl bg-gradient-to-r from-[#FF6B6B] to-[#FF8E8E] hover:opacity-90 shadow-md shadow-rose-100 dark:shadow-none text-white disabled:opacity-50"
+                            className="w-full h-14 text-base font-bold rounded-2xl bg-gradient-to-r from-[#C8AA6E] to-[#785A28] hover:opacity-90 shadow-md shadow-[#C8AA6E]/20 dark:shadow-none text-[#0A1428] disabled:opacity-50"
                         >
                             {isSubmitting ? (
                                 <>
@@ -247,7 +247,7 @@ export default function ResetPasswordPage() {
                         <div className="text-center pt-2">
                             <Link
                                 to={ROUTES.LOGIN}
-                                className="text-sm text-gray-500 dark:text-gray-400 hover:text-rose-500 font-medium inline-flex items-center"
+                                className="text-sm text-[#5B5A56] dark:text-[#A09B8C] hover:text-[#C8AA6E] font-medium inline-flex items-center"
                             >
                                 <ArrowLeft className="mr-1 h-4 w-4" />
                                 {t('resetPassword.backToLogin')}
