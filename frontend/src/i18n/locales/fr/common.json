@@ -1,5 +1,5 @@
 {
-  "appName": "Mon App",
+  "appName": "TFT Tournament",
   "language": {
     "french": "Français",
     "english": "English",
@@ -28,5 +28,84 @@
     "error": "Erreur",
     "warning": "Attention",
     "info": "Information"
+  },
+  "participants": "participants",
+  "games": "parties",
+  "round": "Round",
+  "lobby": "Lobby",
+  "rank": "Rang",
+  "player": "Joueur",
+  "points": "Points",
+  "gamesPlayed": "Parties",
+  "wins": "Victoires",
+  "top4": "Top 4",
+  "avgPlacement": "Moy. Place",
+  "unknown": "Inconnu",
+  "noStandings": "Aucun classement disponible",
+  "noParticipants": "Aucun participant",
+  "watchLive": "Regarder en live",
+  "activeSeason": "Saison active",
+  "tournamentStatus": {
+    "DRAFT": "Brouillon",
+    "REGISTRATION_OPEN": "Inscriptions ouvertes",
+    "REGISTRATION_CLOSED": "Inscriptions fermées",
+    "CHECK_IN": "Check-in",
+    "IN_PROGRESS": "En cours",
+    "COMPLETED": "Terminé",
+    "CANCELLED": "Annulé"
+  },
+  "matchStatus": {
+    "SCHEDULED": "Programmé",
+    "CHECK_IN": "Check-in",
+    "LOBBY_OPEN": "Lobby ouvert",
+    "IN_GAME": "En jeu",
+    "BETWEEN_GAMES": "Entre les parties",
+    "COMPLETED": "Terminé",
+    "CANCELLED": "Annulé"
+  },
+  "participantStatus": {
+    "REGISTERED": "Inscrit",
+    "CONFIRMED": "Confirmé",
+    "CHECKED_IN": "Check-in fait",
+    "PLAYING": "En jeu",
+    "ELIMINATED": "Éliminé",
+    "DISQUALIFIED": "Disqualifié",
+    "WINNER": "Vainqueur"
+  },
+  "circuitType": {
+    "OFFICIAL": "Officiel",
+    "PARTNERED": "Partenaire",
+    "COMMUNITY": "Communauté",
+    "PRIVATE": "Privé"
+  },
+  "formatType": {
+    "SWISS": "Swiss",
+    "ROUND_ROBIN": "Round Robin",
+    "DOUBLE_LOBBY_ROUND_ROBIN": "Double Lobby RR",
+    "GSL_GROUPS": "Groupes GSL",
+    "POINT_BASED": "Par points",
+    "SINGLE_ELIMINATION": "Simple élim.",
+    "DOUBLE_ELIMINATION": "Double élim.",
+    "CHECKMATE": "Checkmate",
+    "SET_CHECKMATE": "Set Checkmate",
+    "LAST_CHANCE": "Dernière chance",
+    "CUTOFF": "Cutoff",
+    "LOBBY_KING": "Lobby King",
+    "GAUNTLET": "Gauntlet",
+    "MARATHON": "Marathon",
+    "CUSTOM": "Personnalisé"
+  },
+  "seasonStatus": {
+    "UPCOMING": "À venir",
+    "ACTIVE": "Active",
+    "COMPLETED": "Terminée",
+    "CANCELLED": "Annulée"
+  },
+  "stageType": {
+    "QUALIFIER": "Qualificatif",
+    "FINALS": "Finales",
+    "PLAYOFFS": "Playoffs",
+    "GROUPS": "Groupes",
+    "CUSTOM": "Personnalisé"
   }
 }

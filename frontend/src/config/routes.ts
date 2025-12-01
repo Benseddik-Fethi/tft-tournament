@@ -9,6 +9,10 @@ export const ROUTES = {
   DASHBOARD: '/dashboard',
   PROFILE: '/profile',
   SETTINGS: '/settings',
+  TOURNAMENTS: '/tournaments',
+  TOURNAMENT_DETAIL: '/tournaments/:slug',
+  CIRCUITS: '/circuits',
+  CIRCUIT_DETAIL: '/circuits/:slug',
   AUTH: {
     CALLBACK: '/auth/callback',
     VERIFY_EMAIL_SENT: '/auth/verify-email-sent',

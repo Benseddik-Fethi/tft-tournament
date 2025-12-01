@@ -2,7 +2,9 @@
   "landing": {
     "nav": {
       "login": "Login",
-      "register": "Sign Up"
+      "register": "Sign Up",
+      "tournaments": "Tournaments",
+      "circuits": "Circuits"
     },
     "hero": {
       "badge": "TFT Tournament Platform",
@@ -166,9 +168,75 @@
   "layout": {
     "brandName": "TFT Tournament",
     "dashboard": "Dashboard",
+    "tournaments": "Tournaments",
+    "circuits": "Circuits",
     "profile": "My Profile",
     "settings": "Settings",
     "logout": "Logout"
+  },
+  "nav": {
+    "tournaments": "Tournaments",
+    "circuits": "Circuits",
+    "dashboard": "Dashboard",
+    "login": "Login",
+    "register": "Sign Up"
+  },
+  "tournaments": {
+    "title": "Tournaments",
+    "subtitle": "Find and join TFT tournaments from around the world",
+    "searchPlaceholder": "Search tournaments...",
+    "filters": "Filters",
+    "filterRegion": "Region",
+    "filterStatus": "Status",
+    "allRegions": "All Regions",
+    "allStatuses": "All Statuses",
+    "noResults": "No tournaments found",
+    "noResultsHint": "Try adjusting your filters or search terms",
+    "resultsCount": "{{count}} tournament(s) found"
+  },
+  "tournament": {
+    "notFound": "Tournament not found",
+    "backToList": "Back to tournaments",
+    "organizedBy": "Organized by",
+    "register": "Register",
+    "registering": "Registering...",
+    "watchLive": "Watch Live",
+    "startDate": "Start Date",
+    "participants": "Participants",
+    "prizePool": "Prize Pool",
+    "checkIn": "Check-in",
+    "description": "Description",
+    "rules": "Rules",
+    "prizeDistribution": "Prize Distribution",
+    "discord": "Discord",
+    "joinDiscord": "Join Discord Server",
+    "noMatches": "No matches scheduled yet",
+    "tabs": {
+      "info": "Info",
+      "participants": "Participants",
+      "standings": "Standings",
+      "matches": "Matches"
+    }
+  },
+  "circuits": {
+    "title": "Circuits",
+    "subtitle": "Explore TFT competitive circuits and seasons",
+    "allRegions": "All Regions",
+    "noResults": "No circuits found",
+    "noResultsHint": "Try selecting a different region",
+    "resultsCount": "{{count}} circuit(s) found"
+  },
+  "circuit": {
+    "notFound": "Circuit not found",
+    "backToList": "Back to circuits",
+    "organizedBy": "Organized by",
+    "region": "Region",
+    "seasons": "Seasons",
+    "prizePool": "Total Prize Pool",
+    "about": "About",
+    "seasonsTitle": "Seasons & Stages",
+    "noTournaments": "No tournaments in this stage",
+    "noStages": "No stages in this season"
   },
   "loading": "Loading...",
   "notFound": {

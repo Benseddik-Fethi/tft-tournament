@@ -1,7 +1,7 @@
 
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import {Home, LogOut, Settings, User} from "lucide-react";
+import {Home, LogOut, Settings, User, Trophy, Layers} from "lucide-react";
 import {cn} from "@/lib/utils";
 import {useAuth} from "@/context/AuthContext";
 import {TftLogo} from "@/components/tft/TftLogo";
@@ -16,6 +16,8 @@ export default function DashboardLayout() {
     // Menu items for navigation
     const navItems = [
         {id: "/dashboard", label: t('layout.dashboard'), icon: Home},
+        {id: "/tournaments", label: t('layout.tournaments'), icon: Trophy},
+        {id: "/circuits", label: t('layout.circuits'), icon: Layers},
         {id: "/profile", label: t('layout.profile'), icon: User},
         {id: "/settings", label: t('layout.settings'), icon: Settings},
     ];

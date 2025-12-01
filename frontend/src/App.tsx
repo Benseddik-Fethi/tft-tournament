@@ -16,6 +16,10 @@ import VerifyEmailPage from "@/pages/VerifyEmailPage.tsx";
 import ResendVerificationPage from "@/pages/ResendVerificationPage.tsx";
 import ForgotPasswordPage from "@/pages/ForgotPasswordPage.tsx";
 import ResetPasswordPage from "@/pages/ResetPasswordPage.tsx";
+import TournamentsListPage from "@/pages/TournamentsListPage.tsx";
+import TournamentDetailPage from "@/pages/TournamentDetailPage.tsx";
+import CircuitsPage from "@/pages/CircuitsPage.tsx";
+import CircuitDetailPage from "@/pages/CircuitDetailPage.tsx";
 import { ROUTES } from "@/config";
 
 function RootRedirect() {
@@ -35,6 +39,12 @@ function App() {
             {/* Pages publiques */}
             <Route path={ROUTES.REGISTER} element={<RegisterPage/>}/>
             <Route path={ROUTES.LOGIN} element={<LoginPage/>}/>
+
+            {/* Pages publiques - Tournois et Circuits */}
+            <Route path={ROUTES.TOURNAMENTS} element={<TournamentsListPage/>}/>
+            <Route path={ROUTES.TOURNAMENT_DETAIL} element={<TournamentDetailPage/>}/>
+            <Route path={ROUTES.CIRCUITS} element={<CircuitsPage/>}/>
+            <Route path={ROUTES.CIRCUIT_DETAIL} element={<CircuitDetailPage/>}/>
 
             {/* Flux d'authentification et emails */}
             <Route path={ROUTES.AUTH.CALLBACK} element={<AuthCallbackPage/>}/>

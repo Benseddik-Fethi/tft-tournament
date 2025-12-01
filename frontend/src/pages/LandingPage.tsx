@@ -55,7 +55,23 @@ export default function LandingPage() {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[rgba(200,170,110,0.1)] bg-[#0A1428]/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <TftLogo size="sm" />
+          <div className="flex items-center gap-8">
+            <TftLogo size="sm" />
+            <div className="hidden md:flex items-center gap-6">
+              <Link
+                to={ROUTES.TOURNAMENTS}
+                className="text-[#A09B8C] hover:text-[#F0E6D2] transition-colors"
+              >
+                {t('landing.nav.tournaments')}
+              </Link>
+              <Link
+                to={ROUTES.CIRCUITS}
+                className="text-[#A09B8C] hover:text-[#F0E6D2] transition-colors"
+              >
+                {t('landing.nav.circuits')}
+              </Link>
+            </div>
+          </div>
           <div className="flex items-center gap-4">
             <LanguageSwitcher />
             <Link to={ROUTES.LOGIN}>
