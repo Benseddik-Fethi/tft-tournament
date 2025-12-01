@@ -66,7 +66,7 @@
     --color-tft-4th: #00C853;
 }
 
-/* TFT Hextech Theme - Light Mode */
+/* TFT Hextech Theme - Light Mode (Default) */
 :root {
     /* Primary - Or Hextech */
     --tft-gold: #C8AA6E;
@@ -83,20 +83,20 @@
     --tft-purple-light: #C084FC;
     --tft-purple-dark: #7C3AED;
     
-    /* Background - Light Mode (lighter blue tones) */
-    --tft-bg-dark: #1E3A5F;
-    --tft-bg-darker: #0A1428;
-    --tft-bg-card: #F0F4F8;
-    --tft-bg-surface: #E8EEF4;
+    /* Background - Light Mode */
+    --tft-bg-dark: #F0F4F8;
+    --tft-bg-darker: #E8EEF4;
+    --tft-bg-card: #FFFFFF;
+    --tft-bg-surface: #F8FAFC;
     --tft-bg-elevated: #FFFFFF;
     
     /* Text - Light Mode */
     --tft-text-primary: #0A1428;
-    --tft-text-secondary: #5B5A56;
-    --tft-text-muted: #A09B8C;
+    --tft-text-secondary: #475569;
+    --tft-text-muted: #94A3B8;
     
     /* Borders */
-    --tft-border: #C8D4E0;
+    --tft-border: #CBD5E1;
     --tft-border-gold: #C8AA6E;
     
     /* Status */
@@ -122,12 +122,12 @@
     --secondary: #0AC8B9;
     --secondary-foreground: #0A1428;
     --muted: #E8EEF4;
-    --muted-foreground: #5B5A56;
+    --muted-foreground: #475569;
     --accent: #9D4DFF;
     --accent-foreground: #FFFFFF;
     --destructive: #FF4444;
     --destructive-foreground: #FFFFFF;
-    --border: #C8D4E0;
+    --border: #CBD5E1;
     --input: #E8EEF4;
     --ring: #C8AA6E;
     --radius: 0.625rem;
@@ -136,13 +136,13 @@
     --chart-3: #9D4DFF;
     --chart-4: #FFD700;
     --chart-5: #00C853;
-    --sidebar: #1E3A5F;
-    --sidebar-foreground: #F0E6D2;
+    --sidebar: #F8FAFC;
+    --sidebar-foreground: #0A1428;
     --sidebar-primary: #C8AA6E;
     --sidebar-primary-foreground: #0A1428;
     --sidebar-accent: #0AC8B9;
     --sidebar-accent-foreground: #0A1428;
-    --sidebar-border: #C8AA6E;
+    --sidebar-border: #CBD5E1;
     --sidebar-ring: #C8AA6E;
 }
 

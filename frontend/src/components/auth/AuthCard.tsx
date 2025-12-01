@@ -39,14 +39,13 @@ export function AuthCard({
   iconGradient = 'from-[#C8AA6E] to-[#785A28]',
   titleColor = 'text-[#C8AA6E]',
   className,
-  backgroundGradient = 'from-[#0A1428] via-[#091428] to-[#0A1929]',
   iconShadowColor = 'shadow-[0_0_20px_rgba(200,170,110,0.4)]',
 }: AuthCardProps) {
   return (
     <div
       className={cn(
         'min-h-screen flex items-center justify-center p-6 relative overflow-hidden',
-        `bg-gradient-to-br ${backgroundGradient}`
+        'bg-[var(--tft-bg-dark)]'
       )}
     >
       {/* Background Effects */}
@@ -60,7 +59,7 @@ export function AuthCard({
       
       <Card
         className={cn(
-          'w-full max-w-md relative z-10 bg-[#0A1929]/90 backdrop-blur-sm border border-[rgba(200,170,110,0.2)] shadow-[0_0_30px_rgba(0,0,0,0.5)]',
+          'w-full max-w-md relative z-10 bg-[var(--tft-bg-card)]/90 backdrop-blur-sm border border-[var(--tft-border)] shadow-[0_0_30px_rgba(0,0,0,0.3)]',
           className
         )}
       >
@@ -77,7 +76,7 @@ export function AuthCard({
           <CardTitle className={cn('text-3xl font-bold mb-1', titleColor)}>
             {title}
           </CardTitle>
-          <CardDescription className="text-[#A09B8C] font-medium">
+          <CardDescription className="text-[var(--tft-text-secondary)] font-medium">
             {description}
           </CardDescription>
         </CardHeader>

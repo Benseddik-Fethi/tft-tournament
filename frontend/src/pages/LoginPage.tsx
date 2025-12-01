@@ -42,17 +42,16 @@ export default function LoginPage() {
             icon={Shield}
             title={t('login.title')}
             description={t('login.subtitle')}
-            backgroundGradient="from-[#0A1428] via-[#091428] to-[#0A1929]"
             iconGradient="from-[#C8AA6E] to-[#785A28]"
             iconShadowColor="shadow-[0_0_20px_rgba(200,170,110,0.4)]"
             titleColor="text-[#C8AA6E]"
         >
             <div className="space-y-5">
                 <div className="space-y-1.5">
-                    <Label className="text-[#A09B8C] font-medium pl-1">{t('login.email')}</Label>
+                    <Label className="text-[var(--tft-text-secondary)] font-medium pl-1">{t('login.email')}</Label>
                     <Input
                         icon={Mail}
-                        className="h-12 bg-[#1E2328] border-[rgba(200,170,110,0.2)] focus:bg-[#1E293B] focus:border-[#C8AA6E] rounded-xl pl-11 text-[#F0E6D2] placeholder:text-[#5B5A56] shadow-sm"
+                        className="h-12 bg-[var(--tft-bg-surface)] border-[var(--tft-border)] focus:bg-[var(--tft-bg-elevated)] focus:border-[#C8AA6E] rounded-xl pl-11 text-[var(--tft-text-primary)] placeholder:text-[var(--tft-text-muted)] shadow-sm"
                         placeholder={t('login.emailPlaceholder')}
                         type="email"
                         value={email}
@@ -70,7 +69,7 @@ export default function LoginPage() {
                 <div className="flex items-center justify-between pt-1">
                     <div className="flex items-center space-x-2">
                         <Checkbox id="remember" className="border-[rgba(200,170,110,0.3)] data-[state=checked]:bg-[#C8AA6E] data-[state=checked]:border-[#C8AA6E]" />
-                        <Label htmlFor="remember" className="text-sm text-[#A09B8C] cursor-pointer">{t('login.rememberMe')}</Label>
+                        <Label htmlFor="remember" className="text-sm text-[var(--tft-text-secondary)] cursor-pointer">{t('login.rememberMe')}</Label>
                     </div>
                     <Link to={ROUTES.AUTH.FORGOT_PASSWORD} className="text-sm text-[#0AC8B9] hover:text-[#0DD9C8] font-semibold">
                         {t('login.forgotPassword')}
@@ -89,13 +88,13 @@ export default function LoginPage() {
             </div>
 
             <div className="relative py-2">
-                <div className="absolute inset-0 flex items-center"><Separator className="bg-[rgba(200,170,110,0.15)]" /></div>
-                <div className="relative flex justify-center text-xs uppercase"><span className="bg-[#0A1929] px-4 text-[#5B5A56] font-medium">{t('login.or')}</span></div>
+                <div className="absolute inset-0 flex items-center"><Separator className="bg-[var(--tft-border)]" /></div>
+                <div className="relative flex justify-center text-xs uppercase"><span className="bg-[var(--tft-bg-card)] px-4 text-[var(--tft-text-muted)] font-medium">{t('login.or')}</span></div>
             </div>
 
             <SocialLoginButtons disabled={isLoading} />
 
-            <p className="text-center text-sm text-[#A09B8C] mt-6 font-medium">
+            <p className="text-center text-sm text-[var(--tft-text-secondary)] mt-6 font-medium">
                 {t('login.noAccount')} <Link to={ROUTES.REGISTER} className="text-[#C8AA6E] font-bold hover:underline ml-1">{t('login.createAccount')}</Link>
             </p>
         </AuthCard>

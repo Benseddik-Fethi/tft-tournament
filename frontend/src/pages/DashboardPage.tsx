@@ -15,10 +15,10 @@ export default function DashboardPage() {
             {/* Header */}
             <div className="flex justify-between items-end">
                 <div>
-                    <h1 className="text-3xl font-bold text-[#F0E6D2]">
+                    <h1 className="text-3xl font-bold text-[var(--tft-text-primary)]">
                         {t('dashboard.title')}
                     </h1>
-                    <p className="text-[#A09B8C] mt-2">
+                    <p className="text-[var(--tft-text-secondary)] mt-2">
                         {t('dashboard.welcomeMessage')}, <span className="font-semibold text-[#C8AA6E]">{user?.firstName}</span>.
                     </p>
                 </div>
@@ -38,9 +38,9 @@ export default function DashboardPage() {
                         <Trophy size={24} className="text-[#0A1428]"/>
                     </div>
                     <div>
-                        <p className="text-[#A09B8C] text-sm font-medium">{t('dashboard.totalTournaments')}</p>
+                        <p className="text-[var(--tft-text-secondary)] text-sm font-medium">{t('dashboard.totalTournaments')}</p>
                         <div className="flex items-center gap-2">
-                            <p className="text-2xl font-bold text-[#F0E6D2]">12</p>
+                            <p className="text-2xl font-bold text-[var(--tft-text-primary)]">12</p>
                             <CheckCircle size={16} className="text-[#00C853]" />
                         </div>
                     </div>
@@ -51,7 +51,7 @@ export default function DashboardPage() {
                         <Users size={24} className="text-[#0A1428]"/>
                     </div>
                     <div>
-                        <p className="text-[#A09B8C] text-sm font-medium">{t('dashboard.userRole')}</p>
+                        <p className="text-[var(--tft-text-secondary)] text-sm font-medium">{t('dashboard.userRole')}</p>
                         <div className="mt-1">
                             {user?.role && <RoleBadge role={user.role.toUpperCase() as TftRole} size="md" />}
                         </div>
@@ -63,8 +63,8 @@ export default function DashboardPage() {
                         <BarChart3 size={24} className="text-[#0A1428]"/>
                     </div>
                     <div>
-                        <p className="text-[#A09B8C] text-sm font-medium">{t('dashboard.activeTournaments')}</p>
-                        <p className="text-2xl font-bold text-[#F0E6D2]">3</p>
+                        <p className="text-[var(--tft-text-secondary)] text-sm font-medium">{t('dashboard.activeTournaments')}</p>
+                        <p className="text-2xl font-bold text-[var(--tft-text-primary)]">3</p>
                     </div>
                 </Card>
             </div>
@@ -75,20 +75,20 @@ export default function DashboardPage() {
                     <div className="w-12 h-12 bg-gradient-to-br from-[#0AC8B9] to-[#099E92] rounded-xl flex items-center justify-center mb-6 shadow-[0_0_15px_rgba(10,200,185,0.3)]">
                         <Trophy size={24} className="text-[#0A1428]"/>
                     </div>
-                    <h3 className="text-xl font-bold text-[#F0E6D2] mb-2">{t('dashboard.readyToCode')}</h3>
-                    <p className="text-[#A09B8C] mb-6 leading-relaxed">
+                    <h3 className="text-xl font-bold text-[var(--tft-text-primary)] mb-2">{t('dashboard.readyToCode')}</h3>
+                    <p className="text-[var(--tft-text-secondary)] mb-6 leading-relaxed">
                         {t('dashboard.templateDescription')}
                     </p>
                     <div className="flex flex-col gap-3">
-                        <div className="flex items-center gap-3 text-sm text-[#A09B8C]">
+                        <div className="flex items-center gap-3 text-sm text-[var(--tft-text-secondary)]">
                             <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#00C853] to-[#00A040] flex items-center justify-center text-[#0A1428] text-xs font-bold">✓</div>
                             {t('dashboard.backendFeature')}
                         </div>
-                        <div className="flex items-center gap-3 text-sm text-[#A09B8C]">
+                        <div className="flex items-center gap-3 text-sm text-[var(--tft-text-secondary)]">
                             <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#00C853] to-[#00A040] flex items-center justify-center text-[#0A1428] text-xs font-bold">✓</div>
                             {t('dashboard.frontendFeature')}
                         </div>
-                        <div className="flex items-center gap-3 text-sm text-[#A09B8C]">
+                        <div className="flex items-center gap-3 text-sm text-[var(--tft-text-secondary)]">
                             <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#00C853] to-[#00A040] flex items-center justify-center text-[#0A1428] text-xs font-bold">✓</div>
                             {t('dashboard.securityFeature')}
                         </div>
@@ -96,11 +96,11 @@ export default function DashboardPage() {
                 </Card>
 
                 <Card variant="tft-card" className="p-8 rounded-3xl border-dashed flex flex-col items-center justify-center text-center">
-                    <div className="w-16 h-16 bg-[#1E2328] rounded-full flex items-center justify-center mb-4 border border-[rgba(200,170,110,0.2)]">
-                        <Calendar size={32} className="text-[#5B5A56]"/>
+                    <div className="w-16 h-16 bg-[var(--tft-bg-surface)] rounded-full flex items-center justify-center mb-4 border border-[var(--tft-border)]">
+                        <Calendar size={32} className="text-[var(--tft-text-muted)]"/>
                     </div>
-                    <h3 className="text-lg font-semibold text-[#A09B8C]">{t('dashboard.yourContentHere')}</h3>
-                    <p className="text-[#5B5A56] text-sm mt-2 max-w-xs">
+                    <h3 className="text-lg font-semibold text-[var(--tft-text-secondary)]">{t('dashboard.yourContentHere')}</h3>
+                    <p className="text-[var(--tft-text-muted)] text-sm mt-2 max-w-xs">
                         {t('dashboard.startAdding')}
                     </p>
                     <Button variant="tft-ghost" className="mt-4">
@@ -122,12 +122,12 @@ export default function DashboardPage() {
                     return (
                         <button
                             key={index}
-                            className="p-4 rounded-xl bg-[#0A1929] border border-[rgba(200,170,110,0.1)] hover:border-[rgba(200,170,110,0.3)] transition-all group flex flex-col items-center gap-3"
+                            className="p-4 rounded-xl bg-[var(--tft-bg-card)] border border-[var(--tft-border)] hover:border-[rgba(200,170,110,0.3)] transition-all group flex flex-col items-center gap-3"
                         >
                             <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${action.color} flex items-center justify-center group-hover:shadow-[0_0_15px_rgba(200,170,110,0.3)] transition-shadow`}>
                                 <Icon size={20} className="text-[#0A1428]" />
                             </div>
-                            <span className="text-sm font-medium text-[#A09B8C] group-hover:text-[#F0E6D2] transition-colors">
+                            <span className="text-sm font-medium text-[var(--tft-text-secondary)] group-hover:text-[var(--tft-text-primary)] transition-colors">
                                 {t(`dashboard.${action.labelKey}`)}
                             </span>
                         </button>

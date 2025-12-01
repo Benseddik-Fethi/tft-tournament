@@ -48,7 +48,7 @@ export function PasswordInput({
   return (
     <div className="space-y-1.5">
       {label && (
-        <Label className="text-gray-600 dark:text-gray-300 font-medium pl-1">
+        <Label className="text-[var(--tft-text-secondary)] font-medium pl-1">
           {label}
         </Label>
       )}
@@ -62,7 +62,7 @@ export function PasswordInput({
           disabled={disabled}
           icon={showIcon ? Lock : undefined}
           className={cn(
-            'h-12 bg-slate-50 dark:bg-slate-950 border-transparent focus:bg-white dark:focus:bg-slate-900 focus:border-indigo-200 rounded-xl shadow-sm pr-10',
+            'h-12 bg-[var(--tft-bg-surface)] border-[var(--tft-border)] focus:bg-[var(--tft-bg-elevated)] focus:border-[#C8AA6E] rounded-xl shadow-sm pr-10 text-[var(--tft-text-primary)] placeholder:text-[var(--tft-text-muted)]',
             showIcon && 'pl-11',
             error && 'border-red-300 focus:border-red-300',
             className
@@ -71,7 +71,7 @@ export function PasswordInput({
         <button
           type="button"
           onClick={() => setShowPassword(!showPassword)}
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+          className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--tft-text-muted)] hover:text-[var(--tft-text-primary)]"
           tabIndex={-1}
         >
           {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
