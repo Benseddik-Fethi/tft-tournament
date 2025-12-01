@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: 021-add-match-placement-to-match-participants
+      author: benseddik fethi
+      changes:
+        - addColumn:
+            tableName: match_participants
+            columns:
+              - column:
+                  name: match_placement
+                  type: int
+                  constraints:
+                    nullable: true
