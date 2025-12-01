@@ -18,7 +18,7 @@ import java.util.List;
  * @version 1.0
  * @since 2025
  */
-@Mapper(config = MapperConfig.class, uses = {RegionMapper.class, ParticipantMapper.class})
+@Mapper(config = MapperConfig.class, uses = {RegionMapper.class, UserMapper.class})
 public interface CircuitMapper {
 
     /**
@@ -82,24 +82,6 @@ public interface CircuitMapper {
      * Convertit une liste de tournois.
      */
     List<TournamentSummaryResponse> toTournamentSummaryResponseList(List<Tournament> tournaments);
-
-    /**
-     * Convertit un User en UserSummaryResponse.
-     *
-     * @param user l'entité utilisateur
-     * @return le DTO résumé
-     */
-    default UserSummaryResponse toUserSummaryResponse(com.tft.tournament.domain.User user) {
-        if (user == null) {
-            return null;
-        }
-        return new UserSummaryResponse(
-                user.getId(),
-                user.getFirstName(),
-                user.getLastName(),
-                user.getAvatar()
-        );
-    }
 
     /**
      * Retourne le nom de la saison active du circuit.
