@@ -4,7 +4,6 @@ import com.tft.tournament.domain.User;
 import com.tft.tournament.dto.response.UserResponse;
 import com.tft.tournament.dto.response.UserSummaryResponse;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 /**
  * Mapper pour la conversion entre l'entité User et ses DTOs.
@@ -34,9 +33,5 @@ public interface UserMapper {
      * @param user l'entité utilisateur
      * @return le DTO résumé
      */
-    @Mapping(target = "id", source = "id")
-    @Mapping(target = "firstName", source = "firstName")
-    @Mapping(target = "lastName", source = "lastName")
-    @Mapping(target = "avatar", source = "avatar")
     UserSummaryResponse toSummaryResponse(User user);
 }
