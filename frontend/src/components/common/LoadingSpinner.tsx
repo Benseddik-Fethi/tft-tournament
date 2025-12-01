@@ -26,8 +26,8 @@ const sizeClasses = {
 export function LoadingSpinner({ size = 'md', className, text }: LoadingSpinnerProps) {
   return (
     <div className={cn('flex items-center justify-center gap-2', className)}>
-      <Loader2 className={cn('animate-spin text-indigo-500', sizeClasses[size])} />
-      {text && <span className="text-gray-600 dark:text-gray-300 font-medium">{text}</span>}
+      <Loader2 className={cn('animate-spin text-[#C8AA6E]', sizeClasses[size])} />
+      {text && <span className="text-[#5B5A56] dark:text-[#A09B8C] font-medium">{text}</span>}
     </div>
   );
 }

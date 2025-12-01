@@ -10,21 +10,21 @@ export default function EmailSentPage() {
     const { t } = useTranslation('pages');
     
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-slate-950 flex items-center justify-center p-4 relative">
+        <div className="min-h-screen bg-[#F0F4F8] dark:bg-[#0A1428] flex items-center justify-center p-4 relative">
             {/* Language switcher - top right position */}
             <div className="absolute top-4 right-4 z-20">
                 <LanguageSwitcher />
             </div>
             
-            <Card className="w-full max-w-md text-center">
+            <Card className="w-full max-w-md text-center bg-[#FFFFFF] dark:bg-[#0A1929] border-[#C8D4E0] dark:border-[#1E3A5F]">
                 <CardHeader>
-                    <div className="mx-auto w-16 h-16 bg-rose-100 dark:bg-rose-900/30 rounded-full flex items-center justify-center mb-4">
-                        <Mail className="w-8 h-8 text-rose-500" />
+                    <div className="mx-auto w-16 h-16 bg-[#0AC8B9]/10 dark:bg-[#0AC8B9]/20 rounded-full flex items-center justify-center mb-4">
+                        <Mail className="w-8 h-8 text-[#0AC8B9]" />
                     </div>
-                    <CardTitle className="text-2xl">{t('emailSent.title')}</CardTitle>
+                    <CardTitle className="text-2xl text-[#0A1428] dark:text-[#F0E6D2]">{t('emailSent.title')}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                    <p className="text-gray-500 dark:text-gray-400">
+                    <p className="text-[#5B5A56] dark:text-[#A09B8C]">
                         {t('emailSent.message')}
                     </p>
                     <div className="flex flex-col gap-3">

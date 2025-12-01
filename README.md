@@ -38,7 +38,10 @@ TFT Tournament est une solution complète pour la gestion de tournois Teamfight 
 - ✅ OAuth2 (Google, Facebook)
 - ✅ Gestion des utilisateurs avec rôles (ADMIN, ORGANIZER, USER)
 - ✅ Vérification email et réinitialisation mot de passe
-- 🚧 Création et gestion de tournois
+- ✅ Design Hextech TFT (thème dark/light)
+- ✅ Entités de données (Tournament, Match, Participant, etc.)
+- 🚧 API REST Tournois
+- 🚧 Pages publiques (liste tournois, détails, circuits)
 - 🚧 Inscription des participants
 - 🚧 Génération automatique des matchs
 - 🚧 Saisie des résultats
@@ -221,12 +224,30 @@ L'application démarre sur http://localhost:5173
 ## 🗺️ Roadmap
 
 - [x] Sprint 1-2 : Authentification & Base
-- [ ] Sprint 3 : Entités Tournament, Participant, Match
-- [ ] Sprint 4 : Génération de matchs & Formats
+- [x] Sprint 3 : Entités Tournament, Participant, Match
+- [x] Sprint 3.5 : Design Hextech TFT
+- [ ] Sprint 4 : API Tournois & Pages publiques (en cours)
 - [ ] Sprint 5 : Calcul standings & Tiebreaks
 - [ ] Sprint 6 : OAuth Discord
 - [ ] Sprint 7 : Page Media & POV Twitch
 - [ ] Sprint 8 : Dashboard & Export
+
+## 🎨 Thème
+
+L'application utilise un thème **Hextech** inspiré de l'univers TFT/League of Legends :
+
+### Couleurs principales
+| Couleur | Hex | Utilisation |
+|---------|-----|-------------|
+| Or Hextech | `#C8AA6E` | Primary, accents, boutons |
+| Bleu Arcane | `#0AC8B9` | Secondary, liens, succès |
+| Violet Mystique | `#9D4DFF` | Accent, highlights |
+| Bleu Nuit | `#0A1428` | Background dark |
+| Blanc Nacré | `#F0E6D2` | Texte dark mode |
+
+### Modes
+- **Dark Mode** (par défaut) : Thème sombre avec tons bleu nuit
+- **Light Mode** : Thème clair avec tons bleu-gris légers
 
 ## 👤 Auteur
 

@@ -27,21 +27,21 @@ export default function ResendVerificationPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-slate-950 flex items-center justify-center p-4 relative">
+        <div className="min-h-screen bg-[#F0F4F8] dark:bg-[#0A1428] flex items-center justify-center p-4 relative">
             {/* Language switcher - top right position */}
             <div className="absolute top-4 right-4 z-20">
                 <LanguageSwitcher />
             </div>
             
-            <Card className="w-full max-w-md">
+            <Card className="w-full max-w-md bg-[#FFFFFF] dark:bg-[#0A1929] border-[#C8D4E0] dark:border-[#1E3A5F]">
                 <CardHeader>
-                    <CardTitle>{t('resendVerification.title')}</CardTitle>
-                    <CardDescription>{t('resendVerification.description')}</CardDescription>
+                    <CardTitle className="text-[#0A1428] dark:text-[#F0E6D2]">{t('resendVerification.title')}</CardTitle>
+                    <CardDescription className="text-[#5B5A56] dark:text-[#A09B8C]">{t('resendVerification.description')}</CardDescription>
                 </CardHeader>
                 <CardContent>
                     {status === "success" ? (
                         <div className="text-center space-y-4">
-                            <div className="p-4 bg-green-50 text-green-700 rounded-lg">
+                            <div className="p-4 bg-[#0AC8B9]/10 dark:bg-[#0AC8B9]/20 text-[#0AC8B9] rounded-lg">
                                 {t('resendVerification.successMessage')}
                             </div>
                             <Button asChild className="w-full"><Link to={ROUTES.LOGIN}>{t('resendVerification.backToLogin')}</Link></Button>
@@ -49,7 +49,7 @@ export default function ResendVerificationPage() {
                     ) : (
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div className="space-y-2">
-                                <Label>{t('resendVerification.email')}</Label>
+                                <Label className="text-[#0A1428] dark:text-[#F0E6D2]">{t('resendVerification.email')}</Label>
                                 <Input
                                     type="email"
                                     required
