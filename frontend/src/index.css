@@ -6,6 +6,10 @@
 
 @theme {
     --radius: 0.625rem;
+    
+    /* Typography - Hextech Premium */
+    --font-display: 'Barlow Condensed', sans-serif;
+    --font-body: 'Inter', sans-serif;
 
     --color-background: var(--background);
     --color-foreground: var(--foreground);
@@ -68,6 +72,10 @@
 
 /* TFT Hextech Theme - Light Mode (Default) */
 :root {
+    /* Typography */
+    --font-display: 'Barlow Condensed', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    
     /* Primary - Or Hextech */
     --tft-gold: #C8AA6E;
     --tft-gold-light: #F0E6D2;
@@ -83,20 +91,30 @@
     --tft-purple-light: #C084FC;
     --tft-purple-dark: #7C3AED;
     
-    /* Background - Light Mode */
-    --tft-bg-dark: #F0F4F8;
-    --tft-bg-darker: #E8EEF4;
-    --tft-bg-card: #FFFFFF;
-    --tft-bg-surface: #F8FAFC;
-    --tft-bg-elevated: #FFFFFF;
+    /* Background - Light Mode with glassmorphism support */
+    --tft-bg-dark: #F8FAFC;
+    --tft-bg-darker: #F1F5F9;
+    --tft-bg-card: rgba(255, 255, 255, 0.8);
+    --tft-bg-surface: rgba(248, 250, 252, 0.7);
+    --tft-bg-elevated: rgba(255, 255, 255, 0.9);
+    
+    /* Glassmorphism - Light */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(200, 170, 110, 0.3);
+    --glass-blur: 16px;
+    
+    /* Glow Effects - Light (softer) */
+    --glow-gold: 0 0 12px rgba(200, 170, 110, 0.2);
+    --glow-cyan: 0 0 12px rgba(10, 200, 185, 0.2);
+    --glow-purple: 0 0 12px rgba(157, 77, 255, 0.2);
     
     /* Text - Light Mode */
-    --tft-text-primary: #0A1428;
+    --tft-text-primary: #0F172A;
     --tft-text-secondary: #475569;
     --tft-text-muted: #94A3B8;
     
     /* Borders */
-    --tft-border: #CBD5E1;
+    --tft-border: #E2E8F0;
     --tft-border-gold: #C8AA6E;
     
     /* Status */
@@ -148,6 +166,10 @@
 
 /* TFT Hextech Theme - Dark Mode (Default) */
 .dark {
+    /* Typography */
+    --font-display: 'Barlow Condensed', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    
     /* Primary - Or Hextech */
     --tft-gold: #C8AA6E;
     --tft-gold-light: #F0E6D2;
@@ -163,12 +185,22 @@
     --tft-purple-light: #C084FC;
     --tft-purple-dark: #7C3AED;
     
-    /* Background - Bleu Nuit */
-    --tft-bg-dark: #0A1428;
-    --tft-bg-darker: #091428;
-    --tft-bg-card: #0A1929;
-    --tft-bg-surface: #1E2328;
-    --tft-bg-elevated: #1E293B;
+    /* Background - Darker with depth for glassmorphism */
+    --tft-bg-dark: #050B14;
+    --tft-bg-darker: #0A1428;
+    --tft-bg-card: rgba(15, 23, 42, 0.6);
+    --tft-bg-surface: rgba(30, 41, 59, 0.4);
+    --tft-bg-elevated: rgba(51, 65, 85, 0.5);
+    
+    /* Glassmorphism - Dark */
+    --glass-bg: rgba(15, 23, 42, 0.6);
+    --glass-border: rgba(200, 170, 110, 0.2);
+    --glass-blur: 12px;
+    
+    /* Neon Glow Effects */
+    --glow-gold: 0 0 20px rgba(200, 170, 110, 0.4);
+    --glow-cyan: 0 0 20px rgba(10, 200, 185, 0.4);
+    --glow-purple: 0 0 20px rgba(157, 77, 255, 0.4);
     
     /* Text */
     --tft-text-primary: #F0E6D2;
@@ -191,9 +223,9 @@
     --tft-4th: #00C853;
 
     /* Shadcn variables mapped to TFT Dark theme */
-    --background: #0A1428;
+    --background: #050B14;
     --foreground: #F0E6D2;
-    --card: #0A1929;
+    --card: rgba(15, 23, 42, 0.6);
     --card-foreground: #F0E6D2;
     --popover: #1E2328;
     --popover-foreground: #F0E6D2;
@@ -231,11 +263,205 @@
     }
     body {
         @apply bg-background text-foreground;
+        font-family: var(--font-body);
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-display);
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
     }
 }
 
 /* ==========================================
-   TFT HEXTECH UTILITY CLASSES
+   GLASSMORPHISM & HEXTECH PREMIUM UTILITIES
+   ========================================== */
+
+/* Glassmorphism card */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.glass-card-subtle {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(200, 170, 110, 0.1);
+    border-radius: 12px;
+}
+
+/* Hextech angled corners */
+.hextech-clip {
+    clip-path: polygon(
+        0 0,
+        calc(100% - 16px) 0,
+        100% 16px,
+        100% 100%,
+        16px 100%,
+        0 calc(100% - 16px)
+    );
+}
+
+/* Hextech angled top only */
+.hextech-clip-top {
+    clip-path: polygon(
+        0 0,
+        calc(100% - 20px) 0,
+        100% 20px,
+        100% 100%,
+        0 100%
+    );
+}
+
+/* Hextech angled bottom only */
+.hextech-clip-bottom {
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% calc(100% - 16px),
+        calc(100% - 16px) 100%,
+        0 100%
+    );
+}
+
+/* 3D Button effect */
+.btn-3d {
+    position: relative;
+    transform: translateY(0);
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 
+        0 4px 0 rgba(0, 0, 0, 0.3),
+        0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.btn-3d:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 6px 0 rgba(0, 0, 0, 0.3),
+        0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.btn-3d:active {
+    transform: translateY(2px);
+    box-shadow: 
+        0 2px 0 rgba(0, 0, 0, 0.3),
+        0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Glow effects */
+.glow-gold {
+    box-shadow: var(--glow-gold);
+}
+
+.glow-cyan {
+    box-shadow: var(--glow-cyan);
+}
+
+.glow-purple {
+    box-shadow: var(--glow-purple);
+}
+
+.glow-gold-hover:hover {
+    box-shadow: var(--glow-gold);
+    border-color: var(--tft-gold);
+}
+
+.glow-cyan-hover:hover {
+    box-shadow: var(--glow-cyan);
+    border-color: var(--tft-cyan);
+}
+
+/* Neon border animation */
+@keyframes neon-pulse {
+    0%, 100% { 
+        box-shadow: 0 0 5px var(--tft-gold),
+                    0 0 10px var(--tft-gold);
+    }
+    50% { 
+        box-shadow: 0 0 10px var(--tft-gold),
+                    0 0 20px var(--tft-gold),
+                    0 0 30px var(--tft-gold);
+    }
+}
+
+.neon-border {
+    animation: neon-pulse 2s ease-in-out infinite;
+}
+
+/* Gradient overlays */
+.gradient-overlay-gold {
+    position: relative;
+    overflow: hidden;
+}
+
+.gradient-overlay-gold::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(200, 170, 110, 0.3),
+        transparent
+    );
+    transition: left 0.5s;
+}
+
+.gradient-overlay-gold:hover::before {
+    left: 100%;
+}
+
+/* 3D Card Tilt Effect */
+.card-3d {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transition: transform 0.3s ease;
+}
+
+.card-3d:hover {
+    transform: translateY(-8px) rotateX(2deg) rotateY(-2deg);
+}
+
+/* Floating animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Mesh gradient background */
+.mesh-gradient {
+    position: relative;
+    overflow: hidden;
+}
+
+.mesh-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(ellipse at 25% 25%, rgba(200, 170, 110, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 75% 25%, rgba(10, 200, 185, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 75%, rgba(157, 77, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* ==========================================
+   TFT HEXTECH UTILITY CLASSES (Legacy)
    ========================================== */
 
 /* Glow Effects */

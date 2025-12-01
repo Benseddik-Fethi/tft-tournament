@@ -19,21 +19,55 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
-        // TFT Hextech Variants
-        "tft-primary":
-          "bg-gradient-to-r from-[#C8AA6E] to-[#785A28] text-[#0A1428] font-semibold hover:shadow-[0_0_20px_rgba(200,170,110,0.5)] hover:-translate-y-0.5 transition-all duration-300",
-        "tft-secondary":
-          "bg-gradient-to-r from-[#0AC8B9] to-[#099E92] text-[#0A1428] font-semibold hover:shadow-[0_0_20px_rgba(10,200,185,0.5)] hover:-translate-y-0.5 transition-all duration-300",
-        "tft-ghost":
-          "bg-transparent text-[#C8AA6E] border border-[rgba(200,170,110,0.5)] font-semibold hover:bg-[rgba(200,170,110,0.1)] hover:border-[#C8AA6E] hover:shadow-[0_0_15px_rgba(200,170,110,0.3)] transition-all duration-300",
-        "tft-outline":
-          "bg-transparent text-[#F0E6D2] border border-[rgba(200,170,110,0.3)] hover:border-[#C8AA6E] hover:text-[#C8AA6E] transition-all duration-300",
+        // TFT Hextech Premium Variants with 3D effects and glassmorphism
+        "tft-primary": [
+          "bg-gradient-to-br from-[#C8AA6E] via-[#D4B574] to-[#B8985E]",
+          "text-[#0A1428] font-bold uppercase tracking-wide",
+          "border-0 rounded-lg",
+          "shadow-[0_4px_0_rgba(120,90,40,0.5),0_8px_16px_rgba(0,0,0,0.2)]",
+          "hover:shadow-[0_6px_0_rgba(120,90,40,0.5),0_12px_24px_rgba(200,170,110,0.3)]",
+          "hover:-translate-y-0.5 hover:from-[#D4B574] hover:via-[#E0C180] hover:to-[#C8AA6E]",
+          "active:translate-y-0.5 active:shadow-[0_2px_0_rgba(120,90,40,0.5),0_4px_8px_rgba(0,0,0,0.2)]",
+          "transition-all duration-200",
+        ].join(" "),
+        "tft-secondary": [
+          "bg-[rgba(10,200,185,0.1)] backdrop-blur-sm",
+          "border border-[#0AC8B9]/30 text-[#0AC8B9] font-semibold uppercase tracking-wide",
+          "rounded-lg",
+          "hover:border-[#0AC8B9] hover:bg-[#0AC8B9]/20",
+          "hover:shadow-[0_0_20px_rgba(10,200,185,0.3)]",
+          "transition-all duration-300",
+        ].join(" "),
+        "tft-ghost": [
+          "bg-transparent backdrop-blur-sm",
+          "border border-[rgba(200,170,110,0.3)]",
+          "text-[#C8AA6E] font-semibold uppercase tracking-wide",
+          "rounded-lg",
+          "hover:border-[#C8AA6E] hover:bg-[rgba(200,170,110,0.1)]",
+          "hover:shadow-[0_0_15px_rgba(200,170,110,0.2)]",
+          "transition-all duration-300",
+        ].join(" "),
+        "tft-outline": [
+          "bg-transparent",
+          "border border-[rgba(200,170,110,0.3)] text-[var(--tft-text-primary)]",
+          "rounded-lg",
+          "hover:border-[#C8AA6E] hover:text-[#C8AA6E]",
+          "hover:bg-[rgba(200,170,110,0.05)]",
+          "transition-all duration-300",
+        ].join(" "),
+        "tft-glass": [
+          "glass-card",
+          "text-[var(--tft-text-primary)] font-semibold",
+          "hover:border-[#C8AA6E]/50",
+          "hover:shadow-[0_8px_32px_rgba(0,0,0,0.2)]",
+          "transition-all duration-300",
+        ].join(" "),
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
         sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
         lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
-        xl: "h-12 rounded-lg px-8 has-[>svg]:px-6 text-base",
+        xl: "h-14 rounded-lg px-8 has-[>svg]:px-6 text-base",
         icon: "size-9",
         "icon-sm": "size-8",
         "icon-lg": "size-10",
