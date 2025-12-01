@@ -1,5 +1,6 @@
 package com.tft.tournament.service.impl;
 
+import tools.jackson.databind.ObjectMapper;
 import com.tft.tournament.domain.Participant;
 import com.tft.tournament.domain.Region;
 import com.tft.tournament.domain.Tournament;
@@ -23,11 +24,14 @@ import com.tft.tournament.repository.*;
 import com.tft.tournament.service.TournamentService;
 import com.tft.tournament.util.SlugGenerator;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Stream;
 
@@ -41,6 +45,7 @@ import java.util.stream.Stream;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
+@Slf4j
 public class TournamentServiceImpl implements TournamentService {
 
     private final TournamentRepository tournamentRepository;
@@ -51,6 +56,7 @@ public class TournamentServiceImpl implements TournamentService {
     private final TournamentMapper tournamentMapper;
     private final ParticipantMapper participantMapper;
     private final MatchMapper matchMapper;
+    private final ObjectMapper objectMapper;
 
     @Override
     public List<TournamentListResponse> getAllPublicTournaments(
@@ -132,6 +138,20 @@ public class TournamentServiceImpl implements TournamentService {
             counter++;
         }
 
+        // Convert rules to JSON if provided using ObjectMapper for safe serialization
+        String rulesJson = null;
+        if (request.rules() != null) {
+            try {
+                Map<String, Object> rulesMap = new HashMap<>();
+                rulesMap.put("scoring", request.rules().scoring());
+                rulesMap.put("rounds", request.rules().rounds());
+                rulesMap.put("players_per_match", request.rules().playersPerMatch());
+                rulesJson = objectMapper.writeValueAsString(rulesMap);
+            } catch (Exception e) {
+                log.error("Failed to serialize tournament rules to JSON", e);
+            }
+        }
+
         Tournament tournament = Tournament.builder()
                 .name(request.name())
                 .slug(slug)
@@ -153,6 +173,9 @@ public class TournamentServiceImpl implements TournamentService {
                 .customRules(request.customRules())
                 .streamUrl(request.streamUrl())
                 .discordUrl(request.discordUrl())
+                .format(request.format())
+                .rulesJson(rulesJson)
+                .allowMedia(request.allowMedia() != null ? request.allowMedia() : true)
                 .organizer(organizer)
                 .isPublic(true)
                 .isFeatured(false)

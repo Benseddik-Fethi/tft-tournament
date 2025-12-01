@@ -7,3 +7,4 @@ export { TournamentStatusBadge } from './TournamentStatusBadge';
 export { StandingsTable } from './StandingsTable';
 export { MatchCard } from './MatchCard';
 export { ParticipantsList } from './ParticipantsList';
+export { ResultsModal } from './ResultsModal';

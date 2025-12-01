@@ -1,8 +1,10 @@
 package com.tft.tournament.controller;
 
+import com.tft.tournament.dto.request.MatchResultsRequest;
 import com.tft.tournament.dto.request.SubmitResultsRequest;
 import com.tft.tournament.dto.response.GameResponse;
 import com.tft.tournament.dto.response.MatchDetailResponse;
+import com.tft.tournament.dto.response.MatchResultsResponse;
 import com.tft.tournament.security.CustomUserDetails;
 import com.tft.tournament.service.MatchService;
 import jakarta.validation.Valid;
@@ -73,5 +75,22 @@ public class MatchController {
             @AuthenticationPrincipal CustomUserDetails userDetails
     ) {
         return ResponseEntity.ok(matchService.submitResults(id, gameNumber, request, userDetails.getUser().getId()));
+    }
+
+    /**
+     * Soumet les résultats d'un match selon le format de la spécification API.
+     *
+     * @param id identifiant du match
+     * @param request la requête avec les placements et notes
+     * @param userDetails les détails de l'utilisateur authentifié
+     * @return les résultats soumis
+     */
+    @PostMapping("/api/v1/matches/{id}/results")
+    public ResponseEntity<MatchResultsResponse> submitMatchResults(
+            @PathVariable UUID id,
+            @Valid @RequestBody MatchResultsRequest request,
+            @AuthenticationPrincipal CustomUserDetails userDetails
+    ) {
+        return ResponseEntity.ok(matchService.submitMatchResults(id, request, userDetails.getUser().getId()));
     }
 }

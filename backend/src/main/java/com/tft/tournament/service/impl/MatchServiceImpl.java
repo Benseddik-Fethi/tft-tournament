@@ -3,18 +3,23 @@ package com.tft.tournament.service.impl;
 import com.tft.tournament.domain.Game;
 import com.tft.tournament.domain.GameResult;
 import com.tft.tournament.domain.Match;
+import com.tft.tournament.domain.MatchParticipant;
 import com.tft.tournament.domain.Participant;
 import com.tft.tournament.domain.enums.GameStatus;
+import com.tft.tournament.domain.enums.MatchStatus;
 import com.tft.tournament.domain.enums.ResultSource;
+import com.tft.tournament.dto.request.MatchResultsRequest;
 import com.tft.tournament.dto.request.SubmitResultsRequest;
 import com.tft.tournament.dto.response.GameResponse;
 import com.tft.tournament.dto.response.MatchDetailResponse;
+import com.tft.tournament.dto.response.MatchResultsResponse;
 import com.tft.tournament.exception.BadRequestException;
 import com.tft.tournament.exception.ResourceNotFoundException;
 import com.tft.tournament.mapper.MatchMapper;
 import com.tft.tournament.repository.GameRepository;
 import com.tft.tournament.repository.GameResultRepository;
 import com.tft.tournament.repository.MatchRepository;
+import com.tft.tournament.repository.MatchParticipantRepository;
 import com.tft.tournament.repository.ParticipantRepository;
 import com.tft.tournament.service.MatchService;
 import com.tft.tournament.service.TournamentService;
@@ -23,6 +28,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -42,6 +48,7 @@ public class MatchServiceImpl implements MatchService {
     private final GameRepository gameRepository;
     private final GameResultRepository gameResultRepository;
     private final ParticipantRepository participantRepository;
+    private final MatchParticipantRepository matchParticipantRepository;
     private final TournamentService tournamentService;
     private final MatchMapper matchMapper;
 
@@ -147,5 +154,77 @@ public class MatchServiceImpl implements MatchService {
             case 8 -> 1;
             default -> 0;
         };
+    }
+
+    @Override
+    @Transactional
+    public MatchResultsResponse submitMatchResults(UUID matchId, MatchResultsRequest request, UUID userId) {
+        Match match = matchRepository.findById(matchId)
+                .orElseThrow(() -> new ResourceNotFoundException("Match non trouvé avec l'id: " + matchId));
+
+        if (!canSubmitResults(matchId, userId)) {
+            throw new BadRequestException("Vous n'avez pas les droits pour soumettre des résultats pour ce match");
+        }
+
+        // Update match notes and evidence URL
+        if (request.notes() != null) {
+            match.setNotes(request.notes());
+        }
+        if (request.evidenceUrl() != null) {
+            match.setEvidenceUrl(request.evidenceUrl());
+        }
+
+        // Build placements response
+        List<MatchResultsResponse.PlacementResponse> placementResponses = new ArrayList<>();
+        
+        for (MatchResultsRequest.PlacementResult placement : request.placements()) {
+            Participant participant = participantRepository.findById(placement.participantId())
+                    .orElseThrow(() -> new ResourceNotFoundException(
+                            "Participant non trouvé avec l'id: " + placement.participantId()));
+
+            // Calculate points if not provided
+            Integer points = placement.points() != null ? placement.points() : calculatePoints(placement.placement());
+
+            // Update or create MatchParticipant
+            MatchParticipant matchParticipant = match.getMatchParticipants().stream()
+                    .filter(mp -> mp.getParticipant() != null && 
+                            placement.participantId().equals(mp.getParticipant().getId()))
+                    .findFirst()
+                    .orElseGet(() -> {
+                        MatchParticipant mp = MatchParticipant.builder()
+                                .match(match)
+                                .participant(participant)
+                                .build();
+                        match.getMatchParticipants().add(mp);
+                        return mp;
+                    });
+
+            matchParticipant.setMatchPlacement(placement.placement());
+            matchParticipant.setMatchPoints(points);
+
+            placementResponses.add(new MatchResultsResponse.PlacementResponse(
+                    participant.getId(),
+                    participant.getDisplayName() != null ? participant.getDisplayName() : 
+                            (participant.getUser() != null ? participant.getUser().getFullName() : "Unknown"),
+                    placement.placement(),
+                    points
+            ));
+        }
+
+        // Update match status to completed
+        match.setStatus(MatchStatus.COMPLETED);
+        match.setEndTime(Instant.now());
+
+        Match saved = matchRepository.save(match);
+
+        return new MatchResultsResponse(
+                saved.getId(),
+                saved.getStatus().name(),
+                placementResponses,
+                saved.getNotes(),
+                saved.getEvidenceUrl(),
+                Instant.now(),
+                userId
+        );
     }
 }

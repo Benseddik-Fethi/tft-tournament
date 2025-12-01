@@ -138,6 +138,9 @@ export interface TournamentDetail {
   customRules?: string;
   streamUrl?: string;
   discordUrl?: string;
+  format?: string;
+  rulesJson?: string;
+  allowMedia?: boolean;
   region?: Region;
   organizer?: UserSummary;
   phases: TournamentPhase[];
@@ -151,6 +154,15 @@ export interface TournamentFilters {
   status?: TournamentStatus;
   tournamentType?: TournamentType;
   search?: string;
+}
+
+/**
+ * Tournament rules
+ */
+export interface TournamentRules {
+  scoring?: string;
+  rounds?: number;
+  playersPerMatch?: number;
 }
 
 /**
@@ -177,6 +189,9 @@ export interface CreateTournamentRequest {
   discordUrl?: string;
   regionId?: string;
   stageId?: string;
+  format?: string;
+  rules?: TournamentRules;
+  allowMedia?: boolean;
 }
 
 /**

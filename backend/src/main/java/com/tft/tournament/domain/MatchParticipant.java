@@ -52,6 +52,9 @@ public class MatchParticipant {
     @Builder.Default
     private Integer matchPoints = 0;
 
+    @Column(name = "match_placement")
+    private Integer matchPlacement;
+
     @Column(name = "match_games_played", nullable = false)
     @Builder.Default
     private Integer matchGamesPlayed = 0;

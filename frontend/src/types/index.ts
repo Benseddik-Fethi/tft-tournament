@@ -10,3 +10,5 @@ export * from './circuit.types';
 export * from './tournament.types';
 export * from './match.types';
 export * from './standing.types';
+export * from './media.types';
+export * from './admin.types';
