@@ -1,5 +1,6 @@
 package com.tft.tournament.exception;
 
+import com.tft.tournament.dto.response.ApiErrorResponse;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -12,8 +13,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Gestionnaire global des exceptions de l'application.
@@ -31,219 +35,173 @@ import java.util.Map;
 public class GlobalExceptionHandler {
 
     /**
-     * Gère les exceptions ResourceNotFoundException (404).
+     * Génère un identifiant de trace unique.
      *
-     * @param ex      l'exception
-     * @param request la requête web
+     * @return l'identifiant de trace
+     */
+    private String generateTraceId() {
+        return UUID.randomUUID().toString().substring(0, 8);
+    }
+
+    // ==================== API SPEC COMPLIANT HANDLERS ====================
+
+    /**
+     * Gère les exceptions ResourceNotFoundException (404) avec format API spec.
+     *
+     * @param ex l'exception
      * @return la réponse d'erreur
      */
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleResourceNotFoundException(
-            ResourceNotFoundException ex,
-            WebRequest request
+    public ResponseEntity<ApiErrorResponse> handleResourceNotFoundExceptionSpec(
+            ResourceNotFoundException ex
     ) {
-        log.debug("Resource not found: {}", ex.getMessage());
+        String traceId = generateTraceId();
+        log.debug("Resource not found [trace_id={}]: {}", traceId, ex.getMessage());
 
-        ErrorResponse response = new ErrorResponse(
-                HttpStatus.NOT_FOUND.value(),
-                "Not Found",
-                ex.getMessage(),
-                request.getDescription(false).replace("uri=", "")
-        );
-
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(ApiErrorResponse.of("NOT_FOUND", ex.getMessage(), traceId));
     }
 
     /**
-     * Gère les exceptions BadRequestException (400).
+     * Gère les exceptions BadRequestException (400) avec format API spec.
      *
-     * @param ex      l'exception
-     * @param request la requête web
+     * @param ex l'exception
      * @return la réponse d'erreur
      */
     @ExceptionHandler(BadRequestException.class)
-    public ResponseEntity<ErrorResponse> handleBadRequestException(
-            BadRequestException ex,
-            WebRequest request
+    public ResponseEntity<ApiErrorResponse> handleBadRequestExceptionSpec(
+            BadRequestException ex
     ) {
-        log.debug("Bad request: {}", ex.getMessage());
+        String traceId = generateTraceId();
+        log.debug("Bad request [trace_id={}]: {}", traceId, ex.getMessage());
 
-        ErrorResponse response = new ErrorResponse(
-                HttpStatus.BAD_REQUEST.value(),
-                "Bad Request",
-                ex.getMessage(),
-                request.getDescription(false).replace("uri=", "")
-        );
-
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(ApiErrorResponse.of("BAD_REQUEST", ex.getMessage(), traceId));
     }
 
     /**
-     * Gère les exceptions AuthenticationException (401).
+     * Gère les exceptions AuthenticationException (401) avec format API spec.
      *
-     * @param ex      l'exception
-     * @param request la requête web
+     * @param ex l'exception
      * @return la réponse d'erreur
      */
     @ExceptionHandler(AuthenticationException.class)
-    public ResponseEntity<ErrorResponse> handleAuthenticationException(
-            AuthenticationException ex,
-            WebRequest request
+    public ResponseEntity<ApiErrorResponse> handleAuthenticationExceptionSpec(
+            AuthenticationException ex
     ) {
-        log.debug("Authentication error: {}", ex.getMessage());
+        String traceId = generateTraceId();
+        log.debug("Authentication error [trace_id={}]: {}", traceId, ex.getMessage());
 
-        ErrorResponse response = new ErrorResponse(
-                HttpStatus.UNAUTHORIZED.value(),
-                "Unauthorized",
-                ex.getMessage(),
-                request.getDescription(false).replace("uri=", "")
-        );
-
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(ApiErrorResponse.of("UNAUTHORIZED", ex.getMessage(), traceId));
     }
 
     /**
-     * Gère les exceptions AccountLockedException (423).
+     * Gère les exceptions AccountLockedException (423) avec format API spec.
      *
-     * @param ex      l'exception
-     * @param request la requête web
+     * @param ex l'exception
      * @return la réponse d'erreur
      */
     @ExceptionHandler(AccountLockedException.class)
-    public ResponseEntity<ErrorResponse> handleAccountLockedException(
-            AccountLockedException ex,
-            WebRequest request
+    public ResponseEntity<ApiErrorResponse> handleAccountLockedExceptionSpec(
+            AccountLockedException ex
     ) {
-        log.warn("Account locked: {}", ex.getMessage());
+        String traceId = generateTraceId();
+        log.warn("Account locked [trace_id={}]: {}", traceId, ex.getMessage());
 
-        Map<String, Object> details = new HashMap<>();
-        details.put("lockedUntil", ex.getLockedUntil().toString());
+        List<ApiErrorResponse.FieldDetail> details = new ArrayList<>();
+        details.add(new ApiErrorResponse.FieldDetail("lockedUntil", ex.getLockedUntil().toString()));
 
-        ErrorResponse response = new ErrorResponse(
-                HttpStatus.LOCKED.value(),
-                "Locked",
-                ex.getMessage(),
-                request.getDescription(false).replace("uri=", ""),
-                details
-        );
-
-        return ResponseEntity.status(HttpStatus.LOCKED).body(response);
+        return ResponseEntity.status(HttpStatus.LOCKED)
+                .body(ApiErrorResponse.of("ACCOUNT_LOCKED", ex.getMessage(), details, traceId));
     }
 
     /**
-     * Gère les exceptions AccessDeniedException (403).
+     * Gère les exceptions AccessDeniedException (403) avec format API spec.
      *
-     * @param ex      l'exception
-     * @param request la requête web
+     * @param ex l'exception
      * @return la réponse d'erreur
      */
     @ExceptionHandler(AccessDeniedException.class)
-    public ResponseEntity<ErrorResponse> handleAccessDeniedException(
-            AccessDeniedException ex,
-            WebRequest request
+    public ResponseEntity<ApiErrorResponse> handleAccessDeniedExceptionSpec(
+            AccessDeniedException ex
     ) {
-        log.debug("Access denied: {}", ex.getMessage());
+        String traceId = generateTraceId();
+        log.debug("Access denied [trace_id={}]: {}", traceId, ex.getMessage());
 
-        ErrorResponse response = new ErrorResponse(
-                HttpStatus.FORBIDDEN.value(),
-                "Forbidden",
-                "Vous n'avez pas les permissions nécessaires",
-                request.getDescription(false).replace("uri=", "")
-        );
-
-        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(response);
+        return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                .body(ApiErrorResponse.of("FORBIDDEN", "Vous n'avez pas les permissions nécessaires", traceId));
     }
 
     /**
-     * Gère les erreurs de validation des arguments (400).
+     * Gère les erreurs de validation des arguments (400) avec format API spec.
      *
-     * @param ex      l'exception
-     * @param request la requête web
+     * @param ex l'exception
      * @return la réponse d'erreur
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErrorResponse> handleValidationException(
-            MethodArgumentNotValidException ex,
-            WebRequest request
+    public ResponseEntity<ApiErrorResponse> handleValidationExceptionSpec(
+            MethodArgumentNotValidException ex
     ) {
-        log.debug("Validation error: {}", ex.getMessage());
+        String traceId = generateTraceId();
+        log.debug("Validation error [trace_id={}]: {}", traceId, ex.getMessage());
 
-        Map<String, Object> errors = new HashMap<>();
+        List<ApiErrorResponse.FieldDetail> details = new ArrayList<>();
         ex.getBindingResult().getAllErrors().forEach(error -> {
             String fieldName = ((FieldError) error).getField();
             String errorMessage = error.getDefaultMessage();
-            errors.put(fieldName, errorMessage);
+            details.add(new ApiErrorResponse.FieldDetail(fieldName, errorMessage));
         });
 
-        ErrorResponse response = new ErrorResponse(
-                HttpStatus.BAD_REQUEST.value(),
-                "Validation Error",
-                "Erreur de validation des données",
-                request.getDescription(false).replace("uri=", ""),
-                errors
-        );
-
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(ApiErrorResponse.of("VALIDATION_ERROR", "Erreur de validation des données", details, traceId));
     }
 
     /**
-     * Gère les violations de contraintes (400).
+     * Gère les violations de contraintes (400) avec format API spec.
      *
-     * @param ex      l'exception
-     * @param request la requête web
+     * @param ex l'exception
      * @return la réponse d'erreur
      */
     @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<ErrorResponse> handleConstraintViolationException(
-            ConstraintViolationException ex,
-            WebRequest request
+    public ResponseEntity<ApiErrorResponse> handleConstraintViolationExceptionSpec(
+            ConstraintViolationException ex
     ) {
-        log.debug("Constraint violation: {}", ex.getMessage());
+        String traceId = generateTraceId();
+        log.debug("Constraint violation [trace_id={}]: {}", traceId, ex.getMessage());
 
-        Map<String, Object> errors = new HashMap<>();
+        List<ApiErrorResponse.FieldDetail> details = new ArrayList<>();
         ex.getConstraintViolations().forEach(violation -> {
             String fieldName = violation.getPropertyPath().toString();
             String errorMessage = violation.getMessage();
-            errors.put(fieldName, errorMessage);
+            details.add(new ApiErrorResponse.FieldDetail(fieldName, errorMessage));
         });
 
-        ErrorResponse response = new ErrorResponse(
-                HttpStatus.BAD_REQUEST.value(),
-                "Validation Error",
-                "Erreur de validation des contraintes",
-                request.getDescription(false).replace("uri=", ""),
-                errors
-        );
-
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(ApiErrorResponse.of("VALIDATION_ERROR", "Erreur de validation des contraintes", details, traceId));
     }
 
     /**
-     * Gère toutes les autres exceptions (500).
+     * Gère toutes les autres exceptions (500) avec format API spec.
      *
-     * @param ex      l'exception
-     * @param request la requête web
+     * @param ex l'exception
      * @return la réponse d'erreur
      */
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponse> handleGlobalException(
-            Exception ex,
-            WebRequest request
+    public ResponseEntity<ApiErrorResponse> handleGlobalExceptionSpec(
+            Exception ex
     ) {
-        log.error("Erreur serveur inattendue", ex);
+        String traceId = generateTraceId();
+        log.error("Erreur serveur inattendue [trace_id={}]", traceId, ex);
 
-        ErrorResponse response = new ErrorResponse(
-                HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                "Internal Server Error",
-                "Une erreur inattendue s'est produite",
-                request.getDescription(false).replace("uri=", "")
-        );
-
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(ApiErrorResponse.of("INTERNAL_ERROR", "Une erreur inattendue s'est produite", traceId));
     }
 
+    // ==================== LEGACY ERROR RESPONSE ====================
+
     /**
-     * Structure standard d'une réponse d'erreur.
+     * Structure standard d'une réponse d'erreur (legacy).
      *
      * @param status    le code HTTP
      * @param error     le type d'erreur

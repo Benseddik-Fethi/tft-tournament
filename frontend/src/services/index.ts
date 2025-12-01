@@ -8,6 +8,9 @@ import * as regionServiceModule from './region.service';
 import * as circuitServiceModule from './circuit.service';
 import * as tournamentServiceModule from './tournament.service';
 import * as matchServiceModule from './match.service';
+import * as mediaServiceModule from './media.service';
+import * as participantServiceModule from './participant.service';
+import * as adminServiceModule from './admin.service';
 
 export const authService = authServiceModule;
 export const userService = userServiceModule;
@@ -15,6 +18,9 @@ export const regionService = regionServiceModule;
 export const circuitService = circuitServiceModule;
 export const tournamentService = tournamentServiceModule;
 export const matchService = matchServiceModule;
+export const mediaService = mediaServiceModule;
+export const participantService = participantServiceModule;
+export const adminService = adminServiceModule;
 
 // Export auth service functions for direct imports
 export {

@@ -132,6 +132,17 @@ public class TournamentServiceImpl implements TournamentService {
             counter++;
         }
 
+        // Convert rules to JSON if provided
+        String rulesJson = null;
+        if (request.rules() != null) {
+            rulesJson = String.format(
+                    "{\"scoring\":%s,\"rounds\":%s,\"players_per_match\":%s}",
+                    request.rules().scoring() != null ? "\"" + request.rules().scoring() + "\"" : "null",
+                    request.rules().rounds() != null ? request.rules().rounds() : "null",
+                    request.rules().playersPerMatch() != null ? request.rules().playersPerMatch() : "null"
+            );
+        }
+
         Tournament tournament = Tournament.builder()
                 .name(request.name())
                 .slug(slug)
@@ -153,6 +164,9 @@ public class TournamentServiceImpl implements TournamentService {
                 .customRules(request.customRules())
                 .streamUrl(request.streamUrl())
                 .discordUrl(request.discordUrl())
+                .format(request.format())
+                .rulesJson(rulesJson)
+                .allowMedia(request.allowMedia() != null ? request.allowMedia() : true)
                 .organizer(organizer)
                 .isPublic(true)
                 .isFeatured(false)

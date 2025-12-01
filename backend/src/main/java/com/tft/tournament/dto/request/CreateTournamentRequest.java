@@ -30,6 +30,9 @@ import java.util.UUID;
  * @param discordUrl URL du Discord
  * @param regionId identifiant de la région
  * @param stageId identifiant de l'étape (optionnel)
+ * @param format format du tournoi (ex: FFA, SWISS)
+ * @param rules règles du tournoi (scoring, rounds, players_per_match)
+ * @param allowMedia autoriser les médias
  * @author Fethi Benseddik
  * @version 1.0
  * @since 2025
@@ -85,6 +88,31 @@ public record CreateTournamentRequest(
 
         UUID regionId,
 
-        UUID stageId
+        UUID stageId,
+
+        @Size(max = 50, message = "Le format ne peut pas dépasser 50 caractères")
+        String format,
+
+        TournamentRules rules,
+
+        Boolean allowMedia
 ) {
+    /**
+     * Règles du tournoi.
+     *
+     * @param scoring système de scoring (JSON array)
+     * @param rounds nombre de rounds
+     * @param playersPerMatch nombre de joueurs par match
+     */
+    public record TournamentRules(
+            String scoring,
+            
+            @Min(value = 1, message = "Le nombre minimum de rounds est 1")
+            Integer rounds,
+            
+            @Min(value = 2, message = "Le nombre minimum de joueurs par match est 2")
+            @Max(value = 8, message = "Le nombre maximum de joueurs par match est 8")
+            Integer playersPerMatch
+    ) {
+    }
 }

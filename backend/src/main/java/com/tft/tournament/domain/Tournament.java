@@ -122,6 +122,16 @@ public class Tournament {
     @Column(name = "discord_url", length = 500)
     private String discordUrl;
 
+    @Column(name = "format", length = 50)
+    private String format;
+
+    @Column(name = "rules_json", columnDefinition = "TEXT")
+    private String rulesJson;
+
+    @Column(name = "allow_media", nullable = false)
+    @Builder.Default
+    private Boolean allowMedia = true;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "region_id")
     private Region region;
