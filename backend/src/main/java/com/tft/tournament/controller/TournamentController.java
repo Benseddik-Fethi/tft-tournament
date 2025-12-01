@@ -81,6 +81,21 @@ public class TournamentController {
     }
 
     /**
+     * Récupère le classement d'une phase spécifique.
+     *
+     * @param slug le slug du tournoi
+     * @param phaseId identifiant de la phase
+     * @return la liste des classements
+     */
+    @GetMapping("/api/v1/public/tournaments/{slug}/phases/{phaseId}/standings")
+    public ResponseEntity<List<StandingResponse>> getPhaseStandings(
+            @PathVariable String slug,
+            @PathVariable UUID phaseId
+    ) {
+        return ResponseEntity.ok(standingService.getPhaseStandings(phaseId));
+    }
+
+    /**
      * Récupère les matchs d'un tournoi.
      *
      * @param slug le slug du tournoi

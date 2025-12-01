@@ -47,6 +47,17 @@ export const getStandings = async (slug: string): Promise<Standing[]> => {
 };
 
 /**
+ * Gets phase-specific standings
+ * @param slug - The tournament slug
+ * @param phaseId - The phase ID
+ * @returns List of standings for the phase
+ */
+export const getPhaseStandings = async (slug: string, phaseId: string): Promise<Standing[]> => {
+  const { data } = await api.get<Standing[]>(`${PUBLIC_BASE_URL}/${slug}/phases/${phaseId}/standings`);
+  return data;
+};
+
+/**
  * Gets tournament matches
  * @param slug - The tournament slug
  * @returns List of matches
@@ -101,6 +112,7 @@ export const tournamentService = {
   getAll,
   getBySlug,
   getStandings,
+  getPhaseStandings,
   getMatches,
   getParticipants,
   create,
