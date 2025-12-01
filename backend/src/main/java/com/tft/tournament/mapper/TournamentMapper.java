@@ -2,7 +2,6 @@ package com.tft.tournament.mapper;
 
 import com.tft.tournament.domain.Tournament;
 import com.tft.tournament.domain.TournamentPhase;
-import com.tft.tournament.domain.User;
 import com.tft.tournament.dto.response.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -16,7 +15,7 @@ import java.util.List;
  * @version 1.0
  * @since 2025
  */
-@Mapper(config = MapperConfig.class, uses = {RegionMapper.class, ParticipantMapper.class})
+@Mapper(config = MapperConfig.class, uses = {RegionMapper.class, UserMapper.class})
 public interface TournamentMapper {
 
     /**
@@ -63,22 +62,4 @@ public interface TournamentMapper {
      * @return la liste de DTOs
      */
     List<TournamentListResponse> toListResponseList(List<Tournament> tournaments);
-
-    /**
-     * Convertit un User en UserSummaryResponse.
-     *
-     * @param user l'entité utilisateur
-     * @return le DTO résumé
-     */
-    default UserSummaryResponse toUserSummaryResponse(User user) {
-        if (user == null) {
-            return null;
-        }
-        return new UserSummaryResponse(
-                user.getId(),
-                user.getFirstName(),
-                user.getLastName(),
-                user.getAvatar()
-        );
-    }
 }

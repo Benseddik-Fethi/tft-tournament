@@ -2,6 +2,7 @@ package com.tft.tournament.mapper;
 
 import com.tft.tournament.domain.User;
 import com.tft.tournament.dto.response.UserResponse;
+import com.tft.tournament.dto.response.UserSummaryResponse;
 import org.mapstruct.Mapper;
 
 /**
@@ -25,4 +26,12 @@ public interface UserMapper {
      * @return le DTO de réponse
      */
     UserResponse toResponse(User user);
+
+    /**
+     * Convertit une entité User en UserSummaryResponse.
+     *
+     * @param user l'entité utilisateur
+     * @return le DTO résumé
+     */
+    UserSummaryResponse toSummaryResponse(User user);
 }

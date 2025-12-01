@@ -14,7 +14,7 @@ import java.util.List;
  * @version 1.0
  * @since 2025
  */
-@Mapper(config = MapperConfig.class, uses = {ParticipantMapper.class})
+@Mapper(config = MapperConfig.class, uses = {UserMapper.class})
 public interface MatchMapper {
 
     /**
@@ -85,22 +85,4 @@ public interface MatchMapper {
      * @return la liste de DTOs
      */
     List<GameResponse> toGameResponseList(List<Game> games);
-
-    /**
-     * Convertit un User en UserSummaryResponse.
-     *
-     * @param user l'entité utilisateur
-     * @return le DTO résumé
-     */
-    default UserSummaryResponse toUserSummaryResponse(User user) {
-        if (user == null) {
-            return null;
-        }
-        return new UserSummaryResponse(
-                user.getId(),
-                user.getFirstName(),
-                user.getLastName(),
-                user.getAvatar()
-        );
-    }
 }
