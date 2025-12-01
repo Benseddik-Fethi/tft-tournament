@@ -1,0 +1,55 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# LIQUIBASE - Test User Accounts Migration
+# Inserts default test accounts for development and testing
+#
+# Test Account Credentials (for developer reference):
+#   Admin: admin@tft-tournament.com / Password123!
+#   User:  user@tft-tournament.com / Password123!
+#
+# Password hashing: Argon2id with parameters:
+#   saltLength=16, hashLength=32, parallelism=4, memory=65536, iterations=4
+# ═══════════════════════════════════════════════════════════════════════════════
+
+databaseChangeLog:
+  - changeSet:
+      id: data-001-insert-test-users
+      author: benseddik fethi
+      context: "!prod"
+      comment: >
+        Insert test user accounts for development and testing.
+        These accounts are NOT inserted in production environment.
+        Credentials: admin@tft-tournament.com / Password123! and user@tft-tournament.com / Password123!
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: SELECT COUNT(*) FROM users WHERE email = 'admin@tft-tournament.com'
+      changes:
+        # Admin account
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: id, value: '00000000-0000-0000-0000-000000000001' }
+              - column: { name: email, value: 'admin@tft-tournament.com' }
+              - column: { name: password_hash, value: '$argon2id$v=19$m=65536,t=4,p=4$3Sq+e8GrfadB4XLJYG3/Yg$uksHdQsYTTniIYCbUmjvRjfN3lo6YZOUa01OcTyyY9o' }
+              - column: { name: first_name, value: 'Admin' }
+              - column: { name: last_name, value: 'System' }
+              - column: { name: role, value: 'ADMIN' }
+              - column: { name: provider, value: 'EMAIL' }
+              - column: { name: email_verified, valueBoolean: true }
+              - column: { name: failed_login_attempts, valueNumeric: 0 }
+              - column: { name: preferred_language, value: 'fr' }
+        # User account
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: id, value: '00000000-0000-0000-0000-000000000002' }
+              - column: { name: email, value: 'user@tft-tournament.com' }
+              - column: { name: password_hash, value: '$argon2id$v=19$m=65536,t=4,p=4$DrGJlHOUkyMB4OC0Ys275A$7YtUMD2BXz+xkLWZaIsOOrMv9YMFsA93YyGG39WKJew' }
+              - column: { name: first_name, value: 'Jean' }
+              - column: { name: last_name, value: 'Dupont' }
+              - column: { name: role, value: 'USER' }
+              - column: { name: provider, value: 'EMAIL' }
+              - column: { name: email_verified, valueBoolean: true }
+              - column: { name: failed_login_attempts, valueNumeric: 0 }
+              - column: { name: preferred_language, value: 'fr' }

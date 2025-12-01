@@ -68,6 +68,14 @@ databaseChangeLog:
       file: db/changelog/v2/018-create-tournament-admins-table.yaml
 
   # ─────────────────────────────────────────────────────────────────────────────
+  # TEST USER ACCOUNTS (non-prod context only)
+  # Credentials: admin@tft-tournament.com / Password123!
+  #              user@tft-tournament.com / Password123!
+  # ─────────────────────────────────────────────────────────────────────────────
+  - include:
+      file: db/changelog/data/001-insert-test-users.yaml
+
+  # ─────────────────────────────────────────────────────────────────────────────
   # SEED DATA (dev/test context only)
   # ─────────────────────────────────────────────────────────────────────────────
   - include:
