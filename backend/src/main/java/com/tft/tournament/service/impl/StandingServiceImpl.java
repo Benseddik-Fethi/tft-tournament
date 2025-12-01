@@ -39,8 +39,7 @@ public class StandingServiceImpl implements StandingService {
         Tournament tournament = tournamentRepository.findBySlug(tournamentSlug)
                 .orElseThrow(() -> new ResourceNotFoundException("Tournoi non trouvé avec le slug: " + tournamentSlug));
 
-        List<Participant> participants = participantRepository.findAll().stream()
-                .filter(p -> tournament.getId().equals(p.getTournament().getId()))
+        List<Participant> participants = participantRepository.findByTournamentId(tournament.getId()).stream()
                 .sorted(Comparator.comparing(Participant::getTotalPoints, Comparator.reverseOrder())
                         .thenComparing(p -> p.getAveragePlacement() != null ? p.getAveragePlacement() : java.math.BigDecimal.ZERO))
                 .toList();
@@ -65,9 +64,7 @@ public class StandingServiceImpl implements StandingService {
         Tournament tournament = tournamentRepository.findById(tournamentId)
                 .orElseThrow(() -> new ResourceNotFoundException("Tournoi non trouvé"));
 
-        List<Participant> participants = participantRepository.findAll().stream()
-                .filter(p -> tournament.getId().equals(p.getTournament().getId()))
-                .toList();
+        List<Participant> participants = participantRepository.findByTournamentId(tournament.getId());
 
         // Recalculer les statistiques pour chaque participant
         for (Participant participant : participants) {

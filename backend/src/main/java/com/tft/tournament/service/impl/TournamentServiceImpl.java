@@ -99,8 +99,7 @@ public class TournamentServiceImpl implements TournamentService {
         Tournament tournament = tournamentRepository.findBySlug(slug)
                 .orElseThrow(() -> new ResourceNotFoundException("Tournoi non trouvé avec le slug: " + slug));
         
-        return participantRepository.findAll().stream()
-                .filter(p -> tournament.getId().equals(p.getTournament().getId()))
+        return participantRepository.findByTournamentId(tournament.getId()).stream()
                 .map(participantMapper::toResponse)
                 .toList();
     }
@@ -123,11 +122,14 @@ public class TournamentServiceImpl implements TournamentService {
         User organizer = userRepository.findById(organizerId)
                 .orElseThrow(() -> new ResourceNotFoundException("Utilisateur non trouvé"));
 
-        String slug = SlugGenerator.generateSlug(request.name());
+        String baseSlug = SlugGenerator.generateSlug(request.name());
+        String slug = baseSlug;
         
-        // Check if slug already exists
-        if (tournamentRepository.existsBySlug(slug)) {
-            slug = slug + "-" + System.currentTimeMillis();
+        // Check if slug already exists and find a unique one
+        int counter = 1;
+        while (tournamentRepository.existsBySlug(slug)) {
+            slug = baseSlug + "-" + counter;
+            counter++;
         }
 
         Tournament tournament = Tournament.builder()
@@ -282,9 +284,8 @@ public class TournamentServiceImpl implements TournamentService {
                 .orElseThrow(() -> new ResourceNotFoundException("Utilisateur non trouvé"));
 
         // Check if already registered
-        boolean alreadyRegistered = participantRepository.findAll().stream()
-                .anyMatch(p -> tournament.getId().equals(p.getTournament().getId()) && 
-                              userId.equals(p.getUser().getId()));
+        boolean alreadyRegistered = participantRepository.existsByTournamentIdAndUserId(
+                tournament.getId(), userId);
         
         if (alreadyRegistered) {
             throw new BadRequestException("Vous êtes déjà inscrit à ce tournoi");
@@ -318,10 +319,8 @@ public class TournamentServiceImpl implements TournamentService {
             throw new BadRequestException("Le check-in n'est pas ouvert pour ce tournoi");
         }
 
-        Participant participant = participantRepository.findAll().stream()
-                .filter(p -> tournament.getId().equals(p.getTournament().getId()) && 
-                            userId.equals(p.getUser().getId()))
-                .findFirst()
+        Participant participant = participantRepository.findByTournamentIdAndUserId(
+                tournament.getId(), userId)
                 .orElseThrow(() -> new BadRequestException("Vous n'êtes pas inscrit à ce tournoi"));
 
         if (participant.getStatus() == ParticipantStatus.CHECKED_IN) {
