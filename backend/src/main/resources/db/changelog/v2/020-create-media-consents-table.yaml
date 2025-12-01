@@ -1,0 +1,93 @@
+databaseChangeLog:
+  - changeSet:
+      id: 020-create-media-consents-table
+      author: benseddik fethi
+      changes:
+        - createTable:
+            tableName: media_consents
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: caster_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tournament_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: consent_method
+                  type: varchar(30)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: proof_url
+                  type: varchar(500)
+              - column:
+                  name: consented_at
+                  type: timestamp with time zone
+                  constraints:
+                    nullable: false
+              - column:
+                  name: expires_at
+                  type: timestamp with time zone
+              - column:
+                  name: is_active
+                  type: boolean
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+
+        - addForeignKeyConstraint:
+            baseTableName: media_consents
+            baseColumnNames: caster_id
+            constraintName: fk_media_consent_caster
+            referencedTableName: users
+            referencedColumnNames: id
+            onDelete: CASCADE
+
+        - addForeignKeyConstraint:
+            baseTableName: media_consents
+            baseColumnNames: tournament_id
+            constraintName: fk_media_consent_tournament
+            referencedTableName: tournaments
+            referencedColumnNames: id
+            onDelete: CASCADE
+
+        - createIndex:
+            indexName: idx_media_consent_caster
+            tableName: media_consents
+            columns:
+              - column:
+                  name: caster_id
+
+        - createIndex:
+            indexName: idx_media_consent_tournament
+            tableName: media_consents
+            columns:
+              - column:
+                  name: tournament_id
+
+        - addUniqueConstraint:
+            tableName: media_consents
+            columnNames: caster_id, tournament_id
+            constraintName: uk_media_consent_caster_tournament
