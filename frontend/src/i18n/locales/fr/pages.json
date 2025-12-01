@@ -2,7 +2,9 @@
   "landing": {
     "nav": {
       "login": "Connexion",
-      "register": "S'inscrire"
+      "register": "S'inscrire",
+      "tournaments": "Tournois",
+      "circuits": "Circuits"
     },
     "hero": {
       "badge": "Plateforme de tournois TFT",
@@ -166,9 +168,75 @@
   "layout": {
     "brandName": "TFT Tournament",
     "dashboard": "Dashboard",
+    "tournaments": "Tournois",
+    "circuits": "Circuits",
     "profile": "Mon Profil",
     "settings": "Paramètres",
     "logout": "Se déconnecter"
+  },
+  "nav": {
+    "tournaments": "Tournois",
+    "circuits": "Circuits",
+    "dashboard": "Dashboard",
+    "login": "Connexion",
+    "register": "S'inscrire"
+  },
+  "tournaments": {
+    "title": "Tournois",
+    "subtitle": "Trouvez et rejoignez des tournois TFT du monde entier",
+    "searchPlaceholder": "Rechercher des tournois...",
+    "filters": "Filtres",
+    "filterRegion": "Région",
+    "filterStatus": "Statut",
+    "allRegions": "Toutes les régions",
+    "allStatuses": "Tous les statuts",
+    "noResults": "Aucun tournoi trouvé",
+    "noResultsHint": "Essayez d'ajuster vos filtres ou termes de recherche",
+    "resultsCount": "{{count}} tournoi(s) trouvé(s)"
+  },
+  "tournament": {
+    "notFound": "Tournoi non trouvé",
+    "backToList": "Retour aux tournois",
+    "organizedBy": "Organisé par",
+    "register": "S'inscrire",
+    "registering": "Inscription...",
+    "watchLive": "Regarder en live",
+    "startDate": "Date de début",
+    "participants": "Participants",
+    "prizePool": "Dotation",
+    "checkIn": "Check-in",
+    "description": "Description",
+    "rules": "Règles",
+    "prizeDistribution": "Distribution des prix",
+    "discord": "Discord",
+    "joinDiscord": "Rejoindre le serveur Discord",
+    "noMatches": "Aucun match programmé",
+    "tabs": {
+      "info": "Infos",
+      "participants": "Participants",
+      "standings": "Classement",
+      "matches": "Matchs"
+    }
+  },
+  "circuits": {
+    "title": "Circuits",
+    "subtitle": "Explorez les circuits compétitifs TFT et leurs saisons",
+    "allRegions": "Toutes les régions",
+    "noResults": "Aucun circuit trouvé",
+    "noResultsHint": "Essayez de sélectionner une autre région",
+    "resultsCount": "{{count}} circuit(s) trouvé(s)"
+  },
+  "circuit": {
+    "notFound": "Circuit non trouvé",
+    "backToList": "Retour aux circuits",
+    "organizedBy": "Organisé par",
+    "region": "Région",
+    "seasons": "Saisons",
+    "prizePool": "Dotation totale",
+    "about": "À propos",
+    "seasonsTitle": "Saisons & Étapes",
+    "noTournaments": "Aucun tournoi dans cette étape",
+    "noStages": "Aucune étape dans cette saison"
   },
   "loading": "Chargement...",
   "notFound": {

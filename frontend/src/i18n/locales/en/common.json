@@ -1,5 +1,5 @@
 {
-  "appName": "My App",
+  "appName": "TFT Tournament",
   "language": {
     "french": "Français",
     "english": "English",
@@ -28,5 +28,84 @@
     "error": "Error",
     "warning": "Warning",
     "info": "Information"
+  },
+  "participants": "participants",
+  "games": "games",
+  "round": "Round",
+  "lobby": "Lobby",
+  "rank": "Rank",
+  "player": "Player",
+  "points": "Points",
+  "gamesPlayed": "Games",
+  "wins": "Wins",
+  "top4": "Top 4",
+  "avgPlacement": "Avg. Place",
+  "unknown": "Unknown",
+  "noStandings": "No standings available yet",
+  "noParticipants": "No participants yet",
+  "watchLive": "Watch Live",
+  "activeSeason": "Active Season",
+  "tournamentStatus": {
+    "DRAFT": "Draft",
+    "REGISTRATION_OPEN": "Registration Open",
+    "REGISTRATION_CLOSED": "Registration Closed",
+    "CHECK_IN": "Check-in",
+    "IN_PROGRESS": "In Progress",
+    "COMPLETED": "Completed",
+    "CANCELLED": "Cancelled"
+  },
+  "matchStatus": {
+    "SCHEDULED": "Scheduled",
+    "CHECK_IN": "Check-in",
+    "LOBBY_OPEN": "Lobby Open",
+    "IN_GAME": "In Game",
+    "BETWEEN_GAMES": "Between Games",
+    "COMPLETED": "Completed",
+    "CANCELLED": "Cancelled"
+  },
+  "participantStatus": {
+    "REGISTERED": "Registered",
+    "CONFIRMED": "Confirmed",
+    "CHECKED_IN": "Checked In",
+    "PLAYING": "Playing",
+    "ELIMINATED": "Eliminated",
+    "DISQUALIFIED": "Disqualified",
+    "WINNER": "Winner"
+  },
+  "circuitType": {
+    "OFFICIAL": "Official",
+    "PARTNERED": "Partnered",
+    "COMMUNITY": "Community",
+    "PRIVATE": "Private"
+  },
+  "formatType": {
+    "SWISS": "Swiss",
+    "ROUND_ROBIN": "Round Robin",
+    "DOUBLE_LOBBY_ROUND_ROBIN": "Double Lobby RR",
+    "GSL_GROUPS": "GSL Groups",
+    "POINT_BASED": "Point Based",
+    "SINGLE_ELIMINATION": "Single Elim",
+    "DOUBLE_ELIMINATION": "Double Elim",
+    "CHECKMATE": "Checkmate",
+    "SET_CHECKMATE": "Set Checkmate",
+    "LAST_CHANCE": "Last Chance",
+    "CUTOFF": "Cutoff",
+    "LOBBY_KING": "Lobby King",
+    "GAUNTLET": "Gauntlet",
+    "MARATHON": "Marathon",
+    "CUSTOM": "Custom"
+  },
+  "seasonStatus": {
+    "UPCOMING": "Upcoming",
+    "ACTIVE": "Active",
+    "COMPLETED": "Completed",
+    "CANCELLED": "Cancelled"
+  },
+  "stageType": {
+    "QUALIFIER": "Qualifier",
+    "FINALS": "Finals",
+    "PLAYOFFS": "Playoffs",
+    "GROUPS": "Groups",
+    "CUSTOM": "Custom"
   }
 }
