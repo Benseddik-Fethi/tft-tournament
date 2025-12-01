@@ -1,12 +1,13 @@
 /**
  * Tournament Detail Page
- * Displays full tournament details with tabs
+ * Premium page with glassmorphism tabs and Hextech design
  */
 
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams, Link } from "react-router-dom";
 import { Calendar, Users, Trophy, ExternalLink, Clock } from "lucide-react";
+import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TournamentStatusBadge, StandingsTable, MatchCard, ParticipantsList } from "@/components/tournament";
@@ -126,7 +127,11 @@ export default function TournamentDetailPage() {
     return (
       <div className="min-h-screen bg-[var(--tft-bg-dark)] flex items-center justify-center">
         <div className="text-center">
-          <div className="inline-block w-8 h-8 border-2 border-[#C8AA6E] border-t-transparent rounded-full animate-spin" />
+          <motion.div 
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+            className="inline-block w-8 h-8 border-2 border-[#C8AA6E] border-t-transparent rounded-full"
+          />
           <p className="mt-4 text-[var(--tft-text-secondary)]">{t('loading')}</p>
         </div>
       </div>
@@ -136,17 +141,26 @@ export default function TournamentDetailPage() {
   if (!tournament) {
     return (
       <div className="min-h-screen bg-[var(--tft-bg-dark)] flex items-center justify-center">
-        <div className="text-center">
-          <Trophy className="w-16 h-16 text-[var(--tft-text-muted)] mx-auto mb-4" />
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="text-center"
+        >
+          <motion.div
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            <Trophy className="w-16 h-16 text-[var(--tft-text-muted)] mx-auto mb-4" />
+          </motion.div>
           <h2 className="text-xl font-semibold text-[var(--tft-text-primary)] mb-2">
             {t('tournament.notFound')}
           </h2>
           <Link to="/tournaments">
-            <Button variant="tft-outline">
+            <Button variant="tft-ghost">
               {t('tournament.backToList')}
             </Button>
           </Link>
-        </div>
+        </motion.div>
       </div>
     );
   }
@@ -155,18 +169,20 @@ export default function TournamentDetailPage() {
 
   return (
     <div className="min-h-screen bg-[var(--tft-bg-dark)]">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[var(--tft-border)] bg-[var(--tft-bg-dark)]/80 backdrop-blur-md">
+      {/* Navigation with Glass effect */}
+      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-8">
             <Link to={ROUTES.HOME}>
-              <TftLogo size="sm" />
+              <motion.div whileHover={{ scale: 1.05 }}>
+                <TftLogo size="sm" />
+              </motion.div>
             </Link>
             <div className="hidden md:flex items-center gap-6">
-              <Link to="/tournaments" className="text-[var(--tft-text-secondary)] hover:text-[var(--tft-text-primary)] transition-colors">
+              <Link to="/tournaments" className="text-[var(--tft-text-secondary)] hover:text-[#C8AA6E] transition-colors font-medium">
                 {t('nav.tournaments')}
               </Link>
-              <Link to="/circuits" className="text-[var(--tft-text-secondary)] hover:text-[var(--tft-text-primary)] transition-colors">
+              <Link to="/circuits" className="text-[var(--tft-text-secondary)] hover:text-[#C8AA6E] transition-colors font-medium">
                 {t('nav.circuits')}
               </Link>
             </div>
@@ -190,10 +206,13 @@ export default function TournamentDetailPage() {
         </div>
       </nav>
 
-      {/* Banner */}
-      <div className="relative h-64 md:h-80 mt-16">
+      {/* Banner with parallax-like effect */}
+      <div className="relative h-64 md:h-80 mt-16 overflow-hidden">
         {tournament.bannerUrl ? (
-          <img
+          <motion.img
+            initial={{ scale: 1.1 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.8 }}
             src={tournament.bannerUrl}
             alt={tournament.name}
             className="w-full h-full object-cover"
@@ -238,38 +257,53 @@ export default function TournamentDetailPage() {
             {/* Actions */}
             <div className="flex flex-col gap-2">
               {canRegister && (
-                <Button
-                  variant="tft-primary"
-                  size="lg"
-                  onClick={handleRegister}
-                  disabled={isRegistering}
-                >
-                  {isRegistering ? t('tournament.registering') : t('tournament.register')}
-                </Button>
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  <Button
+                    variant="tft-primary"
+                    size="lg"
+                    onClick={handleRegister}
+                    disabled={isRegistering}
+                  >
+                    {isRegistering ? t('tournament.registering') : t('tournament.register')}
+                  </Button>
+                </motion.div>
               )}
               {tournament.streamUrl && (
                 <a href={tournament.streamUrl} target="_blank" rel="noopener noreferrer">
-                  <Button variant="tft-outline" size="lg" className="w-full">
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    {t('tournament.watchLive')}
-                  </Button>
+                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                    <Button variant="tft-ghost" size="lg" className="w-full">
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      {t('tournament.watchLive')}
+                    </Button>
+                  </motion.div>
                 </a>
               )}
             </div>
           </div>
 
-          {/* Quick Info */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 p-4 bg-[var(--tft-bg-darker)] rounded-lg border border-[var(--tft-border)]">
+          {/* Quick Info with Glass card */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 p-4 glass-card rounded-xl"
+          >
             {tournament.startDate && (
-              <div className="flex items-center gap-3">
+              <motion.div 
+                whileHover={{ scale: 1.05 }}
+                className="flex items-center gap-3 p-2"
+              >
                 <Calendar className="w-5 h-5 text-[#C8AA6E]" />
                 <div>
                   <p className="text-xs text-[var(--tft-text-secondary)]">{t('tournament.startDate')}</p>
                   <p className="text-sm text-[var(--tft-text-primary)]">{formatDate(tournament.startDate)}</p>
                 </div>
-              </div>
+              </motion.div>
             )}
-            <div className="flex items-center gap-3">
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="flex items-center gap-3 p-2"
+            >
               <Users className="w-5 h-5 text-[#C8AA6E]" />
               <div>
                 <p className="text-xs text-[var(--tft-text-secondary)]">{t('tournament.participants')}</p>
@@ -278,130 +312,169 @@ export default function TournamentDetailPage() {
                   {tournament.maxParticipants && ` / ${tournament.maxParticipants}`}
                 </p>
               </div>
-            </div>
+            </motion.div>
             {tournament.prizePool && (
-              <div className="flex items-center gap-3">
+              <motion.div 
+                whileHover={{ scale: 1.05 }}
+                className="flex items-center gap-3 p-2"
+              >
                 <Trophy className="w-5 h-5 text-[#C8AA6E]" />
                 <div>
                   <p className="text-xs text-[var(--tft-text-secondary)]">{t('tournament.prizePool')}</p>
-                  <p className="text-sm text-[#C8AA6E]">{tournament.prizePool}</p>
+                  <p className="text-sm text-[#C8AA6E] font-medium">{tournament.prizePool}</p>
                 </div>
-              </div>
+              </motion.div>
             )}
             {tournament.checkInStart && (
-              <div className="flex items-center gap-3">
+              <motion.div 
+                whileHover={{ scale: 1.05 }}
+                className="flex items-center gap-3 p-2"
+              >
                 <Clock className="w-5 h-5 text-[#C8AA6E]" />
                 <div>
                   <p className="text-xs text-[var(--tft-text-secondary)]">{t('tournament.checkIn')}</p>
                   <p className="text-sm text-[var(--tft-text-primary)]">{formatTime(tournament.checkInStart)}</p>
                 </div>
-              </div>
+              </motion.div>
             )}
-          </div>
+          </motion.div>
 
-          {/* Tabs */}
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="w-full justify-start bg-[var(--tft-bg-darker)] border border-[var(--tft-border)] p-1 rounded-lg">
-              <TabsTrigger
-                value="info"
-                className="data-[state=active]:bg-[rgba(200,170,110,0.1)] data-[state=active]:text-[#C8AA6E]"
-              >
-                {t('tournament.tabs.info')}
-              </TabsTrigger>
-              <TabsTrigger
-                value="participants"
-                className="data-[state=active]:bg-[rgba(200,170,110,0.1)] data-[state=active]:text-[#C8AA6E]"
-              >
-                {t('tournament.tabs.participants')}
-              </TabsTrigger>
-              <TabsTrigger
-                value="standings"
-                className="data-[state=active]:bg-[rgba(200,170,110,0.1)] data-[state=active]:text-[#C8AA6E]"
-              >
-                {t('tournament.tabs.standings')}
-              </TabsTrigger>
-              <TabsTrigger
-                value="matches"
-                className="data-[state=active]:bg-[rgba(200,170,110,0.1)] data-[state=active]:text-[#C8AA6E]"
-              >
-                {t('tournament.tabs.matches')}
-              </TabsTrigger>
-            </TabsList>
+          {/* Tabs with Glass styling */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+              <TabsList className="w-full justify-start glass-card p-1.5 rounded-xl mb-6">
+                <TabsTrigger
+                  value="info"
+                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-[rgba(200,170,110,0.2)] data-[state=active]:to-transparent data-[state=active]:text-[#C8AA6E] data-[state=active]:shadow-[0_0_10px_rgba(200,170,110,0.2)] rounded-lg transition-all"
+                >
+                  {t('tournament.tabs.info')}
+                </TabsTrigger>
+                <TabsTrigger
+                  value="participants"
+                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-[rgba(200,170,110,0.2)] data-[state=active]:to-transparent data-[state=active]:text-[#C8AA6E] data-[state=active]:shadow-[0_0_10px_rgba(200,170,110,0.2)] rounded-lg transition-all"
+                >
+                  {t('tournament.tabs.participants')}
+                </TabsTrigger>
+                <TabsTrigger
+                  value="standings"
+                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-[rgba(200,170,110,0.2)] data-[state=active]:to-transparent data-[state=active]:text-[#C8AA6E] data-[state=active]:shadow-[0_0_10px_rgba(200,170,110,0.2)] rounded-lg transition-all"
+                >
+                  {t('tournament.tabs.standings')}
+                </TabsTrigger>
+                <TabsTrigger
+                  value="matches"
+                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-[rgba(200,170,110,0.2)] data-[state=active]:to-transparent data-[state=active]:text-[#C8AA6E] data-[state=active]:shadow-[0_0_10px_rgba(200,170,110,0.2)] rounded-lg transition-all"
+                >
+                  {t('tournament.tabs.matches')}
+                </TabsTrigger>
+              </TabsList>
 
-            {/* Info Tab */}
-            <TabsContent value="info" className="mt-6">
-              <div className="space-y-6">
-                {tournament.description && (
-                  <div>
-                    <h3 className="text-lg font-semibold text-[var(--tft-text-primary)] mb-2">
-                      {t('tournament.description')}
-                    </h3>
-                    <p className="text-[var(--tft-text-secondary)] whitespace-pre-line">{tournament.description}</p>
-                  </div>
-                )}
+              {/* Info Tab */}
+              <TabsContent value="info" className="mt-6">
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="space-y-6 glass-card p-6 rounded-xl"
+                >
+                  {tournament.description && (
+                    <div>
+                      <h3 className="text-lg font-semibold text-[var(--tft-text-primary)] mb-2">
+                        {t('tournament.description')}
+                      </h3>
+                      <p className="text-[var(--tft-text-secondary)] whitespace-pre-line">{tournament.description}</p>
+                    </div>
+                  )}
 
-                {tournament.customRules && (
-                  <div>
-                    <h3 className="text-lg font-semibold text-[var(--tft-text-primary)] mb-2">
-                      {t('tournament.rules')}
-                    </h3>
-                    <p className="text-[var(--tft-text-secondary)] whitespace-pre-line">{tournament.customRules}</p>
-                  </div>
-                )}
+                  {tournament.customRules && (
+                    <div>
+                      <h3 className="text-lg font-semibold text-[var(--tft-text-primary)] mb-2">
+                        {t('tournament.rules')}
+                      </h3>
+                      <p className="text-[var(--tft-text-secondary)] whitespace-pre-line">{tournament.customRules}</p>
+                    </div>
+                  )}
 
-                {tournament.prizeDistribution && (
-                  <div>
-                    <h3 className="text-lg font-semibold text-[var(--tft-text-primary)] mb-2">
-                      {t('tournament.prizeDistribution')}
-                    </h3>
-                    <p className="text-[var(--tft-text-secondary)] whitespace-pre-line">{tournament.prizeDistribution}</p>
-                  </div>
-                )}
+                  {tournament.prizeDistribution && (
+                    <div>
+                      <h3 className="text-lg font-semibold text-[var(--tft-text-primary)] mb-2">
+                        {t('tournament.prizeDistribution')}
+                      </h3>
+                      <p className="text-[var(--tft-text-secondary)] whitespace-pre-line">{tournament.prizeDistribution}</p>
+                    </div>
+                  )}
 
-                {tournament.discordUrl && (
-                  <div>
-                    <h3 className="text-lg font-semibold text-[var(--tft-text-primary)] mb-2">
-                      {t('tournament.discord')}
-                    </h3>
-                    <a
-                      href={tournament.discordUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#5865F2] hover:underline flex items-center gap-2"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      {t('tournament.joinDiscord')}
-                    </a>
-                  </div>
-                )}
-              </div>
-            </TabsContent>
+                  {tournament.discordUrl && (
+                    <div>
+                      <h3 className="text-lg font-semibold text-[var(--tft-text-primary)] mb-2">
+                        {t('tournament.discord')}
+                      </h3>
+                      <motion.a
+                        whileHover={{ x: 4 }}
+                        href={tournament.discordUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#5865F2] hover:underline flex items-center gap-2"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        {t('tournament.joinDiscord')}
+                      </motion.a>
+                    </div>
+                  )}
+                </motion.div>
+              </TabsContent>
 
-            {/* Participants Tab */}
-            <TabsContent value="participants" className="mt-6">
-              <ParticipantsList participants={participants} />
-            </TabsContent>
+              {/* Participants Tab */}
+              <TabsContent value="participants" className="mt-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  <ParticipantsList participants={participants} />
+                </motion.div>
+              </TabsContent>
 
-            {/* Standings Tab */}
-            <TabsContent value="standings" className="mt-6">
-              <StandingsTable standings={standings} />
-            </TabsContent>
+              {/* Standings Tab */}
+              <TabsContent value="standings" className="mt-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  <StandingsTable standings={standings} />
+                </motion.div>
+              </TabsContent>
 
-            {/* Matches Tab */}
-            <TabsContent value="matches" className="mt-6">
-              {matches.length === 0 ? (
-                <div className="text-center py-8 text-[var(--tft-text-secondary)]">
-                  {t('tournament.noMatches')}
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  {matches.map((match) => (
-                    <MatchCard key={match.id} match={match} />
-                  ))}
-                </div>
-              )}
-            </TabsContent>
-          </Tabs>
+              {/* Matches Tab */}
+              <TabsContent value="matches" className="mt-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  {matches.length === 0 ? (
+                    <div className="text-center py-8 text-[var(--tft-text-secondary)] glass-card rounded-xl">
+                      {t('tournament.noMatches')}
+                    </div>
+                  ) : (
+                    <div className="space-y-4">
+                      {matches.map((match, index) => (
+                        <motion.div
+                          key={match.id}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.1 }}
+                        >
+                          <MatchCard match={match} />
+                        </motion.div>
+                      ))}
+                    </div>
+                  )}
+                </motion.div>
+              </TabsContent>
+            </Tabs>
+          </motion.div>
         </div>
       </main>
     </div>
