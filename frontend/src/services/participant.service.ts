@@ -4,7 +4,7 @@
 
 import { api } from '@/lib/api';
 
-const AUTH_BASE_URL = '/participants';
+const BASE_URL = '/participants';
 
 /**
  * Deletes a participant from a tournament
@@ -12,7 +12,7 @@ const AUTH_BASE_URL = '/participants';
  * @returns void
  */
 export const deleteParticipant = async (participantId: string): Promise<void> => {
-  await api.delete(`${AUTH_BASE_URL}/${participantId}`);
+  await api.delete(`${BASE_URL}/${participantId}`);
 };
 
 export const participantService = {

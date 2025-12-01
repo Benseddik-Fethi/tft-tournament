@@ -5,15 +5,13 @@
 import { api } from '@/lib/api';
 import type { AuditLog, RegeneratePairingsResponse } from '@/types/admin.types';
 
-const AUTH_BASE_URL = '';
-
 /**
  * Gets audit logs for a tournament
  * @param tournamentId - The tournament ID
  * @returns List of audit logs
  */
 export const getTournamentAuditLogs = async (tournamentId: string): Promise<AuditLog[]> => {
-  const { data } = await api.get<AuditLog[]>(`${AUTH_BASE_URL}/tournaments/${tournamentId}/audit`);
+  const { data } = await api.get<AuditLog[]>(`/tournaments/${tournamentId}/audit`);
   return data;
 };
 
@@ -26,7 +24,7 @@ export const regeneratePairings = async (
   tournamentId: string
 ): Promise<RegeneratePairingsResponse> => {
   const { data } = await api.post<RegeneratePairingsResponse>(
-    `${AUTH_BASE_URL}/admin/tournaments/${tournamentId}/regenerate-pairings`
+    `/admin/tournaments/${tournamentId}/regenerate-pairings`
   );
   return data;
 };

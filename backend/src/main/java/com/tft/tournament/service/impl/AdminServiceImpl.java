@@ -10,6 +10,7 @@ import com.tft.tournament.repository.TournamentRepository;
 import com.tft.tournament.service.AdminService;
 import com.tft.tournament.service.TournamentService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +29,7 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
+@Slf4j
 public class AdminServiceImpl implements AdminService {
 
     private final AuditLogRepository auditLogRepository;
@@ -92,14 +94,19 @@ public class AdminServiceImpl implements AdminService {
                 .build();
         auditLogRepository.save(auditLog);
 
-        // Note: Actual pairing regeneration logic would go here
-        // This is a placeholder that returns a success message
-        // In production, this would recreate match pairings based on tournament format
+        // TODO: Implement actual pairing regeneration logic
+        // This is a placeholder implementation that logs the request and returns a success message.
+        // In production, this should:
+        // 1. Clear existing matches for the current round/phase
+        // 2. Regenerate pairings based on tournament format (Swiss, Round Robin, etc.)
+        // 3. Create new Match entities and assign participants
+        // 4. Return the actual count of matches created
+        log.warn("regeneratePairings called for tournament {} - placeholder implementation", tournamentId);
 
         return new RegeneratePairingsResponse(
                 true,
-                "Appairements régénérés avec succès",
-                0 // Placeholder - actual count would come from pairing logic
+                "Appairements régénérés avec succès (placeholder - implémentation à compléter)",
+                0
         );
     }
 }

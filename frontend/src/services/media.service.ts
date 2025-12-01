@@ -12,16 +12,13 @@ import type {
   MediaConsentResponse,
 } from '@/types/media.types';
 
-const PUBLIC_BASE_URL = '/public';
-const AUTH_BASE_URL = '';
-
 /**
  * Gets all media for a tournament
  * @param tournamentId - The tournament ID
  * @returns List of media
  */
 export const getTournamentMedia = async (tournamentId: string): Promise<Media[]> => {
-  const { data } = await api.get<Media[]>(`${PUBLIC_BASE_URL}/tournaments/${tournamentId}/media`);
+  const { data } = await api.get<Media[]>(`/public/tournaments/${tournamentId}/media`);
   return data;
 };
 
@@ -31,7 +28,7 @@ export const getTournamentMedia = async (tournamentId: string): Promise<Media[]>
  * @returns The media
  */
 export const getById = async (id: string): Promise<Media> => {
-  const { data } = await api.get<Media>(`${PUBLIC_BASE_URL}/media/${id}`);
+  const { data } = await api.get<Media>(`/public/media/${id}`);
   return data;
 };
 
@@ -46,7 +43,7 @@ export const importFromTwitch = async (
   request: MediaImportRequest
 ): Promise<Media[]> => {
   const { data } = await api.post<Media[]>(
-    `${AUTH_BASE_URL}/tournaments/${tournamentId}/media/import`,
+    `/tournaments/${tournamentId}/media/import`,
     request
   );
   return data;
@@ -63,7 +60,7 @@ export const upload = async (
   request: MediaUploadRequest
 ): Promise<Media> => {
   const { data } = await api.post<Media>(
-    `${AUTH_BASE_URL}/tournaments/${tournamentId}/media/upload`,
+    `/tournaments/${tournamentId}/media/upload`,
     request
   );
   return data;
@@ -79,7 +76,7 @@ export const updateStatus = async (
   mediaId: string,
   request: MediaStatusUpdateRequest
 ): Promise<Media> => {
-  const { data } = await api.put<Media>(`${AUTH_BASE_URL}/media/${mediaId}/status`, request);
+  const { data } = await api.put<Media>(`/media/${mediaId}/status`, request);
   return data;
 };
 
@@ -89,7 +86,7 @@ export const updateStatus = async (
  * @returns The consent response
  */
 export const createConsent = async (request: MediaConsentRequest): Promise<MediaConsentResponse> => {
-  const { data } = await api.post<MediaConsentResponse>(`${AUTH_BASE_URL}/media/consent`, request);
+  const { data } = await api.post<MediaConsentResponse>(`/media/consent`, request);
   return data;
 };
 
