@@ -36,4 +36,12 @@ public interface StandingService {
      * @param tournamentId identifiant du tournoi
      */
     void recalculateStandings(UUID tournamentId);
+
+    /**
+     * Met à jour les statistiques d'un participant à partir de ses résultats de parties.
+     * Cette méthode devrait être appelée après chaque soumission de résultat de partie.
+     *
+     * @param participantId identifiant du participant
+     */
+    void updateParticipantStats(UUID participantId);
 }
